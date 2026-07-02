@@ -1,0 +1,17 @@
+# Example evaluation configuration. Copy to evaluation.yaml when evaluation is implemented.
+
+frameworks:
+  - deepeval
+  - ragas
+
+judge:
+  model: qwen2.5:7b-instruct
+
+dimensions:
+  - faithfulness
+  - citation_support
+  - context_precision
+  - context_recall
+  - answer_relevance
+  - answer_completeness
+  - hallucination_risk

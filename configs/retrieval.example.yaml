@@ -1,0 +1,11 @@
+# Example retrieval configuration. Copy to retrieval.yaml when retrieval is implemented.
+
+vector_store:
+  provider: qdrant
+  url: http://localhost:6333
+  collection: askmydocs_documents
+
+retrieval:
+  top_k: 5
+  score_threshold: 0.0
+  reranker: cross-encoder/ms-marco-MiniLM-L-6-v2
