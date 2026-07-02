@@ -1,86 +1,122 @@
-# Day Zero Setup Playbook
+# Day Zero Setup Guide
 
-This playbook is the onboarding source of truth for preparing a developer machine for AskMyDocs-RAG. It is written for engineers using Codex, Claude, GitHub Copilot, Cursor, Windsurf, other assistants, or no AI assistant at all.
+This guide is the onboarding source of truth for AskMyDocs-RAG. It prepares a developer machine and repository checkout before any feature work begins.
 
-AI is optional. It can help with inspection, validation, and repetitive setup work, but it is not required to contribute. The engineer remains responsible for understanding the project, reviewing generated output, testing changes, updating documentation, and staying within the assigned Jira ticket.
+It works for developers using Codex, Claude, GitHub Copilot, Cursor, Windsurf, another assistant, or no AI assistant. AI is optional. It is a productivity tool, not a project dependency.
 
-## Purpose
+## What Day Zero Does
 
-Day Zero exists to make every developer start from the same baseline before feature work begins.
+Day Zero creates a common baseline:
 
-The goal is not to build application features. The goal is to prepare:
+- Required machine tools are installed.
+- Docker and Ollama are available locally.
+- The repository can be cloned and inspected.
+- A Python 3.11 virtual environment can be created.
+- Project standards are understood before coding starts.
 
-- A consistent local development machine.
-- A verified repository checkout.
-- A Python virtual environment.
-- Shared engineering and documentation standards.
-- A common workflow for human-only and AI-assisted development.
+Day Zero does not build the application. Do not add backend code, frontend code, APIs, retrieval logic, database logic, evaluation logic, caching, deployment pipelines, app dependencies, or model downloads unless a later Jira ticket explicitly approves that work.
 
-Do not implement backend code, frontend code, APIs, retrieval logic, database logic, evaluation logic, caching, deployment pipelines, or model downloads during Day Zero unless a later ticket explicitly approves that work.
+## If Your Machine Is Not Suitable
 
-## Project Constraints
+If local setup feels too slow, unstable, or resource-constrained, use a free Google Colab environment for early exploration and learning tasks.
 
-The project follows the Technical Design Document and Approach document.
+Use Colab only for lightweight experiments, document review, or isolated notebooks. Do not treat Colab as the source of truth for repository state, do not store secrets in notebooks, and do not use it as a replacement for the reviewed local development workflow.
 
-- Local-first only.
-- Free and open-source components only.
-- No paid LLM APIs.
-- No paid hosted inference.
-- No paid vector databases.
-- No paid evaluation services.
-- No paid observability platforms.
-- Prefer configuration over hardcoded values.
-- Keep changes small and reviewable.
-- Update documentation whenever implementation changes.
+Basic Colab setup:
 
-## Recommended Machine
+```python
+!git clone <repository-url>
+%cd AskMyDocs-RAG
+!python --version
+!pip --version
+```
 
-Minimum workable machine:
+Colab limitations:
 
-- macOS, Linux, or Windows with WSL2.
-- 16 GB RAM.
-- 4 CPU cores.
-- 25 GB free disk space for tooling, containers, and initial models.
+- Docker Desktop is not available.
+- Long-running local services such as Qdrant and Ollama may not behave like a developer machine.
+- Runtime storage is temporary.
+- Any useful code or notes must be moved back into the repository through the normal branch and PR workflow.
 
-Recommended for local model work:
+## Setup Options
 
-- Apple Silicon Mac, modern Linux workstation, or Windows machine with WSL2.
-- 32 GB RAM or more.
-- 8+ CPU cores.
-- 100 GB free disk space.
-- GPU acceleration where available.
+Choose one path:
 
-The verified setup in this project was performed on macOS Apple Silicon.
+- Manual setup: follow the commands in this guide.
+- Scripted setup on macOS: run `scripts/setup_day_zero_macos.sh`.
+- Scripted setup on Windows: run `scripts/setup_day_zero_windows.ps1`.
+- AI-assisted setup: ask your assistant to follow this guide exactly, then review every command before running it.
 
-## Phase A: Machine Setup
+If any step fails, stop. Do not continue to feature work. Create a Jira ticket titled `Day Zero Environment Issue` with the command, output, operating system, and attempted fix.
 
-Install only missing tools. Do not reinstall working tools.
+## Required Tools
 
-### Required Tools
-
-| Tool | Recommended version | Why it is needed | Verification command |
+| Tool | Required state | Why it is needed | Verify |
 |---|---|---|---|
-| Homebrew | Current stable on macOS | Installs developer tools consistently | `brew --version` |
-| Git | 2.40+ | Source control and branch workflow | `git --version` |
-| Python | 3.11.x | Backend and ML ecosystem baseline | `python3.11 --version` |
-| pip | Bundled with Python 3.11 | Python package tooling | `python3.11 -m pip --version` |
-| venv | Bundled with Python 3.11 | Local virtual environments | `python3.11 -m venv --help` |
-| uv | Current stable | Preferred Python environment/package workflow | `uv --version` |
-| Node.js | Active LTS, currently Node 24 | Future React/Next.js work | `node --version` |
-| npm | Bundled with Node LTS | Node package tooling | `npm --version` |
-| pnpm | Current stable | Preferred future frontend package manager | `pnpm --version` |
-| Docker Desktop | Current stable | Local containers and future Qdrant service | `docker --version` |
-| Docker Compose | Bundled with Docker Desktop | Local service orchestration | `docker compose version` |
-| Ollama | Current stable | Local model serving | `ollama --version` |
-| curl | System or current stable | HTTP checks and API validation | `curl --version` |
-| wget | Current stable | CLI downloads | `wget --version` |
-| make | System make is acceptable | Common command runner | `make --version` |
-| jq | 1.7+ | JSON inspection and API checks | `jq --version` |
-| unzip | System unzip is acceptable | Archive handling | `unzip -v` |
+| Git | Installed | Source control | `git --version` |
+| Python | 3.11.x | Backend and ML baseline | `python3.11 --version` |
+| pip | Python 3.11 pip | Python package tooling | `python3.11 -m pip --version` |
+| venv | Python 3.11 venv | Local virtual environment | `python3.11 -m venv --help` |
+| uv | Installed | Preferred Python environment/package tool | `uv --version` |
+| Node.js | Active LTS, Node 24 currently | Future frontend work | `node --version` |
+| npm | Installed | Node package tooling | `npm --version` |
+| pnpm | Installed | Preferred frontend package manager | `pnpm --version` |
+| Docker Desktop | Installed and running | Local containers, future Qdrant | `docker --version` |
+| Docker Compose | Installed | Local service orchestration | `docker compose version` |
+| Ollama | Installed and reachable | Local model serving | `ollama list` |
+| curl | Installed | HTTP validation | `curl --version` |
+| wget | Installed | Download utility | `wget --version` |
+| make | Installed | Common command runner | `make --version` |
+| jq | Installed | JSON inspection | `jq --version` |
+| unzip | Installed | Archive handling | `unzip -v` |
 
-### macOS Installation Commands
+## Scripted Setup
 
-Use these commands only for missing or non-compliant tools.
+The setup scripts install and verify machine tools only. They do not install project app dependencies, create application code, pull models, or create deployment files.
+
+### macOS
+
+From the repository root:
+
+```bash
+chmod +x scripts/setup_day_zero_macos.sh
+./scripts/setup_day_zero_macos.sh
+```
+
+What it does:
+
+- Verifies or installs Homebrew.
+- Installs missing tools with Homebrew.
+- Installs Python 3.11, uv, Node 24 LTS, pnpm, Docker Desktop, Ollama, wget, jq, and supporting tools.
+- Creates `.venv` if it does not exist.
+- Verifies Docker Desktop and Ollama.
+- Stops immediately on failure and prints the next action.
+
+### Windows
+
+Run PowerShell as your normal user. Administrator mode may be required for Docker Desktop or winget-managed installs.
+
+From the repository root:
+
+```powershell
+Set-ExecutionPolicy -Scope Process Bypass
+.\scripts\setup_day_zero_windows.ps1
+```
+
+What it does:
+
+- Verifies `winget`.
+- Installs missing tools through `winget`, official installers, or built-in Windows capabilities.
+- Enables Corepack and pnpm.
+- Creates `.venv` if it does not exist.
+- Verifies Docker Desktop and Ollama.
+- Stops immediately on failure and prints the next action.
+
+After scripted setup, rerun the validation section manually. The engineer owns the final sign-off even when a script or assistant performed the setup.
+
+## Manual Setup: macOS
+
+Install missing tools only:
 
 ```bash
 brew install python@3.11
@@ -88,32 +124,25 @@ brew install uv
 brew install node@24
 brew unlink node
 brew link node@24 --force --overwrite
+brew install pnpm
 brew install --cask docker
 brew install ollama
-brew install wget
+brew install wget jq
 ```
 
-After installing Docker Desktop, open the Docker app once and wait for it to finish startup.
+Open Docker Desktop:
 
 ```bash
 open -a Docker
 ```
 
-If Docker was installed manually, verify that Docker Desktop created the CLI plugin directory and the `desktop-linux` context.
-
-```bash
-docker context ls
-docker compose version
-docker --context desktop-linux info
-```
-
-If Ollama is installed but not running, start it manually:
+Start Ollama if it is not already running:
 
 ```bash
 ollama serve
 ```
 
-or start it as a background service:
+or:
 
 ```bash
 brew services start ollama
@@ -121,23 +150,63 @@ brew services start ollama
 
 Do not pull models during Day Zero unless explicitly approved.
 
-## Phase B: Project Setup
+## Manual Setup: Windows
 
-Clone the repository and enter it.
+Install missing tools with `winget`:
+
+```powershell
+winget install --id Git.Git -e
+winget install --id Python.Python.3.11 -e
+winget install --id OpenJS.NodeJS.LTS -e
+winget install --id Docker.DockerDesktop -e
+winget install --id Ollama.Ollama -e
+winget install --id jqlang.jq -e
+winget install --id JernejSimoncic.Wget -e
+winget install --id GnuWin32.Make -e
+```
+
+Install uv:
+
+```powershell
+powershell -ExecutionPolicy Bypass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+Enable pnpm:
+
+```powershell
+corepack enable
+corepack prepare pnpm@latest --activate
+```
+
+Windows includes `curl` and archive tooling by default. The setup script still checks `wget`, `make`, and archive support so the command set stays consistent across the team.
+
+Open Docker Desktop from the Start menu and wait for it to finish startup.
+
+Start Ollama from the Start menu, or run:
+
+```powershell
+ollama serve
+```
+
+Do not pull models during Day Zero unless explicitly approved.
+
+## Repository Setup
+
+Clone and enter the repository:
 
 ```bash
 git clone <repository-url>
 cd AskMyDocs-RAG
 ```
 
-Inspect the current state.
+Check the branch and files:
 
 ```bash
 git status --short --branch
 rg --files --hidden -g '!**/.git/**'
 ```
 
-Confirm the Day Zero structure exists:
+Expected Day Zero folders:
 
 ```text
 AGENTS.md
@@ -156,33 +225,29 @@ README.md
 .gitignore
 ```
 
-Create a Python virtual environment only if one does not already exist.
+Create the virtual environment if it does not exist:
+
+macOS/Linux:
 
 ```bash
 python3.11 -m venv .venv
-```
-
-Verify the virtual environment directly:
-
-```bash
 .venv/bin/python --version
 .venv/bin/python -m pip --version
 ```
 
-Do not install project dependencies unless the dependency list has been reviewed and approved. At Day Zero, this repository intentionally has no `pyproject.toml`, `requirements.txt`, `package.json`, lockfiles, or Docker Compose file.
+Windows PowerShell:
 
-Check for dependency and service manifests:
-
-```bash
-find . -maxdepth 3 -type f \( -name 'pyproject.toml' -o -name 'requirements*.txt' -o -name 'package.json' -o -name 'pnpm-lock.yaml' -o -name 'package-lock.json' \)
-find . -maxdepth 3 -type f \( -name 'docker-compose.yml' -o -name 'docker-compose.yaml' -o -name 'compose.yml' -o -name 'compose.yaml' \)
+```powershell
+py -3.11 -m venv .venv
+.\.venv\Scripts\python.exe --version
+.\.venv\Scripts\python.exe -m pip --version
 ```
 
-Expected Day Zero result: no dependency manifests and no Compose file.
+Do not install project dependencies yet. At Day Zero the repository intentionally has no `pyproject.toml`, `requirements.txt`, `package.json`, lockfiles, or Docker Compose file.
 
 ## Environment Configuration
 
-Use `.env.example` as the reference for environment variable names. Do not commit `.env`.
+Use `.env.example` as the reference for variable names. Do not commit `.env`.
 
 Current Day Zero variables:
 
@@ -204,28 +269,20 @@ PROMPTS_CONFIG_PATH
 EVALUATION_CONFIG_PATH
 ```
 
-Do not create runtime config files such as `configs/models.yaml` or `.env` unless a setup ticket approves that step. The current files under `configs/` are examples only.
+The files in `configs/` are examples only. Do not create runtime config files such as `configs/models.yaml` unless a setup ticket approves that step.
 
 ## Local Services
 
-Required future services:
+Day Zero validates only the local tooling.
 
-- Ollama for local model serving.
-- Qdrant for vector storage.
-
-Current Day Zero service state:
-
-- Ollama should be installed and reachable.
-- Qdrant is not yet configured because the repository intentionally has no Docker Compose file.
-
-Validate Ollama:
+Ollama should be reachable:
 
 ```bash
 ollama list
 curl http://localhost:11434/api/tags
 ```
 
-Expected output with no models installed:
+Expected output when no models are installed:
 
 ```text
 NAME    ID    SIZE    MODIFIED
@@ -235,7 +292,9 @@ NAME    ID    SIZE    MODIFIED
 {"models":[]}
 ```
 
-Do not pull models unless approved. Required future models are identified in docs and config examples:
+Qdrant is not validated yet because this repository intentionally has no Docker Compose file. Qdrant setup belongs in a later approved setup ticket.
+
+Required future models are identified but not pulled:
 
 - `qwen3:4b`
 - `qwen2.5:7b-instruct`
@@ -247,11 +306,9 @@ Do not pull models unless approved. Required future models are identified in doc
 
 ## Starting Work
 
-### If Using An AI Coding Assistant
+### With An AI Coding Assistant
 
-Before asking an assistant to change anything, require it to understand the current project.
-
-The assistant must read:
+Before any edit, the assistant must read:
 
 1. `AGENTS.md`
 2. `README.md`
@@ -263,48 +320,31 @@ The assistant must read:
 8. `docs/AI_AGENT_WORKFLOW.md`
 9. `docs/DECISIONS.md`
 
-Rules for AI-assisted work:
+Rules:
 
 - The engineer owns the final change.
 - Review every AI-generated edit.
 - Keep work inside the assigned Jira ticket.
-- Do not allow the assistant to add unrelated features.
-- Do not allow paid hosted services or non-local dependencies.
-- Run relevant validation commands yourself.
-- Update documentation in the same change when behavior, setup, or architecture changes.
+- Do not allow unrelated features.
+- Do not introduce paid hosted services.
+- Run validation yourself.
+- Update documentation when behavior, setup, or architecture changes.
 
-### If Not Using An AI Coding Assistant
+### Without An AI Coding Assistant
 
-Read the same project documents manually before implementation:
-
-1. `README.md`
-2. `docs/PROJECT_STATUS.md`
-3. `docs/ROADMAP.md`
-4. `docs/ENGINEERING_WORKFLOW.md`
-5. `docs/DEVELOPMENT_ENVIRONMENT.md`
-6. `docs/CODING_STANDARDS.md`
-7. `docs/DECISIONS.md`
-
-The workflow, review process, documentation expectations, and Definition of Done are identical whether or not AI is used.
+Read the same project documents manually before implementation. The workflow, review process, documentation expectations, and Definition of Done are identical whether AI is used or not.
 
 ## Git Workflow
 
 - `main` is the integration branch.
 - Work happens on short-lived branches.
-- Use branch names in this format:
+- Branch names use:
 
 ```text
 feature/<ticket-id>-short-description
 ```
 
-Examples:
-
-```text
-feature/RAG-001-backend-foundation
-feature/RAG-014-retrieval-trace-view
-```
-
-Every pull request must include:
+Every pull request includes:
 
 - Summary of changes.
 - Related Jira ticket.
@@ -312,50 +352,22 @@ Every pull request must include:
 - Testing performed.
 - Documentation updates.
 
-At least one engineer must review every pull request before merge.
+At least one engineer reviews every pull request before merge.
 
-## Engineering Standards
+## Validation Checklist
 
-- Keep changes focused.
-- Prefer configuration over hardcoded values.
-- Separate business logic from infrastructure concerns.
-- Add meaningful logging when implementation exists.
-- Handle expected error scenarios.
-- Avoid duplicate logic.
-- Avoid dead code and commented-out code.
-- Do not add temporary workarounds without documenting the reason.
-- Keep the implementation aligned with the TDD stage order.
+Complete this before feature development:
 
-## Documentation Standards
-
-Update documentation whenever implementation changes.
-
-Update `docs/PROJECT_STATUS.md` when project status changes.
-
-Update `docs/DECISIONS.md` when architecture, tooling, model, or workflow decisions change.
-
-Update the relevant area docs when APIs, configuration, deployment, evaluation, or operations behavior changes.
-
-## Day Zero Validation Checklist
-
-Every developer must complete this checklist before feature development.
-
-- [ ] Homebrew installed if using macOS.
 - [ ] Git installed and verified.
 - [ ] Python 3.11 installed and verified.
-- [ ] pip for Python 3.11 installed and verified.
-- [ ] Python venv support verified.
+- [ ] Python 3.11 pip and venv verified.
 - [ ] `uv` installed and verified.
-- [ ] Node.js LTS installed and verified.
-- [ ] npm installed and verified.
-- [ ] pnpm installed and verified.
-- [ ] Docker Desktop installed.
-- [ ] Docker daemon running.
-- [ ] Docker Compose installed and verified.
-- [ ] Ollama installed.
-- [ ] Ollama server reachable.
+- [ ] Node.js LTS, npm, and pnpm verified.
+- [ ] Docker Desktop installed and running.
+- [ ] Docker Compose verified.
+- [ ] Ollama installed and reachable.
 - [ ] Required future models identified.
-- [ ] No models pulled unless explicitly approved.
+- [ ] No models pulled unless approved.
 - [ ] Repository cloned successfully.
 - [ ] Day Zero folder structure confirmed.
 - [ ] `.venv` created and verified.
@@ -365,7 +377,7 @@ Every developer must complete this checklist before feature development.
 - [ ] Engineering workflow understood.
 - [ ] No application feature code created during setup.
 
-If any validation step fails, stop immediately. Create a Jira ticket titled `Day Zero Environment Issue` and include the failed command, output, operating system, and attempted fix.
+If any item fails, stop and create a `Day Zero Environment Issue` Jira ticket.
 
 ## Validation Commands
 
@@ -376,60 +388,37 @@ git --version
 git status --short --branch
 ```
 
-Expected:
+Expected: Git version prints and the current branch is shown.
 
-```text
-git version 2.40+
-## <branch-name>...
-```
+If it fails: install Git, fix repository permissions, or repair credentials.
 
-Common failures:
+### Python And Virtual Environment
 
-- `git: command not found`: install Git.
-- Authentication failure during clone or push: check SSH keys or HTTPS credentials.
-
-### Python
+macOS/Linux:
 
 ```bash
 python3.11 --version
 python3.11 -m pip --version
 python3.11 -m venv --help
-```
-
-Expected:
-
-```text
-Python 3.11.x
-pip ... (python 3.11)
-usage: venv ...
-```
-
-Common failures:
-
-- `python3.11: command not found`: install Python 3.11.
-- pip reports another Python version: verify PATH and use `python3.11 -m pip`.
-
-### Virtual Environment
-
-```bash
-python3.11 -m venv .venv
+test -d .venv || python3.11 -m venv .venv
 .venv/bin/python --version
-.venv/bin/python -m pip --version
 ```
 
-Expected:
+Windows PowerShell:
 
-```text
-Python 3.11.x
-pip ... .venv ... (python 3.11)
+```powershell
+py -3.11 --version
+py -3.11 -m pip --version
+py -3.11 -m venv --help
+if (-not (Test-Path .venv)) { py -3.11 -m venv .venv }
+.\.venv\Scripts\python.exe --version
 ```
 
-Common failures:
+Expected: Python reports 3.11.x and the venv Python also reports 3.11.x.
 
-- `.venv` uses the wrong Python: recreate it with `python3.11 -m venv .venv`.
-- Permission errors: check repository ownership and filesystem permissions.
+If it fails: install Python 3.11 and recreate `.venv`.
 
-### Node And Package Managers
+### Node
 
 ```bash
 node --version
@@ -437,18 +426,9 @@ npm --version
 pnpm --version
 ```
 
-Expected:
+Expected: Node reports an LTS version, currently `v24.x.x`.
 
-```text
-v24.x.x
-<npm-version>
-<pnpm-version>
-```
-
-Common failures:
-
-- Node reports an odd-numbered non-LTS version: install and link Node LTS.
-- `pnpm: command not found`: install pnpm.
+If it fails: install Node LTS and pnpm, then reopen the terminal.
 
 ### Docker
 
@@ -459,20 +439,9 @@ docker context ls
 docker --context desktop-linux info
 ```
 
-Expected:
+Expected: Docker and Compose versions print; Docker Desktop server info is available.
 
-```text
-Docker version ...
-Docker Compose version ...
-desktop-linux ...
-Server: ...
-```
-
-Common failures:
-
-- Docker daemon not reachable: open Docker Desktop and wait for startup.
-- Permission denied to Docker socket in sandboxed tools: rerun validation from a normal terminal.
-- `docker compose` missing: reinstall or repair Docker Desktop CLI plugins.
+If it fails: open Docker Desktop, wait for startup, and retry. If socket access fails from an AI tool sandbox, retry from a normal terminal.
 
 ### Ollama
 
@@ -482,10 +451,9 @@ ollama list
 curl http://localhost:11434/api/tags
 ```
 
-Expected with no models pulled:
+Expected with no models:
 
 ```text
-client version is ...
 NAME    ID    SIZE    MODIFIED
 ```
 
@@ -493,46 +461,22 @@ NAME    ID    SIZE    MODIFIED
 {"models":[]}
 ```
 
-Common failures:
+If it fails: start Ollama with `ollama serve` or the desktop app, then retry.
 
-- `could not connect to ollama server`: run `ollama serve` or `brew services start ollama`.
-- Port `11434` unavailable: check whether another process is using the port.
-- No models listed: this is expected during Day Zero.
-
-### Repository Structure
+### Repository Shape
 
 ```bash
 rg --files --hidden -g '!**/.git/**'
 find . -maxdepth 3 -type f \( -name 'pyproject.toml' -o -name 'requirements*.txt' -o -name 'package.json' -o -name 'docker-compose.yml' -o -name 'compose.yml' \)
 ```
 
-Expected:
+Expected: Day Zero files exist; no app dependency or Compose manifests exist yet.
 
-- Day Zero docs and placeholder folders are present.
-- No dependency manifest or Compose file exists until a later approved setup ticket.
+If it fails: pull the latest branch or confirm you are on the intended feature branch.
 
-Common failures:
+## Day Zero Sign-Off
 
-- Missing Day Zero docs: pull the latest branch or verify checkout.
-- Dependency files unexpectedly present: check whether you are on a later feature branch.
-
-## Definition Of Done For Day Zero
-
-Day Zero is complete when:
-
-- Required machine tools are installed and verified.
-- Docker Desktop is running.
-- Ollama is reachable.
-- The repository is cloned and readable.
-- `.venv` exists and uses Python 3.11.
-- Project standards docs have been reviewed.
-- No feature code has been created.
-- No dependencies or models have been installed without approval.
-- Any failed validation has been captured in a Jira `Day Zero Environment Issue`.
-
-## Sign-Off
-
-Each engineer should record sign-off in the project tracking system.
+Record sign-off in Jira or the project tracker:
 
 ```text
 Engineer Name:
@@ -544,4 +488,4 @@ Validation Status: Pass / Fail
 Notes:
 ```
 
-If validation status is `Fail`, stop immediately and create a `Day Zero Environment Issue` Jira ticket before starting feature development.
+If validation is `Fail`, do not start feature development. Create a `Day Zero Environment Issue` Jira ticket first.
