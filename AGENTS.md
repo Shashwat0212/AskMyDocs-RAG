@@ -4,7 +4,12 @@ This file is the canonical entrypoint for all AI coding assistants working in th
 
 ## Source Of Truth
 
-The project is governed by the Technical Design Document and Approach document provided by the project owner. Do not steer away from those documents. If a request conflicts with them, stop and call out the conflict before making changes.
+The project is governed by the Technical Design Document and Approach document provided by the project owner:
+
+1. `docs/source_documents/Technical Design Document_ Local-First RAGOps Platform.docx`
+2. `docs/source_documents/Approach.docx`
+
+Do not steer away from those documents. If a request conflicts with them, stop and call out the conflict before making changes.
 
 ## Read Before Coding
 

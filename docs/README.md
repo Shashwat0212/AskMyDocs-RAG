@@ -6,8 +6,10 @@ Start with:
 
 1. `PROJECT_STATUS.md`
 2. `ROADMAP.md`
-3. `ENGINEERING_WORKFLOW.md`
-4. `DEVELOPMENT_ENVIRONMENT.md`
-5. `CODING_STANDARDS.md`
-6. `AI_AGENT_WORKFLOW.md`
-7. `DECISIONS.md`
+3. `source_documents/README.md`
+4. `architecture/phase_1_core_rag_mvp.md`
+5. `ENGINEERING_WORKFLOW.md`
+6. `DEVELOPMENT_ENVIRONMENT.md`
+7. `CODING_STANDARDS.md`
+8. `AI_AGENT_WORKFLOW.md`
+9. `DECISIONS.md`

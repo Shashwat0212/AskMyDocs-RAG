@@ -15,11 +15,13 @@ Build the first working document-based question-answering pipeline:
 - Chunking
 - Embedding generation
 - Qdrant indexing
-- Similarity retrieval
+- Lightweight hybrid retrieval
 - Answer generation
 - Citation display
 - Basic request and response logging
 - Configuration-driven model and retrieval settings
+
+Phase 1 planning for Epics 1 through 7 is captured in `docs/architecture/phase_1_core_rag_mvp.md`.
 
 ## Stage 2: Retrieval Inspection And Quality Layer
 

@@ -22,3 +22,13 @@ Date: 2026-07-02
 Decision: Use `AGENTS.md` as the canonical AI-agent instruction file.
 Rationale: Codex, Claude, GitHub Copilot, and future tools need a shared source of project rules.
 Consequences: Assistant-specific files should stay thin and point back to `AGENTS.md`.
+
+Date: 2026-07-03
+Decision: Scope Phase 1 to Epics 1 through 7 with lightweight hybrid retrieval in the Core RAG MVP.
+Rationale: The project owner wants the MVP retrieval plan to include hybrid retrieval without pulling in Stage 2 reranking, inspection, or quality-mode complexity.
+Consequences: Phase 1 will target dense vector retrieval plus a simple local lexical path with configurable fusion. Cross-encoder reranking, retrieval inspection UI, quality model mode, evaluation automation, caching, routing, arbitration, and the final React/Next.js interface remain outside Phase 1.
+
+Date: 2026-07-03
+Decision: Store the owner-provided Technical Design Document and Approach document in the repository under `docs/source_documents/`.
+Rationale: The project rules treat these documents as the governing source of truth, so agents and contributors need stable repo-local paths.
+Consequences: Future roadmap, architecture, workflow, and implementation changes must be checked against the DOCX source documents before proceeding.

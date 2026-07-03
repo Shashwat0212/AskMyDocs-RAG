@@ -9,6 +9,8 @@ Day Zero foundation.
 - Repository initialized with root README.
 - Day Zero implementation plan approved.
 - Day Zero documentation structure, placeholder repository structure, example configuration files, and AI-agent workflow guidance created.
+- Source-of-truth Technical Design Document and Approach document added under `docs/source_documents/`.
+- Phase 1 Core RAG MVP plan drafted for Epics 1 through 7.
 
 ## In Progress
 
@@ -21,8 +23,9 @@ Day Zero foundation.
 ## Upcoming Work
 
 1. Review and accept Day Zero foundation.
-2. Create the first Stage 1 feature ticket for Core RAG MVP setup.
-3. Begin backend, service, and model integration only after the first feature ticket is approved.
+2. Review and accept the Phase 1 Core RAG MVP plan.
+3. Create the first Stage 1 feature ticket for Core RAG MVP setup.
+4. Begin backend, service, and model integration only after the first feature ticket is approved.
 
 ## Notes For New Contributors
 
