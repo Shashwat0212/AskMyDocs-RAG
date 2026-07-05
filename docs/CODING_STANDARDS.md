@@ -29,6 +29,7 @@ Update documentation whenever implementation changes. This includes:
 - Configuration documentation
 - Feature documentation
 - Operational or deployment documentation
+- Affected folder-level `KNOWLEDGE.md` files
 - Project status
 - Decision log when architecture or workflow changes
 

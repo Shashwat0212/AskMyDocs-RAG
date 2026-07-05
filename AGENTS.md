@@ -16,13 +16,14 @@ Do not steer away from those documents. If a request conflicts with them, stop a
 Every agent must read these files before modifying code or docs:
 
 1. `README.md`
-2. `docs/PROJECT_STATUS.md`
-3. `docs/ROADMAP.md`
-4. `docs/ENGINEERING_WORKFLOW.md`
-5. `docs/DEVELOPMENT_ENVIRONMENT.md`
-6. `docs/CODING_STANDARDS.md`
-7. `docs/AI_AGENT_WORKFLOW.md`
-8. `docs/DECISIONS.md`
+2. `KNOWLEDGE.md`
+3. `docs/PROJECT_STATUS.md`
+4. `docs/ROADMAP.md`
+5. `docs/ENGINEERING_WORKFLOW.md`
+6. `docs/DEVELOPMENT_ENVIRONMENT.md`
+7. `docs/CODING_STANDARDS.md`
+8. `docs/AI_AGENT_WORKFLOW.md`
+9. `docs/DECISIONS.md`
 
 ## Non-Negotiable Project Constraints
 
@@ -33,6 +34,7 @@ Every agent must read these files before modifying code or docs:
 - Keep business logic separated from infrastructure concerns.
 - Keep changes focused to the assigned ticket.
 - Update documentation in the same change as implementation.
+- Update affected folder-level `KNOWLEDGE.md` files in the same change as code, configuration, scripts, documentation structure, or behavior changes.
 - Do not add feature code during repository-foundation tasks.
 
 ## Target Architecture Direction
@@ -55,8 +57,9 @@ Every agent must read these files before modifying code or docs:
 4. Keep the change small and reviewable.
 5. Prefer existing structure and conventions.
 6. Add or update tests when implementation exists.
-7. Update relevant docs, especially `docs/PROJECT_STATUS.md` and `docs/DECISIONS.md` when applicable.
-8. Summarize changes, tests, and documentation updates.
+7. Update affected folder-level `KNOWLEDGE.md` files and the root `KNOWLEDGE.md` map when folder structure changes.
+8. Update relevant docs, especially `docs/PROJECT_STATUS.md` and `docs/DECISIONS.md` when applicable.
+9. Summarize changes, tests, and documentation updates.
 
 ## Prohibited Without Explicit Approval
 

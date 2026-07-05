@@ -11,6 +11,7 @@ Day Zero foundation.
 - Day Zero documentation structure, placeholder repository structure, example configuration files, and AI-agent workflow guidance created.
 - Source-of-truth Technical Design Document and Approach document added under `docs/source_documents/`.
 - Phase 1 Core RAG MVP plan drafted for Epics 1 through 7.
+- Folder-level `KNOWLEDGE.md` documentation convention implemented with a root knowledge map.
 
 ## In Progress
 

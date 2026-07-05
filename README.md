@@ -34,12 +34,13 @@ This repository is currently in Day Zero foundation state. It contains project s
 Before starting any task, human engineers and AI coding assistants should read:
 
 1. [AGENTS.md](AGENTS.md)
-2. [docs/PROJECT_STATUS.md](docs/PROJECT_STATUS.md)
-3. [docs/ROADMAP.md](docs/ROADMAP.md)
-4. [docs/ENGINEERING_WORKFLOW.md](docs/ENGINEERING_WORKFLOW.md)
-5. [docs/DEVELOPMENT_ENVIRONMENT.md](docs/DEVELOPMENT_ENVIRONMENT.md)
-6. [docs/CODING_STANDARDS.md](docs/CODING_STANDARDS.md)
-7. [docs/AI_AGENT_WORKFLOW.md](docs/AI_AGENT_WORKFLOW.md)
+2. [KNOWLEDGE.md](KNOWLEDGE.md)
+3. [docs/PROJECT_STATUS.md](docs/PROJECT_STATUS.md)
+4. [docs/ROADMAP.md](docs/ROADMAP.md)
+5. [docs/ENGINEERING_WORKFLOW.md](docs/ENGINEERING_WORKFLOW.md)
+6. [docs/DEVELOPMENT_ENVIRONMENT.md](docs/DEVELOPMENT_ENVIRONMENT.md)
+7. [docs/CODING_STANDARDS.md](docs/CODING_STANDARDS.md)
+8. [docs/AI_AGENT_WORKFLOW.md](docs/AI_AGENT_WORKFLOW.md)
 
 ## Current State
 

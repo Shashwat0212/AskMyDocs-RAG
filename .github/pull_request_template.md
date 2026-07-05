@@ -24,5 +24,6 @@ List updated docs, configuration notes, or decision records.
 - [ ] Acceptance criteria are satisfied.
 - [ ] Local tests or checks pass.
 - [ ] Documentation has been updated where required.
+- [ ] Affected `KNOWLEDGE.md` files have been updated.
 - [ ] Configuration changes are documented.
 - [ ] No secrets, debug code, dead code, or unrelated changes are included.

@@ -13,3 +13,5 @@ Start with:
 7. `CODING_STANDARDS.md`
 8. `AI_AGENT_WORKFLOW.md`
 9. `DECISIONS.md`
+
+Use the repository root `KNOWLEDGE.md` as the map for folder-level knowledge docs.

@@ -32,3 +32,8 @@ Date: 2026-07-03
 Decision: Store the owner-provided Technical Design Document and Approach document in the repository under `docs/source_documents/`.
 Rationale: The project rules treat these documents as the governing source of truth, so agents and contributors need stable repo-local paths.
 Consequences: Future roadmap, architecture, workflow, and implementation changes must be checked against the DOCX source documents before proceeding.
+
+Date: 2026-07-05
+Decision: Establish `KNOWLEDGE.md` as the folder-level knowledge documentation convention.
+Rationale: The project needs durable, local-first knowledge sharing so contributors and AI agents can understand what each folder currently contains and what related documentation must change with implementation work.
+Consequences: Every project-owned folder should contain a `KNOWLEDGE.md` file. The repository root `KNOWLEDGE.md` maps child knowledge docs. Changes to code, configuration, scripts, documentation structure, or behavior must update affected folder-level knowledge docs in the same change, and folder structure changes must update the root map.

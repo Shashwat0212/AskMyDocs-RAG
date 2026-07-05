@@ -212,6 +212,7 @@ Expected Day Zero folders:
 AGENTS.md
 CLAUDE.md
 CODEX.md
+KNOWLEDGE.md
 .github/
 backend/
 configs/
@@ -312,13 +313,14 @@ Before any edit, the assistant must read:
 
 1. `AGENTS.md`
 2. `README.md`
-3. `docs/PROJECT_STATUS.md`
-4. `docs/ROADMAP.md`
-5. `docs/ENGINEERING_WORKFLOW.md`
-6. `docs/DEVELOPMENT_ENVIRONMENT.md`
-7. `docs/CODING_STANDARDS.md`
-8. `docs/AI_AGENT_WORKFLOW.md`
-9. `docs/DECISIONS.md`
+3. `KNOWLEDGE.md`
+4. `docs/PROJECT_STATUS.md`
+5. `docs/ROADMAP.md`
+6. `docs/ENGINEERING_WORKFLOW.md`
+7. `docs/DEVELOPMENT_ENVIRONMENT.md`
+8. `docs/CODING_STANDARDS.md`
+9. `docs/AI_AGENT_WORKFLOW.md`
+10. `docs/DECISIONS.md`
 
 Rules:
 
@@ -329,6 +331,7 @@ Rules:
 - Do not introduce paid hosted services.
 - Run validation yourself.
 - Update documentation when behavior, setup, or architecture changes.
+- Update affected folder-level `KNOWLEDGE.md` files when code, configuration, scripts, documentation structure, or behavior changes.
 
 ### Without An AI Coding Assistant
 
@@ -374,6 +377,7 @@ Complete this before feature development:
 - [ ] No project dependencies installed without approval.
 - [ ] `.env.example` reviewed.
 - [ ] Project documentation reviewed.
+- [ ] Root and folder-level knowledge documentation reviewed.
 - [ ] Engineering workflow understood.
 - [ ] No application feature code created during setup.
 
