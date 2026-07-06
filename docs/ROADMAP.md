@@ -8,7 +8,15 @@ Prepare repository structure, engineering workflow, documentation standards, AI-
 
 ## Stage 1: Core RAG MVP
 
-Build the first working document-based question-answering pipeline:
+Build the first working document-based question-answering pipeline. The first Phase 1 epic focuses on backend framework familiarization, local service setup, and repeatable local tooling before product feature work begins:
+
+- FastAPI, backend testing, configuration, and logging familiarization
+- Testable backend health endpoint
+- Local Qdrant setup and verification
+- Local Ollama setup and verification
+- Common local operations commands and documentation
+
+After the setup epic is complete, continue into the Core RAG MVP feature pipeline:
 
 - Document upload API
 - Text extraction
@@ -21,7 +29,7 @@ Build the first working document-based question-answering pipeline:
 - Basic request and response logging
 - Configuration-driven model and retrieval settings
 
-Phase 1 planning for Epics 1 through 7 is captured in `docs/architecture/phase_1_core_rag_mvp.md`.
+Phase 1 planning for Epics 1 through 6 is captured in `docs/architecture/phase_1_core_rag_mvp.md`.
 
 ## Stage 2: Retrieval Inspection And Quality Layer
 

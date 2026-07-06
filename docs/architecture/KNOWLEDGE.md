@@ -2,7 +2,7 @@
 
 ## Current Contents
 
-This folder contains architecture documentation and staged implementation planning. The current Phase 1 Core RAG MVP plan is documented in `phase_1_core_rag_mvp.md`.
+This folder contains architecture documentation and staged implementation planning. The current Phase 1 Core RAG MVP plan is documented in `phase_1_core_rag_mvp.md`, with backend foundation and local service setup merged into the first setup-and-learning epic.
 
 ## Responsibilities
 
@@ -11,4 +11,3 @@ Architecture docs define module boundaries, staged scope, important design const
 ## Update Notes
 
 Update this file when architecture documents are added, renamed, or materially changed. Record major architecture decisions in `docs/DECISIONS.md`.
-

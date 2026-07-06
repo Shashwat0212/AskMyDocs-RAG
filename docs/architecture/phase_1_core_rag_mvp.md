@@ -4,7 +4,7 @@
 
 Phase 1 turns the Day Zero repository foundation into the first working local-first document question-answering application.
 
-This plan covers Epics 1 through 7 only. It follows the project Technical Design Document and Approach document while adding a lightweight hybrid retrieval target for the MVP.
+This plan covers Epics 1 through 6 only. It follows the project Technical Design Document and Approach document while adding a lightweight hybrid retrieval target for the MVP.
 
 ## Phase 1 Outcome
 
@@ -21,57 +21,47 @@ At the end of Phase 1, a local developer should be able to:
 
 Phase 1 must not introduce paid hosted services, deployment pipelines, semantic caching, model routing, arbitration, evaluation automation, or the final React/Next.js interface.
 
-## Epic 1: Core Backend Foundation
+## Epic 1: Backend Foundations And Local Tooling Familiarization
 
 Finished state:
 
-- FastAPI backend exists and runs locally.
+- Developers understand the backend tools well enough to operate and extend them safely.
+- FastAPI backend exists, runs locally, and has a testable health endpoint.
 - Backend package structure supports API routes, configuration, logging, schemas, and future service modules.
 - Configuration loads from environment variables and config file paths.
 - Logging is initialized once and can be reused by later modules.
-- Health endpoint verifies the backend process is running.
-- Backend tests can run locally.
+- Qdrant can run locally through Docker Compose and can be verified independently.
+- Ollama setup expectations are documented as a local prerequisite and can be verified independently.
+- Common local commands exist through Make or an equivalent task runner.
+- Operations documentation explains how to start, stop, and verify local backend tooling.
 
 Representative tickets:
 
-- `RAG-001`: Create FastAPI backend skeleton.
-- `RAG-002`: Add backend configuration loading.
-- `RAG-003`: Add structured logging foundation.
-- `RAG-004`: Add health endpoint and tests.
-- `RAG-005`: Document backend local run workflow.
+- `RAG-001`: FastAPI And Backend Basics Learning Spike.
+- `RAG-002`: Create Testable FastAPI Backend Skeleton.
+- `RAG-003`: Add Backend Settings And Logging Foundation.
+- `RAG-004`: Docker Compose And Qdrant Local Sandbox.
+- `RAG-005`: Ollama Local Model Serving Sandbox.
+- `RAG-006`: Local Backend Tooling And Operations Workflow.
+
+Learning and setup expectations:
+
+- Tutorial videos are learning aids for developer familiarity.
+- Official project docs and official tool documentation remain the implementation source of truth.
+- Sandbox experiments must be clearly separated from product feature code.
 
 Out of scope:
 
 - Document upload.
-- Qdrant calls.
-- Ollama calls.
-- Retrieval or generation logic.
+- Text extraction.
+- Chunking.
+- Embeddings.
+- Backend Qdrant indexing or retrieval calls.
+- Backend Ollama generation calls.
+- Gradio interface.
+- Production deployment or GitHub Actions deployment workflows.
 
-## Epic 2: Local Service Infrastructure
-
-Finished state:
-
-- Qdrant can run locally through Docker Compose.
-- Ollama setup expectations are documented as a local prerequisite.
-- `.env.example` contains local service URLs and config path variables.
-- Common local commands exist through Make or an equivalent task runner.
-- Operations documentation explains how to start, stop, and verify local services.
-
-Representative tickets:
-
-- `RAG-006`: Add Docker Compose for Qdrant.
-- `RAG-007`: Add local service environment variables.
-- `RAG-008`: Add Makefile command conventions.
-- `RAG-009`: Document Ollama and Qdrant local setup.
-- `RAG-010`: Add lightweight service readiness checks if useful.
-
-Out of scope:
-
-- Production deployment.
-- GitHub Actions deployment workflows.
-- Bundling Ollama in Docker without explicit approval.
-
-## Epic 3: Document Ingestion Pipeline
+## Epic 2: Document Ingestion Pipeline
 
 Finished state:
 
@@ -96,7 +86,7 @@ Out of scope:
 - Retrieval trace UI.
 - Evaluation datasets.
 
-## Epic 4: Embedding And Vector Indexing
+## Epic 3: Embedding And Vector Indexing
 
 Finished state:
 
@@ -118,7 +108,7 @@ Out of scope:
 - Model routing.
 - Reranker integration.
 
-## Epic 5: Hybrid Retrieval Pipeline
+## Epic 4: Hybrid Retrieval Pipeline
 
 Finished state:
 
@@ -151,7 +141,7 @@ Out of scope:
 - Prompt/context preview UI.
 - Quality model mode.
 
-## Epic 6: Answer Generation With Citations
+## Epic 5: Answer Generation With Citations
 
 Finished state:
 
@@ -174,7 +164,7 @@ Out of scope:
 - Critic or judge models.
 - Arbitration workflow.
 
-## Epic 7: MVP Gradio Interface
+## Epic 6: MVP Gradio Interface
 
 Finished state:
 
