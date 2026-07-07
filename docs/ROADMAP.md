@@ -11,6 +11,7 @@ Prepare repository structure, engineering workflow, documentation standards, AI-
 Build the first working document-based question-answering pipeline. The first Phase 1 epic focuses on backend framework familiarization, local service setup, and repeatable local tooling before product feature work begins:
 
 - FastAPI, backend testing, configuration, and logging familiarization
+- Flow-level tracing and local-first observability foundation
 - Testable backend health endpoint
 - Local Qdrant setup and verification
 - Local Ollama setup and verification
@@ -20,16 +21,22 @@ After the setup epic is complete, continue into the Core RAG MVP feature pipelin
 
 - Document upload API
 - Text extraction
-- Chunking
+- Configurable and pluggable chunking
 - Embedding generation
 - Qdrant indexing
+- Canonical local chunk storage with dense and lexical indexes
 - Lightweight hybrid retrieval
 - Answer generation
 - Citation display
 - Basic request and response logging
 - Configuration-driven model and retrieval settings
 
-Phase 1 planning for Epics 1 through 6 is captured in `docs/architecture/phase_1_core_rag_mvp.md`.
+After the MVP Gradio interface is working, continue with Phase 1 post-MVP enhancements:
+
+- Optional local reranking for retrieval quality
+- Session memory and conversation retrieval
+
+Phase 1 planning for Epics 1 through 8 is captured in `docs/architecture/phase_1_core_rag_mvp.md`, with detailed lean MVP steps in `docs/architecture/phase_1_epic_steps.md`.
 
 ## Stage 2: Retrieval Inspection And Quality Layer
 
@@ -41,7 +48,6 @@ Add retrieval debugging, source inspection, and higher-quality generation:
 - Prompt and context preview
 - Retrieval trace logging
 - Quality mode using Qwen2.5 7B
-- Optional reranking
 
 ## Stage 3: Documentation Automation
 
