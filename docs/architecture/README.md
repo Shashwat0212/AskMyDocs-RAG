@@ -6,4 +6,5 @@ Do not add implementation details here before the corresponding feature exists. 
 
 ## Current Planning Documents
 
-- `phase_1_core_rag_mvp.md`: Phase 1 plan for Epics 1 through 6, starting with merged backend setup and local tooling familiarization and ending with the MVP Gradio interface.
+- `phase_1_core_rag_mvp.md`: Phase 1 plan for Epics 1 through 8, starting with merged backend setup and local tooling familiarization, reaching the lean MVP at the Gradio interface, then adding reranking and session memory enhancements.
+- `phase_1_epic_steps.md`: Detailed step plan for Epics 1 through 6 of the lean MVP.
