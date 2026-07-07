@@ -4,11 +4,11 @@
 
 Phase 1 turns the Day Zero repository foundation into the first working local-first document question-answering application.
 
-This plan covers Epics 1 through 6 only. It follows the project Technical Design Document and Approach document while adding a lightweight hybrid retrieval target for the MVP.
+This plan covers Epics 1 through 8. Epics 1 through 6 deliver the first lean MVP. Epics 7 and 8 are post-MVP retrieval and conversation-memory enhancements that should begin only after the MVP Gradio interface is working.
 
-## Phase 1 Outcome
+## Lean MVP Outcome
 
-At the end of Phase 1, a local developer should be able to:
+At the end of Epic 6, a local developer should be able to:
 
 1. Start local services.
 2. Start the FastAPI backend.
@@ -29,7 +29,7 @@ Finished state:
 - FastAPI backend exists, runs locally, and has a testable health endpoint.
 - Backend package structure supports API routes, configuration, logging, schemas, and future service modules.
 - Configuration loads from environment variables and config file paths.
-- Logging is initialized once and can be reused by later modules.
+- Logging, flow-level tracing, and local-first observability foundations can be reused by later modules.
 - Qdrant can run locally through Docker Compose and can be verified independently.
 - Ollama setup expectations are documented as a local prerequisite and can be verified independently.
 - Common local commands exist through Make or an equivalent task runner.
@@ -39,7 +39,7 @@ Representative tickets:
 
 - `RAG-001`: FastAPI And Backend Basics Learning Spike.
 - `RAG-002`: Create Testable FastAPI Backend Skeleton.
-- `RAG-003`: Add Backend Settings And Logging Foundation.
+- `RAG-003`: Add Backend Settings And Observability Foundation.
 - `RAG-004`: Docker Compose And Qdrant Local Sandbox.
 - `RAG-005`: Ollama Local Model Serving Sandbox.
 - `RAG-006`: Local Backend Tooling And Operations Workflow.
@@ -61,6 +61,8 @@ Out of scope:
 - Gradio interface.
 - Production deployment or GitHub Actions deployment workflows.
 
+Detailed step planning for Epics 1 through 6 is captured in `phase_1_epic_steps.md`.
+
 ## Epic 2: Document Ingestion Pipeline
 
 Finished state:
@@ -70,6 +72,7 @@ Finished state:
 - Text is extracted from uploaded documents.
 - Extracted text is split into chunks.
 - Chunk metadata is created for source, document, page or section when available, and chunk ordering.
+- Chunking is configuration-driven and supports pluggable strategies so chunking can be tuned as a RAG hyperparameter.
 - Ingestion logic has focused unit tests.
 
 Representative tickets:
@@ -92,7 +95,9 @@ Finished state:
 
 - Backend can generate document chunk embeddings using the configured local embedding model.
 - Qdrant collection setup is configuration-driven.
-- Document chunks and metadata are indexed into Qdrant.
+- Document chunks are stored in a canonical local chunk store.
+- Document chunk vectors and lightweight metadata are indexed into Qdrant.
+- SQLite FTS or equivalent local lexical indexing can use the same canonical chunk text for later BM25 retrieval.
 - Indexing can be tested without relying on paid services.
 
 Representative tickets:
@@ -114,15 +119,15 @@ Finished state:
 
 - Backend accepts a user question for retrieval.
 - Dense retrieval embeds the query and searches Qdrant.
-- Lightweight lexical retrieval scores chunks using a local, free, in-process approach.
+- Lightweight lexical retrieval scores chunks using a local, free approach such as SQLite FTS5/BM25 over the canonical chunk store.
 - Dense and lexical results are fused with configurable weights.
-- Retrieval returns ranked chunks with source metadata and retrieval scores needed for citations.
+- Retrieval hydrates fused `chunk_id` results from the canonical chunk store and returns ranked chunks with source metadata and retrieval scores needed for citations.
 - The retrieval mode is configuration-driven and defaults to hybrid for Phase 1.
 
 Recommended Phase 1 retrieval shape:
 
 - Dense retrieval: Qdrant vector search with `nomic-embed-text-v1.5`.
-- Lexical retrieval: simple local BM25 or term-based scoring over indexed chunk text or stored chunk payloads.
+- Lexical retrieval: SQLite FTS5/BM25 or another local lexical strategy over canonical chunk text.
 - Fusion: reciprocal rank fusion or weighted score fusion, selected in config.
 - Controls: `top_k`, dense weight, lexical weight, score threshold, and retrieval mode.
 
@@ -137,9 +142,11 @@ Representative tickets:
 Out of scope:
 
 - Cross-encoder reranking.
+- LLM-based reranking.
 - Retrieval trace viewer.
 - Prompt/context preview UI.
 - Quality model mode.
+- Session memory or conversation retrieval.
 
 ## Epic 5: Answer Generation With Citations
 
@@ -150,6 +157,7 @@ Finished state:
 - Generation uses the configured local Ollama model.
 - Answer response includes citations mapped back to retrieved chunk metadata.
 - Basic request, retrieval, and generation metadata are returned or logged.
+- Answer generation is stateless or minimal-session for the first MVP and does not retrieve long-term conversation memory.
 
 Representative tickets:
 
@@ -163,6 +171,7 @@ Out of scope:
 - Multi-model routing.
 - Critic or judge models.
 - Arbitration workflow.
+- Session memory retrieval.
 
 ## Epic 6: MVP Gradio Interface
 
@@ -188,6 +197,76 @@ Out of scope:
 - Retrieval inspection panels.
 - Cache inspection views.
 - Evaluation report views.
+- Reranking controls.
+- Session memory controls.
+
+## Epic 7: Reranking And Retrieval Quality
+
+Finished state:
+
+- Hybrid retrieval can optionally rerank fused candidate chunks using a local reranking strategy.
+- Reranking is disabled by default until validated.
+- The default planned reranker is a local cross-encoder, not an LLM reranker.
+- Retrieval output preserves pre-rerank dense, lexical, and fusion scores for debugging.
+- Reranking behavior is configuration-driven and can be bypassed.
+- Reranking tests cover ordering, disabled behavior, error handling, and latency-sensitive paths.
+
+Recommended post-MVP reranking shape:
+
+- Input: top fused retrieval candidates from Epic 4.
+- Default approach: local cross-encoder reranker.
+- Future option: LLM reranking only if explicitly approved after latency and quality review.
+- Controls: enabled flag, provider, model, rerank input size, final output size, timeout, and fallback behavior.
+
+Representative tickets:
+
+- `RAG-034`: Add reranking configuration and interface.
+- `RAG-035`: Add local cross-encoder reranker implementation.
+- `RAG-036`: Integrate optional reranking after hybrid fusion.
+- `RAG-037`: Add reranking tests and retrieval quality documentation.
+
+Out of scope:
+
+- Hosted reranking APIs.
+- LLM reranking as the first/default path.
+- Retrieval inspection UI.
+- Evaluation automation.
+- Model routing.
+
+## Epic 8: Session Memory And Conversation Retrieval
+
+Finished state:
+
+- Chat/session history can be stored locally without mixing it into the document corpus.
+- Full chat text is stored cheaply in SQLite or equivalent local storage.
+- Session memory indexes are separate from document indexes.
+- Relevant session memory can be retrieved for a session-aware answer.
+- Prompt assembly can include bounded session context using context caps, recent turns, summaries, and retrieved memory chunks.
+- Parent-child memory retrieval is supported conceptually: retrieve smaller memory chunks, then hydrate parent messages or summaries when needed.
+
+Recommended post-MVP session memory shape:
+
+- Document indexes and session memory indexes remain separate.
+- Canonical chat storage uses local SQLite tables for sessions, messages, memory chunks, and summaries.
+- Session memory retrieval may use separate Qdrant collection or namespace plus SQLite FTS/BM25.
+- Context budgeting prioritizes current question, system instructions, retrieved document chunks, highly relevant session memory, recent turns, and older summaries.
+- Session memory retrieval should be configurable and can be disabled until quality is validated.
+
+Representative tickets:
+
+- `RAG-038`: Add local session and chat message storage.
+- `RAG-039`: Add session memory chunking and summary storage.
+- `RAG-040`: Add separate session memory retrieval indexes.
+- `RAG-041`: Integrate bounded session context into answer prompt assembly.
+- `RAG-042`: Add session memory tests and documentation.
+
+Out of scope:
+
+- Mixing chat memory into the document corpus.
+- Passing full conversation history into every prompt.
+- Hosted memory stores.
+- Semantic cache implementation.
+- Multi-model routing.
 
 ## Phase 1 Acceptance Criteria
 
@@ -204,11 +283,13 @@ Phase 1 is complete when:
 - Relevant tests pass or any local environment limitation is documented.
 - Documentation for setup, configuration, APIs, and operations is updated.
 
+The first MVP is complete after Epic 6. Epics 7 and 8 should be treated as post-MVP Phase 1 enhancement work.
+
 ## Future Epics Remain In Roadmap
 
-The remaining roadmap epics stay outside Phase 1:
+The remaining broader roadmap areas stay outside Phase 1:
 
-- Retrieval inspection and quality layer.
+- Retrieval inspection UI and broader quality-mode layer.
 - Documentation automation.
 - Evaluation engine.
 - Multi-model routing and semantic cache.
