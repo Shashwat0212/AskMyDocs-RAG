@@ -4,7 +4,7 @@
 
 Phase 1 turns the Day Zero repository foundation into the first working local-first document question-answering application.
 
-This plan covers Epics 1 through 8. Epics 1 through 6 deliver the first lean MVP. Epics 7 and 8 are post-MVP retrieval and conversation-memory enhancements that should begin only after the MVP Gradio interface is working.
+This plan covers Epics 1 through 9. Epics 1 through 6 deliver the first lean MVP. Epics 7 through 9 are post-MVP retrieval, conversation-memory, and hyperparameter experimentation enhancements that should begin only after the MVP Gradio interface is working.
 
 ## Lean MVP Outcome
 
@@ -268,6 +268,53 @@ Out of scope:
 - Semantic cache implementation.
 - Multi-model routing.
 
+## Epic 9: Hyperparameter Experimentation And Blueprinting
+
+Finished state:
+
+- A local experimentation module can run configured RAG pipeline permutations over one or more evaluation datasets.
+- Experiment inputs are driven by configuration rather than hardcoded combinations.
+- The module can vary approved hyperparameters across chunking, embedding/indexing settings, retrieval, fusion, reranking, prompt settings, generation settings, and session-memory settings where available.
+- Each experiment run records the exact configuration, dataset, metrics, latency, errors, and output artifacts needed to compare results.
+- Results identify which configurations performed better for a given dataset.
+- Multi-dataset comparisons can be used to build a practical blueprint of which hyperparameter patterns work better for different document quality levels, industries, and use cases.
+
+Recommended post-MVP experimentation shape:
+
+- Treat the implemented config files as the control plane for experiments.
+- Define named experiment profiles that expand into specific permutations.
+- Keep dataset definitions local under the evaluation area.
+- Use existing evaluation frameworks from the roadmap, such as DeepEval and Ragas, when the evaluation stage is implemented.
+- Store experiment outputs locally as structured files and later render static reports.
+- Keep the first implementation focused on repeatable offline experiments, not automatic production tuning.
+
+Candidate hyperparameter families:
+
+- Chunking strategy, chunk size, chunk overlap, and metadata strategy.
+- Embedding model, vector dimensions, and indexing options.
+- Retrieval mode, dense top-k, lexical top-k, score thresholds, and fusion strategy.
+- Reranking enabled flag, reranker model, rerank input size, and final output size.
+- Prompt template, context budget, and citation formatting rules.
+- Generation model, temperature, max tokens, timeout, and stop rules.
+- Session memory context cap, recent-turn count, summary strategy, and memory retrieval limits.
+
+Representative tickets:
+
+- `RAG-043`: Define experiment configuration schema and run manifest.
+- `RAG-044`: Add local experiment runner for configured pipeline permutations.
+- `RAG-045`: Add dataset registry and dataset quality/industry metadata.
+- `RAG-046`: Capture experiment metrics, latency, errors, and artifacts.
+- `RAG-047`: Add comparison report generation for experiment runs.
+- `RAG-048`: Document hyperparameter blueprinting workflow.
+
+Out of scope:
+
+- Paid or hosted experiment tracking platforms.
+- Automatic online tuning in production.
+- Changing production defaults without explicit review.
+- Replacing the approved local-first evaluation direction.
+- Running experiments before the underlying pipeline modules exist.
+
 ## Phase 1 Acceptance Criteria
 
 Phase 1 is complete when:
@@ -279,11 +326,11 @@ Phase 1 is complete when:
 - A question retrieves chunks through hybrid retrieval.
 - A local model generates an answer.
 - Citations are shown in the API response and Gradio UI.
-- Configuration controls model names, service URLs, retrieval settings, and prompt paths.
+- Configuration controls model names, service URLs, retrieval settings, prompt paths, and experimentable pipeline parameters.
 - Relevant tests pass or any local environment limitation is documented.
 - Documentation for setup, configuration, APIs, and operations is updated.
 
-The first MVP is complete after Epic 6. Epics 7 and 8 should be treated as post-MVP Phase 1 enhancement work.
+The first MVP is complete after Epic 6. Epics 7 through 9 should be treated as post-MVP Phase 1 enhancement work.
 
 ## Future Epics Remain In Roadmap
 

@@ -62,3 +62,8 @@ Date: 2026-07-07
 Decision: Use a canonical local chunk store with Qdrant and lexical search as separate indexes.
 Rationale: Full chunk text should not be duplicated by default across Qdrant payloads and lexical indexes. A local canonical chunk store keeps source text and metadata in one place while Qdrant and BM25/FTS indexes reference chunks by ID.
 Consequences: Phase 1 indexing should prefer SQLite or equivalent local storage for canonical chunk records, Qdrant for dense vector indexing with lightweight payloads, and SQLite FTS5/BM25 or equivalent local lexical indexing over the same chunk IDs. Retrieval hydrates final results from the canonical chunk store.
+
+Date: 2026-07-08
+Decision: Add a post-MVP hyperparameter experimentation and blueprinting epic.
+Rationale: The project owner wants a local module that can use configuration as a control plane, run permutations of implemented RAG hyperparameters over evaluation datasets, compare results, and build practical guidance for different document qualities, industries, and use cases.
+Consequences: Phase 1 now includes Epic 9 after reranking and session memory. The experimentation module should stay local-first, configuration-driven, and offline by default. It can vary only implemented pipeline options and should record run manifests, metrics, latency, errors, and artifacts. Paid hosted experiment tracking and automatic production tuning remain prohibited.

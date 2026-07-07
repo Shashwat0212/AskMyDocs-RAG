@@ -4,7 +4,7 @@
 
 This document expands the Phase 1 epic plan into the step-by-step work discussed for Epics 1 through 6. It is a planning artifact, not implementation code.
 
-Epics 1 through 6 deliver the lean MVP. Epics 7 and 8 in `phase_1_core_rag_mvp.md` are post-MVP enhancement epics.
+Epics 1 through 6 deliver the lean MVP. Epics 7 through 9 in `phase_1_core_rag_mvp.md` are post-MVP enhancement epics.
 
 ## Epic 1: Backend Foundations And Local Tooling
 
@@ -585,4 +585,3 @@ Tests or manual verification should cover:
 - question flow reaches backend
 - answer and citations render
 - basic error states are visible
-

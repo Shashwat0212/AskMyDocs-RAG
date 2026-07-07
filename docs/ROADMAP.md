@@ -35,8 +35,9 @@ After the MVP Gradio interface is working, continue with Phase 1 post-MVP enhanc
 
 - Optional local reranking for retrieval quality
 - Session memory and conversation retrieval
+- Hyperparameter experimentation and blueprinting across local evaluation datasets
 
-Phase 1 planning for Epics 1 through 8 is captured in `docs/architecture/phase_1_core_rag_mvp.md`, with detailed lean MVP steps in `docs/architecture/phase_1_epic_steps.md`.
+Phase 1 planning for Epics 1 through 9 is captured in `docs/architecture/phase_1_core_rag_mvp.md`, with detailed lean MVP steps in `docs/architecture/phase_1_epic_steps.md`.
 
 ## Stage 2: Retrieval Inspection And Quality Layer
 
@@ -68,6 +69,7 @@ Add automated RAG quality evaluation and regression tracking:
 - Local judge integration
 - RAGAS metric pipeline
 - DeepEval regression tests
+- Hyperparameter experiment comparison inputs and outputs
 - JSON evaluation output
 - Static HTML/Markdown reports
 - GitHub Pages publishing workflow
