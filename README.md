@@ -2,7 +2,7 @@
 
 AskMyDocs-RAG is a local-first RAGOps platform for document ingestion, retrieval, answer generation, evaluation, semantic caching, model routing, arbitration, and automated documentation updates.
 
-This repository is currently in Day Zero foundation state. It contains project standards, documentation structure, AI-agent workflow guidance, placeholder subsystem folders, and example configuration files only. It intentionally does not contain backend code, frontend code, APIs, retrieval logic, evaluation logic, caching, database logic, or deployment pipelines yet.
+This repository has completed its Day Zero foundation and is entering Phase 1 planning. It currently contains project standards, documentation structure, AI-agent workflow guidance, placeholder subsystem folders, and example configuration files only. It intentionally does not contain backend code, frontend code, APIs, retrieval logic, evaluation logic, caching, database logic, or deployment pipelines yet.
 
 ## Project Constraints
 
@@ -36,12 +36,14 @@ Before starting any task, human engineers and AI coding assistants should read:
 1. [AGENTS.md](AGENTS.md)
 2. [KNOWLEDGE.md](KNOWLEDGE.md)
 3. [docs/PROJECT_STATUS.md](docs/PROJECT_STATUS.md)
-4. [docs/ROADMAP.md](docs/ROADMAP.md)
-5. [docs/ENGINEERING_WORKFLOW.md](docs/ENGINEERING_WORKFLOW.md)
-6. [docs/DEVELOPMENT_ENVIRONMENT.md](docs/DEVELOPMENT_ENVIRONMENT.md)
-7. [docs/CODING_STANDARDS.md](docs/CODING_STANDARDS.md)
-8. [docs/AI_AGENT_WORKFLOW.md](docs/AI_AGENT_WORKFLOW.md)
+4. [docs/PROJECT_TRACKING.md](docs/PROJECT_TRACKING.md)
+5. [docs/ROADMAP.md](docs/ROADMAP.md)
+6. [docs/ENGINEERING_WORKFLOW.md](docs/ENGINEERING_WORKFLOW.md)
+7. [docs/DEVELOPMENT_ENVIRONMENT.md](docs/DEVELOPMENT_ENVIRONMENT.md)
+8. [docs/CODING_STANDARDS.md](docs/CODING_STANDARDS.md)
+9. [docs/AI_AGENT_WORKFLOW.md](docs/AI_AGENT_WORKFLOW.md)
+10. [docs/DECISIONS.md](docs/DECISIONS.md)
 
 ## Current State
 
-Day Zero foundation is being established. The first feature ticket should start only after this scaffolding is reviewed and accepted.
+Day Zero foundation has been reviewed and merged. Phase 1 is in planning, beginning with the Backend Foundations And Local Tooling Familiarization epic. Create and approve the relevant Jira ticket before starting implementation.

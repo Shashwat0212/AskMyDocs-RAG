@@ -67,3 +67,8 @@ Date: 2026-07-08
 Decision: Add a post-MVP hyperparameter experimentation and blueprinting epic.
 Rationale: The project owner wants a local module that can use configuration as a control plane, run permutations of implemented RAG hyperparameters over evaluation datasets, compare results, and build practical guidance for different document qualities, industries, and use cases.
 Consequences: Phase 1 now includes Epic 9 after reranking and session memory. The experimentation module should stay local-first, configuration-driven, and offline by default. It can vary only implemented pipeline options and should record run manifests, metrics, latency, errors, and artifacts. Paid hosted experiment tracking and automatic production tuning remain prohibited.
+
+Date: 2026-07-13
+Decision: Keep project tracking and decision documents on `main` and update them through short-lived ticket branches.
+Rationale: Jira should own ticket execution while the repository keeps durable status, plans, and decisions beside the code they govern. A permanent tracking branch would drift from implementation and create a competing project state.
+Consequences: `docs/PROJECT_TRACKING.md` defines synchronization rules. `docs/PROJECT_STATUS.md` keeps the current project and Epic 1 snapshot. Future ticket branches must update status, plans, decisions, and knowledge docs when their changes affect project state, then merge those updates into `main`.

@@ -5,13 +5,14 @@ This folder contains project documentation, engineering standards, status tracki
 Start with:
 
 1. `PROJECT_STATUS.md`
-2. `ROADMAP.md`
-3. `source_documents/README.md`
-4. `architecture/phase_1_core_rag_mvp.md`
-5. `ENGINEERING_WORKFLOW.md`
-6. `DEVELOPMENT_ENVIRONMENT.md`
-7. `CODING_STANDARDS.md`
-8. `AI_AGENT_WORKFLOW.md`
-9. `DECISIONS.md`
+2. `PROJECT_TRACKING.md`
+3. `ROADMAP.md`
+4. `source_documents/README.md`
+5. `architecture/phase_1_core_rag_mvp.md`
+6. `ENGINEERING_WORKFLOW.md`
+7. `DEVELOPMENT_ENVIRONMENT.md`
+8. `CODING_STANDARDS.md`
+9. `AI_AGENT_WORKFLOW.md`
+10. `DECISIONS.md`
 
 Use the repository root `KNOWLEDGE.md` as the map for folder-level knowledge docs.

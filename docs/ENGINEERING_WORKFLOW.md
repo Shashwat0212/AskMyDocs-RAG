@@ -30,6 +30,7 @@
 
 - `main` is the integration branch.
 - Use short-lived feature branches.
+- Keep project status, plans, and decisions on `main`; do not use a permanent tracking branch.
 - Branch naming: `feature/<ticket-id>-short-description`
 
 Examples:
@@ -49,6 +50,14 @@ Every pull request should include:
 - Knowledge doc updates for affected folders
 
 At least one team member must review every pull request before merge.
+
+## Jira And Project Tracking
+
+- Jira owns ticket assignment, sprint placement, and workflow state.
+- `docs/PROJECT_STATUS.md` provides the repository snapshot of the current phase, active epic, blockers, and next work.
+- Branches and pull requests must reference their Jira ticket.
+- A pull request that changes project state must update `docs/PROJECT_STATUS.md` and any affected plan or decision record.
+- Follow `docs/PROJECT_TRACKING.md` for source ownership, status mapping, and synchronization events.
 
 ## Review Expectations
 
@@ -82,6 +91,7 @@ A task is complete only when:
 - Affected folder-level `KNOWLEDGE.md` files are updated.
 - The root `KNOWLEDGE.md` map is updated when folders are added, removed, renamed, or repurposed.
 - Configuration changes are documented.
+- Jira and repository project status are synchronized when the task changes project state.
 - Changes are merged into `main`.
 - The feature branch has been deleted.
 

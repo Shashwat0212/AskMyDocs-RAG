@@ -18,12 +18,13 @@ Every agent must read these files before modifying code or docs:
 1. `README.md`
 2. `KNOWLEDGE.md`
 3. `docs/PROJECT_STATUS.md`
-4. `docs/ROADMAP.md`
-5. `docs/ENGINEERING_WORKFLOW.md`
-6. `docs/DEVELOPMENT_ENVIRONMENT.md`
-7. `docs/CODING_STANDARDS.md`
-8. `docs/AI_AGENT_WORKFLOW.md`
-9. `docs/DECISIONS.md`
+4. `docs/PROJECT_TRACKING.md`
+5. `docs/ROADMAP.md`
+6. `docs/ENGINEERING_WORKFLOW.md`
+7. `docs/DEVELOPMENT_ENVIRONMENT.md`
+8. `docs/CODING_STANDARDS.md`
+9. `docs/AI_AGENT_WORKFLOW.md`
+10. `docs/DECISIONS.md`
 
 ## Non-Negotiable Project Constraints
 
