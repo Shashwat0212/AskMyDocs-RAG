@@ -6,9 +6,8 @@ This folder contains local setup, operations, and troubleshooting documentation.
 
 ## Responsibilities
 
-Operations docs explain how developers prepare and run the project locally. During Day Zero, this means machine setup and validation only; application service operations come later.
+Operations docs explain how developers prepare and run the project locally. During Day Zero, this means machine setup, validation, the starter-first reading workflow, and the approved branch model; application service operations come later.
 
 ## Update Notes
 
 Update this file when setup, local service, deployment, observability, or troubleshooting documentation changes.
-

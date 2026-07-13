@@ -311,16 +311,10 @@ Required future models are identified but not pulled:
 
 Before any edit, the assistant must read:
 
-1. `AGENTS.md`
-2. `README.md`
-3. `KNOWLEDGE.md`
-4. `docs/PROJECT_STATUS.md`
-5. `docs/ROADMAP.md`
-6. `docs/ENGINEERING_WORKFLOW.md`
-7. `docs/DEVELOPMENT_ENVIRONMENT.md`
-8. `docs/CODING_STANDARDS.md`
-9. `docs/AI_AGENT_WORKFLOW.md`
-10. `docs/DECISIONS.md`
+1. `starter.md`
+2. `AGENTS.md`
+
+Then use the task-routing table in `starter.md` to read the detailed sources required for the task. Architecture, roadmap, stack, constraint, and stage-order changes also require both governing DOCX files.
 
 Rules:
 
@@ -339,8 +333,9 @@ Read the same project documents manually before implementation. The workflow, re
 
 ## Git Workflow
 
-- `main` is the integration branch.
-- Work happens on short-lived branches.
+- `main` is the integration branch and implementation baseline.
+- `project-governance` is the permanent planning and project-state branch.
+- Implementation work happens on short-lived feature branches created from `main`.
 - Branch names use:
 
 ```text

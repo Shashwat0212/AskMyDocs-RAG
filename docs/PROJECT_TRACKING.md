@@ -10,6 +10,7 @@ This document defines how the permanent `project-governance` branch, Jira work i
 
 | Information | Source of truth | Repository responsibility |
 |---|---|---|
+| Start-of-run orientation | `starter.md` | Summarize current approved and working context without replacing detailed sources. |
 | Ticket assignee, sprint, workflow state, and day-to-day execution | Jira | Record ticket keys, links, and summary status manually. |
 | Current phase, active epic, blockers, and near-term sequence | `project-governance` version of `docs/PROJECT_STATUS.md` | Keep the live project snapshot current. |
 | Exploratory future ideas | `project-governance` version of `docs/FUTURE_PROSPECTS.md` | Keep unapproved possibilities separate from commitments. |
@@ -89,6 +90,9 @@ Update governance records when any of these events occurs:
 3. Work starts, becomes blocked, is unblocked, or is completed.
 4. A change affects the roadmap, architecture, workflow, tooling, model selection, or repository conventions.
 5. A merge changes the current phase, active epic, next ticket, or known blockers.
+6. The approved stack, implemented repository shape, branch policy, or a major summarized decision changes.
+
+When one of these events makes the orientation snapshot stale, update `starter.md` in the same governance change.
 
 ## Review Cadence
 

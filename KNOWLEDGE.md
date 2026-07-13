@@ -7,6 +7,12 @@ Knowledge docs complement README files:
 - `README.md` explains how to approach or use an area.
 - `KNOWLEDGE.md` explains what currently exists in that area and how it fits into the system.
 
+## Root Entrypoints
+
+- `starter.md` is the mandatory first-read orientation snapshot for every new work session.
+- `AGENTS.md` is the canonical repository instruction file for AI coding assistants.
+- `README.md` introduces the project and routes contributors into the starter-first workflow.
+
 ## Update Rule
 
 When a change modifies code, configuration, scripts, documentation structure, or behavior in a folder, update that folder's `KNOWLEDGE.md` in the same change. If the change adds, removes, renames, or repurposes a folder, update this root map as well.
@@ -33,4 +39,3 @@ When a change modifies code, configuration, scripts, documentation structure, or
 | `frontend/gradio_app/` | [frontend/gradio_app/KNOWLEDGE.md](frontend/gradio_app/KNOWLEDGE.md) | Future Stage 1 Gradio MVP interface. |
 | `frontend/web_app/` | [frontend/web_app/KNOWLEDGE.md](frontend/web_app/KNOWLEDGE.md) | Future React / Next.js interface. |
 | `scripts/` | [scripts/KNOWLEDGE.md](scripts/KNOWLEDGE.md) | Local setup and repository utility scripts. |
-

@@ -33,17 +33,10 @@ This repository has completed its Day Zero foundation and is entering Phase 1 pl
 
 Before starting any task, human engineers and AI coding assistants should read:
 
-1. [AGENTS.md](AGENTS.md)
-2. [KNOWLEDGE.md](KNOWLEDGE.md)
-3. [docs/PROJECT_STATUS.md](docs/PROJECT_STATUS.md)
-4. [docs/PROJECT_TRACKING.md](docs/PROJECT_TRACKING.md)
-5. [docs/FUTURE_PROSPECTS.md](docs/FUTURE_PROSPECTS.md)
-6. [docs/ROADMAP.md](docs/ROADMAP.md)
-7. [docs/ENGINEERING_WORKFLOW.md](docs/ENGINEERING_WORKFLOW.md)
-8. [docs/DEVELOPMENT_ENVIRONMENT.md](docs/DEVELOPMENT_ENVIRONMENT.md)
-9. [docs/CODING_STANDARDS.md](docs/CODING_STANDARDS.md)
-10. [docs/AI_AGENT_WORKFLOW.md](docs/AI_AGENT_WORKFLOW.md)
-11. [docs/DECISIONS.md](docs/DECISIONS.md)
+1. [starter.md](starter.md)
+2. [AGENTS.md](AGENTS.md)
+
+Then use the task-routing table in `starter.md` to read the detailed sources required for the current task.
 
 ## Current State
 

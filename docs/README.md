@@ -1,6 +1,6 @@
 # Documentation
 
-This folder contains project documentation, engineering standards, status tracking, architecture notes, API documentation, operations notes, and future evaluation reports.
+This folder contains project documentation, engineering standards, status tracking, architecture notes, API documentation, operations notes, and future evaluation reports. Begin every work session with root `starter.md`, then use its routing table to select documents from this folder.
 
 Start with:
 

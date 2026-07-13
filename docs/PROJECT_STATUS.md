@@ -16,6 +16,7 @@ Phase 1 planning: Epic 1, Backend Foundations And Local Tooling Familiarization.
 - Folder-level `KNOWLEDGE.md` documentation convention implemented with a root knowledge map.
 - Day Zero foundation reviewed and merged to `main` through pull request #1.
 - Permanent `project-governance` planning and project-state workflow established.
+- Root `starter.md` briefing established as the mandatory first-read project orientation.
 
 ## In Progress
 
@@ -48,4 +49,4 @@ Phase 1 planning: Epic 1, Backend Foundations And Local Tooling Familiarization.
 
 ## Notes For New Contributors
 
-Do not implement application features until a feature ticket is created and assigned. Read `AGENTS.md`, `docs/PROJECT_TRACKING.md`, and `docs/AI_AGENT_WORKFLOW.md` before starting work.
+Do not implement application features until a feature ticket is created and assigned. Begin every run with `starter.md` and `AGENTS.md`, then follow the starter's task-routing table.

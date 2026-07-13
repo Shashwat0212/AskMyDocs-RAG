@@ -84,3 +84,9 @@ Decision: Maintain `project-governance` as the permanent planning and project-st
 Rationale: The project owner uses Codex to inspect future epics, evolve possible directions, and keep those prospects visible without treating every exploration as an approved implementation decision. A permanent branch provides that working space while approved checkpoints on `main` keep implementation agents aligned.
 Consequences: `project-governance` holds the latest project snapshot, future prospects, and proposed planning changes. Approved governance pull requests use merge commits into `main`, and completed implementation changes are merged back into `project-governance`. Feature branches still start from `main`. Jira synchronization remains manual, and application code must not be implemented on the governance branch.
 Supersedes: The 2026-07-13 decision requiring all governance work to use short-lived branches.
+
+Date: 2026-07-14
+Status: Active
+Decision: Use root `starter.md` as the mandatory primary briefing for every new work session.
+Rationale: Contributors and AI agents need a fast, reliable orientation to current project state and next work without rereading the complete repository on every run.
+Consequences: Every run begins with `starter.md` and `AGENTS.md`, followed by task-specific sources selected through the starter's routing table. The starter remains a summary rather than a competing source of truth. Both governing DOCX files remain mandatory before changing architecture, roadmap direction, selected stack, project constraints, or stage ordering.
