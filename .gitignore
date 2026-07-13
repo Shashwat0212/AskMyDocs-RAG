@@ -1,0 +1,41 @@
+# Environment
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Node
+node_modules/
+.next/
+out/
+coverage/
+
+# Local data and models
+data/
+storage/
+models/
+qdrant_storage/
+ollama/
+
+# Logs and temporary files
+logs/
+*.log
+.DS_Store
+
+# IDE
+.idea/
+.vscode/

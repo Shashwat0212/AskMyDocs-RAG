@@ -1,0 +1,11 @@
+# Example prompt configuration. Copy to prompts.yaml when generation is implemented.
+
+versions:
+  system_prompt: v0
+  answer_prompt: v0
+  critic_prompt: v0
+  judge_prompt: v0
+
+rules:
+  require_citations: true
+  answer_from_context_only: true

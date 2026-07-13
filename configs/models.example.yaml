@@ -1,0 +1,14 @@
+# Example model configuration. Copy to models.yaml when model routing is implemented.
+
+generation:
+  fast_model: qwen3:4b
+  quality_model: qwen2.5:7b-instruct
+  critic_model: deepseek-r1-distill-qwen:7b
+
+embeddings:
+  document_model: nomic-embed-text-v1.5
+  cache_model: bge-small-en-v1.5
+
+serving:
+  provider: ollama
+  base_url: http://localhost:11434
