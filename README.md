@@ -37,13 +37,14 @@ Before starting any task, human engineers and AI coding assistants should read:
 2. [KNOWLEDGE.md](KNOWLEDGE.md)
 3. [docs/PROJECT_STATUS.md](docs/PROJECT_STATUS.md)
 4. [docs/PROJECT_TRACKING.md](docs/PROJECT_TRACKING.md)
-5. [docs/ROADMAP.md](docs/ROADMAP.md)
-6. [docs/ENGINEERING_WORKFLOW.md](docs/ENGINEERING_WORKFLOW.md)
-7. [docs/DEVELOPMENT_ENVIRONMENT.md](docs/DEVELOPMENT_ENVIRONMENT.md)
-8. [docs/CODING_STANDARDS.md](docs/CODING_STANDARDS.md)
-9. [docs/AI_AGENT_WORKFLOW.md](docs/AI_AGENT_WORKFLOW.md)
-10. [docs/DECISIONS.md](docs/DECISIONS.md)
+5. [docs/FUTURE_PROSPECTS.md](docs/FUTURE_PROSPECTS.md)
+6. [docs/ROADMAP.md](docs/ROADMAP.md)
+7. [docs/ENGINEERING_WORKFLOW.md](docs/ENGINEERING_WORKFLOW.md)
+8. [docs/DEVELOPMENT_ENVIRONMENT.md](docs/DEVELOPMENT_ENVIRONMENT.md)
+9. [docs/CODING_STANDARDS.md](docs/CODING_STANDARDS.md)
+10. [docs/AI_AGENT_WORKFLOW.md](docs/AI_AGENT_WORKFLOW.md)
+11. [docs/DECISIONS.md](docs/DECISIONS.md)
 
 ## Current State
 
-Day Zero foundation has been reviewed and merged. Phase 1 is in planning, beginning with the Backend Foundations And Local Tooling Familiarization epic. Create and approve the relevant Jira ticket before starting implementation.
+Day Zero foundation has been reviewed and merged. Phase 1 is in planning, beginning with the Backend Foundations And Local Tooling Familiarization epic. The permanent `project-governance` branch contains the latest working project view; `main` contains the latest approved governance checkpoint. Create and approve the relevant Jira ticket before starting implementation.

@@ -6,10 +6,14 @@ Record important architecture, tooling, model, workflow, and repository decision
 
 ```text
 Date: YYYY-MM-DD
+Status: Active | Superseded
 Decision:
 Rationale:
 Consequences:
+Supersedes: Optional date or decision reference
 ```
+
+Entries without an explicit status are active. Superseded entries remain in the log to preserve decision history.
 
 ## Decisions
 
@@ -69,6 +73,14 @@ Rationale: The project owner wants a local module that can use configuration as 
 Consequences: Phase 1 now includes Epic 9 after reranking and session memory. The experimentation module should stay local-first, configuration-driven, and offline by default. It can vary only implemented pipeline options and should record run manifests, metrics, latency, errors, and artifacts. Paid hosted experiment tracking and automatic production tuning remain prohibited.
 
 Date: 2026-07-13
+Status: Superseded by the 2026-07-14 permanent governance branch decision.
 Decision: Keep project tracking and decision documents on `main` and update them through short-lived ticket branches.
 Rationale: Jira should own ticket execution while the repository keeps durable status, plans, and decisions beside the code they govern. A permanent tracking branch would drift from implementation and create a competing project state.
 Consequences: `docs/PROJECT_TRACKING.md` defines synchronization rules. `docs/PROJECT_STATUS.md` keeps the current project and Epic 1 snapshot. Future ticket branches must update status, plans, decisions, and knowledge docs when their changes affect project state, then merge those updates into `main`.
+
+Date: 2026-07-14
+Status: Active
+Decision: Maintain `project-governance` as the permanent planning and project-state branch with two-way synchronization to `main`.
+Rationale: The project owner uses Codex to inspect future epics, evolve possible directions, and keep those prospects visible without treating every exploration as an approved implementation decision. A permanent branch provides that working space while approved checkpoints on `main` keep implementation agents aligned.
+Consequences: `project-governance` holds the latest project snapshot, future prospects, and proposed planning changes. Approved governance pull requests use merge commits into `main`, and completed implementation changes are merged back into `project-governance`. Feature branches still start from `main`. Jira synchronization remains manual, and application code must not be implemented on the governance branch.
+Supersedes: The 2026-07-13 decision requiring all governance work to use short-lived branches.

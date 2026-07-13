@@ -19,12 +19,13 @@ Every agent must read these files before modifying code or docs:
 2. `KNOWLEDGE.md`
 3. `docs/PROJECT_STATUS.md`
 4. `docs/PROJECT_TRACKING.md`
-5. `docs/ROADMAP.md`
-6. `docs/ENGINEERING_WORKFLOW.md`
-7. `docs/DEVELOPMENT_ENVIRONMENT.md`
-8. `docs/CODING_STANDARDS.md`
-9. `docs/AI_AGENT_WORKFLOW.md`
-10. `docs/DECISIONS.md`
+5. `docs/FUTURE_PROSPECTS.md` for planning and future-epic tasks
+6. `docs/ROADMAP.md`
+7. `docs/ENGINEERING_WORKFLOW.md`
+8. `docs/DEVELOPMENT_ENVIRONMENT.md`
+9. `docs/CODING_STANDARDS.md`
+10. `docs/AI_AGENT_WORKFLOW.md`
+11. `docs/DECISIONS.md`
 
 ## Non-Negotiable Project Constraints
 
@@ -53,14 +54,15 @@ Every agent must read these files before modifying code or docs:
 ## Required Agent Workflow
 
 1. Read the project status and roadmap.
-2. Inspect existing implementation before proposing changes.
-3. Identify impacted modules and documentation.
-4. Keep the change small and reviewable.
-5. Prefer existing structure and conventions.
-6. Add or update tests when implementation exists.
-7. Update affected folder-level `KNOWLEDGE.md` files and the root `KNOWLEDGE.md` map when folder structure changes.
-8. Update relevant docs, especially `docs/PROJECT_STATUS.md` and `docs/DECISIONS.md` when applicable.
-9. Summarize changes, tests, and documentation updates.
+2. Use the synchronized `project-governance` branch for planning work and `main` as the base for implementation work.
+3. Inspect existing implementation before proposing changes.
+4. Identify impacted modules and documentation.
+5. Keep the change small and reviewable.
+6. Prefer existing structure and conventions.
+7. Add or update tests when implementation exists.
+8. Update affected folder-level `KNOWLEDGE.md` files and the root `KNOWLEDGE.md` map when folder structure changes.
+9. Update relevant docs, especially `docs/PROJECT_STATUS.md`, `docs/FUTURE_PROSPECTS.md`, and `docs/DECISIONS.md` when applicable.
+10. Summarize changes, tests, and documentation updates.
 
 ## Prohibited Without Explicit Approval
 

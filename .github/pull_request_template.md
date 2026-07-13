@@ -20,7 +20,7 @@ List updated docs, configuration notes, or decision records.
 
 # Project Tracking Impact
 
-Link the Jira ticket and state whether project status, plans, or decisions changed.
+Link the Jira ticket when applicable and state whether project status, prospects, plans, or decisions changed. For governance pull requests, confirm that `main` was synchronized into `project-governance` before review.
 
 # Checklist
 
@@ -31,4 +31,5 @@ Link the Jira ticket and state whether project status, plans, or decisions chang
 - [ ] Affected `KNOWLEDGE.md` files have been updated.
 - [ ] Configuration changes are documented.
 - [ ] Jira and repository project tracking are synchronized when project state changed.
+- [ ] If this is a `project-governance` to `main` pull request, it will use a merge commit rather than squash or rebase.
 - [ ] No secrets, debug code, dead code, or unrelated changes are included.

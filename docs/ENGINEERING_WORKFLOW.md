@@ -24,13 +24,14 @@
 10. Peer review
 11. Address review comments
 12. Merge into `main`
-13. Delete feature branch
+13. Delete the feature branch
 
 ## Branching
 
 - `main` is the integration branch.
-- Use short-lived feature branches.
-- Keep project status, plans, and decisions on `main`; do not use a permanent tracking branch.
+- Use short-lived feature branches for implementation work.
+- `project-governance` is the permanent planning and project-state branch and the only exception to the short-lived branch rule.
+- Start feature branches from `main`; do not implement application code on `project-governance`.
 - Branch naming: `feature/<ticket-id>-short-description`
 
 Examples:
@@ -51,11 +52,14 @@ Every pull request should include:
 
 At least one team member must review every pull request before merge.
 
+Pull requests from `project-governance` to `main` must use a merge commit. Do not squash or rebase them because the permanent branch must retain shared ancestry with `main` for later synchronization.
+
 ## Jira And Project Tracking
 
 - Jira owns ticket assignment, sprint placement, and workflow state.
-- `docs/PROJECT_STATUS.md` provides the repository snapshot of the current phase, active epic, blockers, and next work.
-- Branches and pull requests must reference their Jira ticket.
+- The `project-governance` version of `docs/PROJECT_STATUS.md` provides the live snapshot of the current phase, active epic, blockers, and next work.
+- The `main` version of governance documents is the latest approved checkpoint.
+- Feature branches and pull requests must reference their Jira ticket. Governance-only updates do not require a placeholder ticket.
 - A pull request that changes project state must update `docs/PROJECT_STATUS.md` and any affected plan or decision record.
 - Follow `docs/PROJECT_TRACKING.md` for source ownership, status mapping, and synchronization events.
 
@@ -93,7 +97,7 @@ A task is complete only when:
 - Configuration changes are documented.
 - Jira and repository project status are synchronized when the task changes project state.
 - Changes are merged into `main`.
-- The feature branch has been deleted.
+- The feature branch has been deleted. The permanent `project-governance` branch is retained.
 
 ## Knowledge Documentation
 
