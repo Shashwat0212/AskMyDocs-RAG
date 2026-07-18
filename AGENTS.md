@@ -11,19 +11,14 @@ The project is governed by the Technical Design Document and Approach document p
 
 Do not steer away from those documents. If a request conflicts with them, stop and call out the conflict before making changes.
 
-## Read Before Coding
+## Start Every Run
 
-Every agent must read these files before modifying code or docs:
+Every agent must begin with:
 
-1. `README.md`
-2. `KNOWLEDGE.md`
-3. `docs/PROJECT_STATUS.md`
-4. `docs/ROADMAP.md`
-5. `docs/ENGINEERING_WORKFLOW.md`
-6. `docs/DEVELOPMENT_ENVIRONMENT.md`
-7. `docs/CODING_STANDARDS.md`
-8. `docs/AI_AGENT_WORKFLOW.md`
-9. `docs/DECISIONS.md`
+1. `starter.md`
+2. `AGENTS.md`
+
+Use the task-routing table in `starter.md` to read the detailed documents relevant to the current task before modifying code or docs. Read both governing DOCX files before changing architecture, roadmap direction, selected stack, project constraints, or stage ordering.
 
 ## Non-Negotiable Project Constraints
 
@@ -51,15 +46,17 @@ Every agent must read these files before modifying code or docs:
 
 ## Required Agent Workflow
 
-1. Read the project status and roadmap.
-2. Inspect existing implementation before proposing changes.
-3. Identify impacted modules and documentation.
-4. Keep the change small and reviewable.
-5. Prefer existing structure and conventions.
-6. Add or update tests when implementation exists.
-7. Update affected folder-level `KNOWLEDGE.md` files and the root `KNOWLEDGE.md` map when folder structure changes.
-8. Update relevant docs, especially `docs/PROJECT_STATUS.md` and `docs/DECISIONS.md` when applicable.
-9. Summarize changes, tests, and documentation updates.
+1. Read `starter.md`, this file, and the task-specific sources routed from the starter.
+2. Use the synchronized `project-governance` branch for planning work, create approved epic integration branches from `main`, and create ticket implementation branches from the latest active epic branch.
+3. Inspect existing implementation before proposing changes.
+4. Identify impacted modules and documentation.
+5. Keep the change small and reviewable.
+6. Prefer existing structure and conventions.
+7. Add or update tests when implementation exists.
+8. Update affected folder-level `KNOWLEDGE.md` files and the root `KNOWLEDGE.md` map when folder structure changes.
+9. Update `starter.md` when its current-state summary changes.
+10. Update relevant docs, especially `docs/PROJECT_STATUS.md`, `docs/FUTURE_PROSPECTS.md`, and `docs/DECISIONS.md` when applicable.
+11. Summarize changes, tests, and documentation updates.
 
 ## Prohibited Without Explicit Approval
 

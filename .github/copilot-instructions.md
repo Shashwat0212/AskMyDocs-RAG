@@ -1,6 +1,6 @@
 # GitHub Copilot Instructions
 
-Use `AGENTS.md` as the canonical repository instruction file.
+Read `starter.md` first and use `AGENTS.md` as the canonical repository instruction file. Load the task-specific sources selected by the routing table in `starter.md` before accepting changes.
 
 Copilot-generated suggestions must follow these project rules:
 

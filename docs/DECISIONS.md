@@ -6,10 +6,14 @@ Record important architecture, tooling, model, workflow, and repository decision
 
 ```text
 Date: YYYY-MM-DD
+Status: Active | Superseded
 Decision:
 Rationale:
 Consequences:
+Supersedes: Optional date or decision reference
 ```
+
+Entries without an explicit status are active. Superseded entries remain in the log to preserve decision history.
 
 ## Decisions
 
@@ -67,3 +71,28 @@ Date: 2026-07-08
 Decision: Add a post-MVP hyperparameter experimentation and blueprinting epic.
 Rationale: The project owner wants a local module that can use configuration as a control plane, run permutations of implemented RAG hyperparameters over evaluation datasets, compare results, and build practical guidance for different document qualities, industries, and use cases.
 Consequences: Phase 1 now includes Epic 9 after reranking and session memory. The experimentation module should stay local-first, configuration-driven, and offline by default. It can vary only implemented pipeline options and should record run manifests, metrics, latency, errors, and artifacts. Paid hosted experiment tracking and automatic production tuning remain prohibited.
+
+Date: 2026-07-13
+Status: Superseded by the 2026-07-14 permanent governance branch decision.
+Decision: Keep project tracking and decision documents on `main` and update them through short-lived ticket branches.
+Rationale: Jira should own ticket execution while the repository keeps durable status, plans, and decisions beside the code they govern. A permanent tracking branch would drift from implementation and create a competing project state.
+Consequences: `docs/PROJECT_TRACKING.md` defines synchronization rules. `docs/PROJECT_STATUS.md` keeps the current project and Epic 1 snapshot. Future ticket branches must update status, plans, decisions, and knowledge docs when their changes affect project state, then merge those updates into `main`.
+
+Date: 2026-07-14
+Status: Active
+Decision: Maintain `project-governance` as the permanent planning and project-state branch with two-way synchronization to `main`.
+Rationale: The project owner uses Codex to inspect future epics, evolve possible directions, and keep those prospects visible without treating every exploration as an approved implementation decision. A permanent branch provides that working space while approved checkpoints on `main` keep implementation agents aligned.
+Consequences: `project-governance` holds the latest project snapshot, future prospects, and proposed planning changes. Approved governance pull requests use merge commits into `main`, and completed implementation changes are merged back into `project-governance`. Jira synchronization remains manual, and application code must not be implemented on the governance branch. The later 2026-07-18 decision defines the implementation branch hierarchy.
+Supersedes: The 2026-07-13 decision requiring all governance work to use short-lived branches.
+
+Date: 2026-07-14
+Status: Active
+Decision: Use root `starter.md` as the mandatory primary briefing for every new work session.
+Rationale: Contributors and AI agents need a fast, reliable orientation to current project state and next work without rereading the complete repository on every run.
+Consequences: Every run begins with `starter.md` and `AGENTS.md`, followed by task-specific sources selected through the starter's routing table. The starter remains a summary rather than a competing source of truth. Both governing DOCX files remain mandatory before changing architecture, roadmap direction, selected stack, project constraints, or stage ordering.
+
+Date: 2026-07-18
+Status: Active
+Decision: Use short-lived epic integration branches with developer-namespaced ticket branches.
+Rationale: Epic-level integration provides a review boundary for validating related setup work together, while developer namespaces make concurrent ticket ownership visible and avoid branch-name collisions.
+Consequences: Epic branches start from the approved `main` baseline and use `epic/<epic-id>-short-description`. Ticket branches start from the latest active epic branch, use `feature/<developer>/<ticket-id>-short-description`, and target the epic branch in pull requests. A validated epic branch targets `main`. Ticket and epic branches are deleted after their respective merges; `project-governance` remains permanent and contains no application code. Epic 1 uses `epic/epic-1-backend-foundations`, and Shashwat's first ticket uses `feature/shashwat/RAG-001-fastapi-sandbox`.
