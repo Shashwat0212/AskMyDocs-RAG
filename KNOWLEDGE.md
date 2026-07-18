@@ -12,6 +12,7 @@ Knowledge docs complement README files:
 - `starter.md` is the mandatory first-read orientation snapshot for every new work session.
 - `AGENTS.md` is the canonical repository instruction file for AI coding assistants.
 - `README.md` introduces the project and routes contributors into the starter-first workflow.
+- Approved implementation work uses epic integration branches from `main` and developer-namespaced ticket branches from the latest active epic branch.
 
 ## Update Rule
 

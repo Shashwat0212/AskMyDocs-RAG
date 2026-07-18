@@ -31,5 +31,6 @@ Link the Jira ticket when applicable and state whether project status, prospects
 - [ ] Affected `KNOWLEDGE.md` files have been updated.
 - [ ] Configuration changes are documented.
 - [ ] Jira and repository project tracking are synchronized when project state changed.
+- [ ] A ticket pull request targets its active epic branch, or a validated epic pull request targets `main`.
 - [ ] If this is a `project-governance` to `main` pull request, it will use a merge commit rather than squash or rebase.
 - [ ] No secrets, debug code, dead code, or unrelated changes are included.

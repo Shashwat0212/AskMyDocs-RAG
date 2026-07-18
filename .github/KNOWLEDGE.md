@@ -2,7 +2,7 @@
 
 ## Current Contents
 
-- `pull_request_template.md` defines the required PR summary, related work, implementation notes, testing, documentation updates, project tracking impact, permanent governance-branch synchronization check, and checklist.
+- `pull_request_template.md` defines the required PR summary, related work, implementation notes, testing, documentation updates, project tracking impact, ticket-to-epic and epic-to-main targeting, permanent governance-branch synchronization checks, and checklist.
 - `copilot-instructions.md` makes `starter.md` the first-read briefing and keeps GitHub Copilot aligned with `AGENTS.md` without becoming a competing policy source.
 
 ## Responsibilities

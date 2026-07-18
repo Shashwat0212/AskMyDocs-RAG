@@ -21,10 +21,11 @@ This document defines how the permanent `project-governance` branch, Jira work i
 
 ## Branch Policy
 
-- `main` is the approved implementation baseline.
+- `main` is the approved implementation baseline and the base for epic integration branches.
 - `project-governance` is a permanent planning and project-state branch.
-- `project-governance` is the only exception to the short-lived branch rule.
-- Feature branches continue to start from `main` and use `feature/<ticket-id>-short-description`.
+- Epic integration branches start from `main`, use `epic/<epic-id>-short-description`, collect reviewed ticket work, and merge into `main` when the epic is validated.
+- Ticket branches start from the latest active epic branch, use `feature/<developer>/<ticket-id>-short-description`, and merge back into that epic branch.
+- `project-governance` is the only permanent non-main branch; epic and ticket branches are deleted after their integration work is merged.
 - Governance work does not require a placeholder Jira ticket. Reference a Jira ticket when the update relates to one.
 - Do not implement application code on `project-governance`.
 
@@ -63,9 +64,9 @@ git merge origin/main
 git push origin project-governance
 ```
 
-### After Feature Work
+### After Epic Work
 
-After a feature pull request changes project state, merge `main` into `project-governance`, then update `docs/PROJECT_STATUS.md`, Jira links, blockers, completed work, and affected plans. If those updates change approved guidance, merge the next governance checkpoint back into `main`.
+After a ticket pull request merges into an epic branch, update Jira and the live project status as needed. After the validated epic branch merges into `main`, merge `main` into `project-governance`, then update `docs/PROJECT_STATUS.md`, Jira links, blockers, completed work, and affected plans. If those updates change approved guidance, merge the next governance checkpoint back into `main`.
 
 ## Status Vocabulary
 
@@ -75,7 +76,7 @@ Ticket summaries use these repository states:
 - `Ready`: approved and available to start.
 - `In Progress`: actively being worked.
 - `Blocked`: unable to progress, with the blocker recorded.
-- `Done`: acceptance criteria are met and the implementation pull request is merged into `main`.
+- `Done`: ticket acceptance criteria are met and the ticket pull request is merged into its active epic branch. Epic delivery is complete only after the validated epic branch is merged into `main`.
 
 Jira may use different display names, but its workflow states should map to these meanings in `docs/PROJECT_STATUS.md`.
 

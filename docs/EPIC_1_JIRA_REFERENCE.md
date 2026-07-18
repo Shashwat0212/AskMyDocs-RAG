@@ -2,11 +2,9 @@
 
 Last reviewed: 2026-07-18
 
-Status: Working reference for manual Jira entry. This file does not record approved Jira state or change project governance.
+Status: Approved Epic 1 scope and branch reference for manual Jira synchronization.
 
-> Branch-policy warning: the wording below describes the owner's proposed epic-branch workflow. Current governing documentation still requires implementation branches to start from `main` and merge into `main`. Do not use the proposed workflow until the governing policy is formally updated.
-
-Jira will assign the actual issue keys. Replace `<JIRA-KEY>` and `<EPIC-BRANCH>` when the work items and epic branch exist.
+The Epic 1 integration branch is `epic/epic-1-backend-foundations`. Jira remains the source of truth for ticket workflow state and URLs. `RAG-001` is the confirmed first ticket key; replace the remaining `<JIRA-KEY>` placeholders when Jira assigns or confirms them.
 
 ## Epic 1: Backend Foundations And Local Tooling Familiarization
 
@@ -20,9 +18,9 @@ Provide a working local foundation developers can understand, test, operate, and
 
 ### Task Details
 
-- Create `<EPIC-BRANCH>` from the approved implementation baseline.
+- Create `epic/epic-1-backend-foundations` from the approved `main` implementation baseline.
 - Create each ticket branch from the latest epic branch.
-- Name ticket branches `feature/<JIRA-KEY>-short-description`.
+- Name ticket branches `feature/<developer>/<JIRA-KEY>-short-description`.
 - Merge ticket pull requests into the epic branch.
 - Merge the validated epic branch into `main`.
 
@@ -36,6 +34,12 @@ Provide a working local foundation developers can understand, test, operate, and
 
 ## Ticket: FastAPI Tutorial And Backend Sandbox
 
+Ticket key: `RAG-001`
+
+Assignee: Shashwat
+
+Status: In Progress
+
 ### Description
 
 Follow a FastAPI tutorial, build a small backend skeleton, and experiment with basic settings and logging.
@@ -46,12 +50,12 @@ Understand FastAPI fundamentals and leave a simple, runnable backend foundation 
 
 ### Task Details
 
-- Create `feature/<JIRA-KEY>-fastapi-sandbox` from `<EPIC-BRANCH>`.
+- Create `feature/shashwat/RAG-001-fastapi-sandbox` from `epic/epic-1-backend-foundations`.
 - Follow a suitable FastAPI tutorial.
 - Add a minimal application and health endpoint.
 - Experiment with routing, settings, logging, and tests.
 - Document useful commands and findings.
-- Target `<EPIC-BRANCH>` in the pull request.
+- Target `epic/epic-1-backend-foundations` in the pull request.
 - Reference: [FastAPI official tutorial](https://fastapi.tiangolo.com/tutorial/).
 
 ### Acceptance Criteria
@@ -75,12 +79,12 @@ Confirm developers can independently start, inspect, use, stop, and troubleshoot
 
 ### Task Details
 
-- Create `feature/<JIRA-KEY>-qdrant-sandbox` from `<EPIC-BRANCH>`.
+- Create `feature/<developer>/<JIRA-KEY>-qdrant-sandbox` from `epic/epic-1-backend-foundations`.
 - Add a minimal Compose service using a pinned image.
 - Configure local persistence and readiness checking.
 - Test collection creation, upsert, search, and deletion.
 - Document start, stop, logs, health, and reset commands.
-- Target `<EPIC-BRANCH>` in the pull request.
+- Target `epic/epic-1-backend-foundations` in the pull request.
 - Video: [Qdrant 101: Getting Started](https://youtu.be/LRcZ9pbGnno).
 - Reference: [Qdrant local quickstart](https://qdrant.tech/documentation/quick-start/).
 
@@ -105,12 +109,12 @@ Confirm local model serving works before Ollama integration begins during the an
 
 ### Task Details
 
-- Create `feature/<JIRA-KEY>-ollama-sandbox` from `<EPIC-BRANCH>`.
+- Create `feature/<developer>/<JIRA-KEY>-ollama-sandbox` from `epic/epic-1-backend-foundations`.
 - Verify the Ollama installation and service.
 - Pull or use an approved local model.
 - Test CLI and local HTTP generation.
 - Document setup, verification, and common failures.
-- Target `<EPIC-BRANCH>` in the pull request.
+- Target `epic/epic-1-backend-foundations` in the pull request.
 - Video: [Exploring Ollama's REST API](https://youtu.be/PTJAflNXeio).
 - Reference: [Ollama quickstart](https://docs.ollama.com/quickstart).
 
@@ -135,13 +139,13 @@ Let contributors operate the Epic 1 environment without searching across multipl
 
 ### Task Details
 
-- Create `feature/<JIRA-KEY>-local-operations` from `<EPIC-BRANCH>`.
+- Create `feature/<developer>/<JIRA-KEY>-local-operations` from `epic/epic-1-backend-foundations`.
 - Document backend setup, start, and test commands.
 - Document Qdrant start, stop, health, logs, and reset commands.
 - Document Ollama availability and model-list commands.
 - Add simple shortcuts where useful.
 - Clearly label destructive commands.
-- Target `<EPIC-BRANCH>` in the pull request.
+- Target `epic/epic-1-backend-foundations` in the pull request.
 - Video: [Docker Compose Tutorial for Beginners](https://youtu.be/MVIcrmeV_6c).
 - Reference: [Docker Compose quickstart](https://docs.docker.com/compose/gettingstarted/).
 

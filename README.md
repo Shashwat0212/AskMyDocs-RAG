@@ -40,4 +40,4 @@ Then use the task-routing table in `starter.md` to read the detailed sources req
 
 ## Current State
 
-Day Zero foundation has been reviewed and merged. Phase 1 is in planning, beginning with the Backend Foundations And Local Tooling Familiarization epic. The permanent `project-governance` branch contains the latest working project view; `main` contains the latest approved governance checkpoint. Create and approve the relevant Jira ticket before starting implementation.
+Day Zero foundation has been reviewed and merged. Phase 1 execution is starting with Epic 1, Backend Foundations And Local Tooling Familiarization, and `RAG-001`, the FastAPI tutorial and backend sandbox. The permanent `project-governance` branch contains the latest working project view; `main` contains the latest approved governance checkpoint and is the base for short-lived epic integration branches. Create or confirm and assign the relevant Jira ticket before starting work from the active epic branch.

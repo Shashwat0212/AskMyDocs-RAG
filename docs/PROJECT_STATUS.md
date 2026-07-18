@@ -1,10 +1,10 @@
 # Project Status
 
-Last updated: 2026-07-14
+Last updated: 2026-07-18
 
 ## Current Phase
 
-Phase 1 planning: Epic 1, Backend Foundations And Local Tooling Familiarization.
+Phase 1 execution: Epic 1, Backend Foundations And Local Tooling Familiarization.
 
 ## Completed
 
@@ -17,10 +17,12 @@ Phase 1 planning: Epic 1, Backend Foundations And Local Tooling Familiarization.
 - Day Zero foundation reviewed and merged to `main` through pull request #1.
 - Permanent `project-governance` planning and project-state workflow established.
 - Root `starter.md` briefing established as the mandatory first-read project orientation.
+- Epic integration and developer-namespaced ticket branch workflow approved.
+- Epic 1 branch and first-ticket names approved for local creation.
 
 ## In Progress
 
-- Review and approve the Phase 1 plan and create or link the Epic 1 Jira work items.
+- `RAG-001`, the FastAPI tutorial and backend sandbox, is assigned to Shashwat and starting on `feature/shashwat/RAG-001-fastapi-sandbox`.
 
 ## Blocked
 
@@ -28,24 +30,25 @@ Phase 1 planning: Epic 1, Backend Foundations And Local Tooling Familiarization.
 
 ## Upcoming Work
 
-1. Create, review, and approve `RAG-001` through `RAG-006` in Jira.
-2. Start `RAG-001`, the FastAPI and backend basics learning spike.
-3. Begin the testable FastAPI backend skeleton only after `RAG-002` is approved and assigned.
+1. Complete and review `RAG-001` against the FastAPI sandbox acceptance criteria.
+2. Merge the `RAG-001` ticket branch into `epic/epic-1-backend-foundations`.
+3. Create or link the remaining Epic 1 Jira work items before starting them.
+4. Merge the validated Epic 1 branch into `main`.
 
 ## Epic 1 Ticket Snapshot
 
-| Ticket | Scope | Repository status | Jira reference |
-|---|---|---|---|
-| `RAG-001` | FastAPI and backend basics learning spike | Planned | To be created or linked |
-| `RAG-002` | Testable FastAPI backend skeleton | Planned | To be created or linked |
-| `RAG-003` | Backend settings and observability foundation | Planned | To be created or linked |
-| `RAG-004` | Docker Compose and Qdrant local sandbox | Planned | To be created or linked |
-| `RAG-005` | Ollama local model serving sandbox | Planned | To be created or linked |
-| `RAG-006` | Local backend tooling and operations workflow | Planned | To be created or linked |
+| Ticket | Scope | Assignee | Repository status | Jira reference |
+|---|---|---|---|---|
+| `RAG-001` | FastAPI tutorial and backend sandbox | Shashwat | In Progress | Key confirmed; URL pending |
+| `RAG-002` | Testable FastAPI backend skeleton | Unassigned | Planned | To be created or linked |
+| `RAG-003` | Backend settings and observability foundation | Unassigned | Planned | To be created or linked |
+| `RAG-004` | Docker Compose and Qdrant local sandbox | Unassigned | Planned | To be created or linked |
+| `RAG-005` | Ollama local model serving sandbox | Unassigned | Planned | To be created or linked |
+| `RAG-006` | Local backend tooling and operations workflow | Unassigned | Planned | To be created or linked |
 
 ## Live Planning Branch
 
-`project-governance` contains the latest working project snapshot, future prospects, and proposed planning changes. `main` contains the latest approved governance checkpoint and remains the baseline for feature branches.
+`project-governance` contains the latest working project snapshot, future prospects, and proposed planning changes. `main` contains the latest approved governance checkpoint and is the base for epic integration branches. Ticket branches start from the latest active epic branch.
 
 ## Notes For New Contributors
 

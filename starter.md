@@ -1,6 +1,6 @@
 # AskMyDocs-RAG Starter Briefing
 
-Last reviewed: 2026-07-14
+Last reviewed: 2026-07-18
 Maintained through: `project-governance`
 
 Read this file first at the start of every human or AI work session. Then read `AGENTS.md` and use the task-routing table below to load the detailed sources needed for the current task.
@@ -25,25 +25,26 @@ Non-negotiable constraints:
 - Day Zero foundation is complete and merged.
 - The repository contains standards, plans, placeholders, example configuration, and setup guidance.
 - No FastAPI application, frontend application, API, retrieval pipeline, model integration, evaluation engine, application dependency manifest, or Docker Compose service definition exists yet.
-- Phase 1 planning is active.
-- The next epic is Epic 1: Backend Foundations And Local Tooling Familiarization.
-- `RAG-001` through `RAG-006` are planned but are not yet created or linked in Jira.
+- Phase 1 execution is starting with Epic 1: Backend Foundations And Local Tooling Familiarization.
+- The Epic 1 integration branch is `epic/epic-1-backend-foundations`.
+- `RAG-001`, the FastAPI tutorial and backend sandbox, is assigned to Shashwat and in progress; its Jira URL remains to be linked.
+- Later Epic 1 tickets remain planned and require confirmed Jira keys before work starts.
 - No project blocker is currently recorded.
 
 ## Next Work
 
-1. Review and approve the Epic 1 scope.
-2. Prepare the Jira epic and ticket templates.
-3. Create and link the Epic 1 work items in Jira.
-4. Create the next sprint and place the approved tickets into it.
-5. Start `RAG-001`, the FastAPI and backend basics learning spike.
-6. Start implementation only from an approved and assigned ticket.
+1. Complete `RAG-001`, the FastAPI tutorial and backend sandbox.
+2. Review and merge the `RAG-001` ticket branch into the Epic 1 integration branch.
+3. Create or link the remaining Epic 1 Jira work items before starting them.
+4. Merge the validated Epic 1 integration branch into `main`.
 
 ## Branch Model
 
 - `project-governance` is the permanent working branch for current status, Jira summaries, future prospects, plans, and proposed decisions.
-- `main` contains approved governance checkpoints and is the base for implementation branches.
-- Feature branches use `feature/<ticket-id>-short-description` and are deleted after merge.
+- `main` contains approved governance checkpoints and is the base for epic integration branches.
+- Epic branches use `epic/<epic-id>-short-description`, integrate the epic's ticket work, and merge into `main`.
+- Ticket branches start from the latest epic branch, use `feature/<developer>/<ticket-id>-short-description`, and merge back into that epic branch.
+- The active Epic 1 branch is `epic/epic-1-backend-foundations`; Shashwat's first ticket branch is `feature/shashwat/RAG-001-fastapi-sandbox`.
 - Application code must not be implemented on `project-governance`.
 - Governance pull requests into `main` use merge commits so the permanent branch retains shared ancestry.
 
@@ -89,6 +90,7 @@ Broader Stages 2 through 6 remain retrieval inspection and quality, documentatio
 - Qdrant is the dense vector index with lightweight payloads, not the canonical full-text store.
 - SQLite FTS5/BM25 is the local lexical index over the same stable chunk IDs.
 - `project-governance` and `main` use the documented two-way synchronization workflow.
+- Approved implementation work uses short-lived epic integration branches with developer-namespaced ticket branches.
 - Future ideas belong in `docs/FUTURE_PROSPECTS.md`; only approved choices belong in the roadmap, architecture plans, and decision log.
 
 ## Source Hierarchy
@@ -122,7 +124,7 @@ Read both governing DOCX files before changing architecture, roadmap direction, 
 
 1. Read this file and `AGENTS.md`.
 2. Run `git status --short --branch` and preserve unrelated user changes.
-3. Confirm the active branch matches the task: planning on synchronized `project-governance`, implementation from `main` on a ticket branch.
+3. Confirm the active branch matches the task: planning on synchronized `project-governance`, epic integration from `main`, and ticket implementation from the latest active epic branch.
 4. Read the task-specific sources from the routing table.
 5. Inspect existing files before proposing or editing.
 6. Confirm the ticket, scope, acceptance criteria, tests, and documentation impact.

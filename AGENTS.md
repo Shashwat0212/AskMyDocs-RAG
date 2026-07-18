@@ -47,7 +47,7 @@ Use the task-routing table in `starter.md` to read the detailed documents releva
 ## Required Agent Workflow
 
 1. Read `starter.md`, this file, and the task-specific sources routed from the starter.
-2. Use the synchronized `project-governance` branch for planning work and `main` as the base for implementation work.
+2. Use the synchronized `project-governance` branch for planning work, create approved epic integration branches from `main`, and create ticket implementation branches from the latest active epic branch.
 3. Inspect existing implementation before proposing changes.
 4. Identify impacted modules and documentation.
 5. Keep the change small and reviewable.

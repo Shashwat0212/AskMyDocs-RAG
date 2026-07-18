@@ -23,21 +23,24 @@
 9. Create pull request
 10. Peer review
 11. Address review comments
-12. Merge into `main`
+12. Merge the ticket branch into its epic branch
 13. Delete the feature branch
+14. Validate the complete epic
+15. Merge the epic branch into `main`
+16. Delete the epic branch
 
 ## Branching
 
 - `main` is the integration branch.
-- Use short-lived feature branches for implementation work.
-- `project-governance` is the permanent planning and project-state branch and the only exception to the short-lived branch rule.
-- Start feature branches from `main`; do not implement application code on `project-governance`.
-- Branch naming: `feature/<ticket-id>-short-description`
+- Create a short-lived epic integration branch from `main` using `epic/<epic-id>-short-description`.
+- Create each short-lived ticket branch from the latest active epic branch using `feature/<developer>/<ticket-id>-short-description`.
+- Merge ticket pull requests into the epic branch, then merge the validated epic branch into `main`.
+- `project-governance` is the permanent planning and project-state branch; do not implement application code on it.
 
 Examples:
 
-- `feature/RAG-001-backend-foundation`
-- `feature/RAG-014-retrieval-trace-view`
+- `epic/epic-1-backend-foundations`
+- `feature/shashwat/RAG-001-fastapi-sandbox`
 
 ## Pull Requests
 
@@ -53,6 +56,8 @@ Every pull request should include:
 At least one team member must review every pull request before merge.
 
 Pull requests from `project-governance` to `main` must use a merge commit. Do not squash or rebase them because the permanent branch must retain shared ancestry with `main` for later synchronization.
+
+Ticket pull requests target their active epic branch. Epic pull requests target `main` only after all included ticket work is reviewed and the epic acceptance criteria are validated.
 
 ## Jira And Project Tracking
 
@@ -86,7 +91,7 @@ Avoid:
 
 ## Definition Of Done
 
-A task is complete only when:
+A ticket is complete only when:
 
 - Acceptance criteria are satisfied.
 - Code has been reviewed and approved.
@@ -96,8 +101,10 @@ A task is complete only when:
 - The root `KNOWLEDGE.md` map is updated when folders are added, removed, renamed, or repurposed.
 - Configuration changes are documented.
 - Jira and repository project status are synchronized when the task changes project state.
-- Changes are merged into `main`.
-- The feature branch has been deleted. The permanent `project-governance` branch is retained.
+- Changes are merged into the active epic branch.
+- The ticket branch has been deleted after merge.
+
+An epic is delivered only when its integrated ticket work is validated, merged into `main`, and the epic branch is deleted. The permanent `project-governance` branch is retained.
 
 ## Knowledge Documentation
 

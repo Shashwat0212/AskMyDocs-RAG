@@ -11,7 +11,7 @@ This workflow keeps Codex, Claude, GitHub Copilot, and future AI coding assistan
 5. Inspect the existing implementation before proposing or making changes.
 6. Identify affected docs and folder-level knowledge docs before editing.
 
-Planning and future-epic tasks should run on the synchronized `project-governance` branch. Implementation tasks should start from `main`, which contains the latest approved governance checkpoint.
+Planning and future-epic tasks should run on the synchronized `project-governance` branch. Approved epic integration branches start from `main`, which contains the latest approved governance checkpoint. Ticket implementation branches start from the latest active epic branch.
 
 ## During Task
 

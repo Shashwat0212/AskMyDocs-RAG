@@ -335,11 +335,13 @@ Read the same project documents manually before implementation. The workflow, re
 
 - `main` is the integration branch and implementation baseline.
 - `project-governance` is the permanent planning and project-state branch.
-- Implementation work happens on short-lived feature branches created from `main`.
+- Epic integration branches are short-lived and created from `main`.
+- Ticket implementation branches are short-lived and created from the latest active epic branch.
 - Branch names use:
 
 ```text
-feature/<ticket-id>-short-description
+epic/<epic-id>-short-description
+feature/<developer>/<ticket-id>-short-description
 ```
 
 Every pull request includes:
