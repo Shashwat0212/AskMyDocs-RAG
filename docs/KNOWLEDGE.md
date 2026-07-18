@@ -2,7 +2,7 @@
 
 ## Current Contents
 
-This folder contains the repository's project documentation, including Jira-to-repository tracking rules, current status, future prospects, roadmap, engineering workflow, development environment guidance, coding standards, AI-agent workflow, active and superseded decisions, architecture notes and detailed epic step plans, operations notes, API documentation placeholders, evaluation report placeholders, and owner-provided source documents.
+This folder contains the repository's project documentation, including Jira-to-repository tracking rules, current status, future prospects, roadmap, engineering workflow, development environment guidance, coding standards, AI-agent workflow, active and superseded decisions, architecture notes and detailed epic step plans, a working Epic 1 Jira reference, operations notes, API documentation placeholders, evaluation report placeholders, and owner-provided source documents.
 
 ## Responsibilities
 
@@ -10,4 +10,4 @@ Documentation in this folder governs how the project is planned and implemented.
 
 ## Update Notes
 
-Update this file when the documentation structure changes. Follow `docs/PROJECT_TRACKING.md` to synchronize Jira, `main`, and `project-governance`; update `starter.md` when its orientation snapshot changes; update `docs/PROJECT_STATUS.md` when project state changes; update `docs/FUTURE_PROSPECTS.md` when exploratory planning changes; and update `docs/DECISIONS.md` when an approved architecture, tooling, model, workflow, or repository decision changes.
+Update this file when the documentation structure changes. `EPIC_1_JIRA_REFERENCE.md` is working reference material and does not replace approved Jira state or formal branch policy. Follow `docs/PROJECT_TRACKING.md` to synchronize Jira, `main`, and `project-governance`; update `starter.md` when its orientation snapshot changes; update `docs/PROJECT_STATUS.md` when project state changes; update `docs/FUTURE_PROSPECTS.md` when exploratory planning changes; and update `docs/DECISIONS.md` when an approved architecture, tooling, model, workflow, or repository decision changes.
