@@ -1,5 +1,20 @@
 $ErrorActionPreference = "Stop"
 
+# Update PATH to include newly installed tools from winget
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+$oligmaPath = "$env:USERPROFILE\AppData\Local\Programs\Ollama"
+if (Test-Path $oligmaPath) {
+    $env:Path = "$oligmaPath;$env:Path"
+}
+# Check for GnuWin32 in both common locations
+$gnuWin32Paths = @("C:\Program Files (x86)\GnuWin32\bin", "C:\GnuWin32\bin")
+foreach ($gnuWin32Path in $gnuWin32Paths) {
+    if (Test-Path $gnuWin32Path) {
+        $env:Path = "$gnuWin32Path;$env:Path"
+        break
+    }
+}
+
 function Fail-DayZero {
     param([string]$Message)
     Write-Host ""
@@ -102,7 +117,7 @@ Run-Step "Verify Node" { node --version }
 Run-Step "Verify npm" { npm --version }
 Run-Step "Verify pnpm" { pnpm --version }
 Run-Step "Verify curl" { curl.exe --version }
-Run-Step "Verify wget" { wget --version }
+Run-Step "Verify wget" { wget.exe --version }
 Run-Step "Verify make" { make --version }
 Run-Step "Verify tar archive tooling" { tar --version }
 Run-Step "Verify jq" { jq --version }
