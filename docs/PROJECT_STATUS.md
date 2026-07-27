@@ -22,8 +22,8 @@ Phase 1 execution: Epic 1, Backend Foundations And Local Tooling Familiarization
 
 ## In Progress
 
-- `RAG-001`, the FastAPI tutorial and backend sandbox, is assigned to Shashwat.
-- Its implementation and local validation are complete on `feature/shashwat/RAG-001-fastapi-sandbox`; Jira status and repository disposition remain to be synchronized.
+- `RAG-001` implementation and local validation are complete on `feature/shashwat/RAG-001-fastapi-sandbox`; Jira status and repository disposition remain to be synchronized.
+- Provisional `RAG-002`, the Docker Compose and Qdrant local sandbox, is assigned to Shashwat and ready on `feature/shashwat/RAG-002-qdrant-sandbox`; Jira confirmation is pending.
 
 ## Blocked
 
@@ -31,17 +31,17 @@ Phase 1 execution: Epic 1, Backend Foundations And Local Tooling Familiarization
 
 ## Upcoming Work
 
-1. Synchronize the `RAG-001` Jira link and workflow status.
-2. Create and assign the three remaining Epic 1 Jira work items from the approved reference.
-3. Complete the Qdrant and Ollama learning sandboxes.
-4. Consolidate the verified local commands and troubleshooting workflow.
+1. Create or link the Qdrant Jira work item and confirm the provisional `RAG-002` key.
+2. Complete and validate the Qdrant learning sandbox.
+3. Synchronize the `RAG-001` Jira link and workflow state.
+4. Create and assign the two remaining Ollama and operations Jira work items.
 
 ## Epic 1 Ticket Snapshot
 
 | Ticket | Scope | Assignee | Repository status | Jira reference |
 |---|---|---|---|---|
 | `RAG-001` | FastAPI tutorial, skeleton, settings, logging, and tests | Shashwat | In Progress | Key confirmed; URL pending |
-| Pending | Docker Compose and Qdrant local sandbox | Unassigned | Planned | Create from approved template |
+| Provisional `RAG-002` | Docker Compose and Qdrant local sandbox | Shashwat | Ready | Create or link in Jira; confirm key |
 | Pending | Ollama local model serving sandbox | Unassigned | Planned | Create from approved template |
 | Pending | Local backend tooling and operations workflow | Unassigned | Planned | Create from approved template |
 

@@ -4,7 +4,7 @@ Last reviewed: 2026-07-27
 
 Status: Approved Epic 1 scope and branch reference for manual Jira synchronization.
 
-Epic 1 contains four tickets. `RAG-001` is confirmed; Jira will assign the three remaining keys when the owner creates them. Replace each `<JIRA-KEY>` placeholder after creation.
+Epic 1 contains four tickets. `RAG-001` is confirmed. The Qdrant branch uses provisional key `RAG-002`, which must be confirmed when its Jira work item is created or linked. Jira will assign the two remaining keys when the owner creates them.
 
 The Epic 1 integration branch is `epic/epic-1-backend-foundations`. Jira remains the source of truth for ticket assignment, workflow state, and URLs.
 
@@ -71,11 +71,11 @@ Understand FastAPI fundamentals and leave a simple, runnable backend foundation 
 
 ## Ticket: Docker Compose And Qdrant Local Sandbox
 
-Ticket key: `<JIRA-KEY>`
+Ticket key: Provisional `RAG-002`; confirm in Jira
 
-Assignee: Unassigned
+Assignee: Shashwat
 
-Status: Planned
+Status: Ready
 
 ### Description
 
@@ -87,7 +87,7 @@ Confirm developers can independently start, inspect, use, stop, and troubleshoot
 
 ### Task Details
 
-- Create `feature/<developer>/<JIRA-KEY>-qdrant-sandbox` from `epic/epic-1-backend-foundations`.
+- Create `feature/shashwat/RAG-002-qdrant-sandbox` from `epic/epic-1-backend-foundations`.
 - Add a minimal Compose service using a pinned image.
 - Configure local persistence and readiness checking.
 - Test collection creation, upsert, search, and deletion.

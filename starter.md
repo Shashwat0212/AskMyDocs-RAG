@@ -28,15 +28,50 @@ Non-negotiable constraints:
 - Phase 1 execution is starting with Epic 1: Backend Foundations And Local Tooling Familiarization.
 - The Epic 1 integration branch is `epic/epic-1-backend-foundations`.
 - `RAG-001`, the combined FastAPI tutorial and backend sandbox, is assigned to Shashwat; implementation and local validation are complete on its feature branch, while Jira synchronization remains pending.
-- Epic 1 uses four tickets total. The three remaining Qdrant, Ollama, and operations tickets are approved templates awaiting Jira keys and assignment.
+- Provisional `RAG-002`, the Docker Compose and Qdrant local sandbox, is assigned to Shashwat and ready on `feature/shashwat/RAG-002-qdrant-sandbox`; confirm the key in Jira before implementation.
+- The remaining Ollama and operations tickets are approved templates awaiting Jira keys and assignment.
 - No project blocker is currently recorded.
+
+## Active Ticket: RAG-002
+
+Title: Docker Compose And Qdrant Local Sandbox
+
+Branch: `feature/shashwat/RAG-002-qdrant-sandbox`
+
+Objective: Confirm developers can independently start, inspect, use, stop, and troubleshoot local Qdrant.
+
+Task:
+
+- Add a minimal Docker Compose service using a pinned Qdrant image.
+- Configure local persistence and readiness checking.
+- Practice collection creation, vector upsert, similarity search, and deletion.
+- Verify that normal shutdown preserves stored data.
+- Document start, stop, logs, health, persistence, and destructive reset commands.
+- Keep backend Qdrant integration, embeddings, ingestion, retrieval, and production deployment out of scope.
+
+Acceptance criteria:
+
+- Docker Compose configuration is valid.
+- Qdrant starts and becomes ready.
+- Collection creation, upsert, search, and deletion succeed.
+- Normal shutdown preserves stored data.
+- Destructive reset is clearly identified.
+- No backend Qdrant integration is added.
+
+Learning references:
+
+- [Qdrant 101: Getting Started](https://youtu.be/LRcZ9pbGnno)
+- [Qdrant local quickstart](https://qdrant.tech/documentation/quick-start/)
+- [Docker Compose documentation](https://docs.docker.com/compose/)
 
 ## Next Work
 
-1. Synchronize the `RAG-001` Jira link and status.
-2. Create and assign the Qdrant, Ollama, and operations Jira tickets from the approved reference.
-3. Complete the remaining Epic 1 learning and local-tooling work.
-4. Review the completed epic against its acceptance criteria.
+1. Create or link the Jira work item and confirm the provisional `RAG-002` key.
+2. Verify Docker and Docker Compose prerequisites.
+3. Select and pin a Qdrant image version.
+4. Add the isolated Compose service, persistence volume, and readiness check.
+5. Run and record the collection, upsert, search, deletion, restart, and reset exercises.
+6. Add operating instructions and validate the acceptance criteria without backend integration.
 
 ## Branch Model
 
@@ -44,7 +79,7 @@ Non-negotiable constraints:
 - `main` contains approved governance checkpoints and is the base for epic integration branches.
 - Epic branches use `epic/<epic-id>-short-description`, integrate the epic's ticket work, and merge into `main`.
 - Ticket branches start from the latest epic branch, use `feature/<developer>/<ticket-id>-short-description`, and merge back into that epic branch.
-- The active Epic 1 branch is `epic/epic-1-backend-foundations`; Shashwat's first ticket branch is `feature/shashwat/RAG-001-fastapi-sandbox`.
+- The active Epic 1 branch is `epic/epic-1-backend-foundations`; the current ticket branch is `feature/shashwat/RAG-002-qdrant-sandbox`.
 - Application code must not be implemented on `project-governance`.
 - Governance pull requests into `main` use merge commits so the permanent branch retains shared ancestry.
 
