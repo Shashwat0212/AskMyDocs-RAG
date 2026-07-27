@@ -1,0 +1,1 @@
+"""FastAPI fundamentals learning application."""

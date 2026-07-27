@@ -1,0 +1,22 @@
+[project]
+name = "fastapi-tutorial"
+version = "0.1.0"
+description = "A disposable local FastAPI fundamentals learning lab"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.128.8",
+    "pydantic-settings>=2.7.0",
+    "uvicorn>=0.30.0",
+]
+
+[dependency-groups]
+dev = [
+    "httpx2>=2.7.0",
+    "pytest>=8.3.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["--strict-markers"]
+pythonpath = ["."]
