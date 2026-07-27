@@ -43,6 +43,7 @@ Rationale: The project needs durable, local-first knowledge sharing so contribut
 Consequences: Every project-owned folder should contain a `KNOWLEDGE.md` file. The repository root `KNOWLEDGE.md` maps child knowledge docs. Changes to code, configuration, scripts, documentation structure, or behavior must update affected folder-level knowledge docs in the same change, and folder structure changes must update the root map.
 
 Date: 2026-07-05
+Status: Superseded by the 2026-07-27 final Epic 1 ticket consolidation decision.
 Decision: Merge the Phase 1 backend foundation and local service infrastructure epics into a single Backend Foundations And Local Tooling Familiarization epic.
 Rationale: The project owner wants the first Phase 1 work to combine developer familiarization, FastAPI backend setup, local Qdrant validation, local Ollama validation, and repeatable operations commands before product feature development begins.
 Consequences: The first Phase 1 epic now covers tickets `RAG-001` through `RAG-006`. It remains setup-focused and documentation-driven where appropriate. Document upload, ingestion, embeddings, retrieval, answer generation, Gradio UI, deployment pipelines, and feature integrations remain outside this merged setup epic.
@@ -96,3 +97,10 @@ Status: Active
 Decision: Use short-lived epic integration branches with developer-namespaced ticket branches.
 Rationale: Epic-level integration provides a review boundary for validating related setup work together, while developer namespaces make concurrent ticket ownership visible and avoid branch-name collisions.
 Consequences: Epic branches start from the approved `main` baseline and use `epic/<epic-id>-short-description`. Ticket branches start from the latest active epic branch, use `feature/<developer>/<ticket-id>-short-description`, and target the epic branch in pull requests. A validated epic branch targets `main`. Ticket and epic branches are deleted after their respective merges; `project-governance` remains permanent and contains no application code. Epic 1 uses `epic/epic-1-backend-foundations`, and Shashwat's first ticket uses `feature/shashwat/RAG-001-fastapi-sandbox`.
+
+Date: 2026-07-27
+Status: Active
+Decision: Use a final four-ticket structure for Epic 1.
+Rationale: The project owner explicitly merged the FastAPI learning, backend skeleton, settings, logging, and test work into one tutorial ticket while retaining separate Qdrant, Ollama, and operations tickets.
+Consequences: Epic 1 contains `RAG-001` plus three Jira-key-pending tickets: Docker Compose and Qdrant sandbox, Ollama sandbox, and local commands and operations. The six detailed learning steps remain useful, but they do not represent six separate Jira tickets. Product ingestion, retrieval, generation, and UI features remain outside Epic 1.
+Supersedes: The six-ticket enumeration in the 2026-07-05 merged Epic 1 decision.

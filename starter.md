@@ -1,6 +1,6 @@
 # AskMyDocs-RAG Starter Briefing
 
-Last reviewed: 2026-07-18
+Last reviewed: 2026-07-27
 Maintained through: `project-governance`
 
 Read this file first at the start of every human or AI work session. Then read `AGENTS.md` and use the task-routing table below to load the detailed sources needed for the current task.
@@ -24,19 +24,19 @@ Non-negotiable constraints:
 
 - Day Zero foundation is complete and merged.
 - The repository contains standards, plans, placeholders, example configuration, and setup guidance.
-- No FastAPI application, frontend application, API, retrieval pipeline, model integration, evaluation engine, application dependency manifest, or Docker Compose service definition exists yet.
+- The approved baseline contains no FastAPI product application, frontend application, retrieval pipeline, model integration, evaluation engine, or Docker Compose service definition.
 - Phase 1 execution is starting with Epic 1: Backend Foundations And Local Tooling Familiarization.
 - The Epic 1 integration branch is `epic/epic-1-backend-foundations`.
-- `RAG-001`, the FastAPI tutorial and backend sandbox, is assigned to Shashwat and in progress; its Jira URL remains to be linked.
-- Later Epic 1 tickets remain planned and require confirmed Jira keys before work starts.
+- `RAG-001`, the combined FastAPI tutorial and backend sandbox, is assigned to Shashwat; implementation and local validation are complete on its feature branch, while Jira synchronization remains pending.
+- Epic 1 uses four tickets total. The three remaining Qdrant, Ollama, and operations tickets are approved templates awaiting Jira keys and assignment.
 - No project blocker is currently recorded.
 
 ## Next Work
 
-1. Complete `RAG-001`, the FastAPI tutorial and backend sandbox.
-2. Review and merge the `RAG-001` ticket branch into the Epic 1 integration branch.
-3. Create or link the remaining Epic 1 Jira work items before starting them.
-4. Merge the validated Epic 1 integration branch into `main`.
+1. Synchronize the `RAG-001` Jira link and status.
+2. Create and assign the Qdrant, Ollama, and operations Jira tickets from the approved reference.
+3. Complete the remaining Epic 1 learning and local-tooling work.
+4. Review the completed epic against its acceptance criteria.
 
 ## Branch Model
 

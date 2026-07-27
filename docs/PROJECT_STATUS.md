@@ -1,6 +1,6 @@
 # Project Status
 
-Last updated: 2026-07-18
+Last updated: 2026-07-27
 
 ## Current Phase
 
@@ -22,7 +22,8 @@ Phase 1 execution: Epic 1, Backend Foundations And Local Tooling Familiarization
 
 ## In Progress
 
-- `RAG-001`, the FastAPI tutorial and backend sandbox, is assigned to Shashwat and starting on `feature/shashwat/RAG-001-fastapi-sandbox`.
+- `RAG-001`, the FastAPI tutorial and backend sandbox, is assigned to Shashwat.
+- Its implementation and local validation are complete on `feature/shashwat/RAG-001-fastapi-sandbox`; Jira status and repository disposition remain to be synchronized.
 
 ## Blocked
 
@@ -30,21 +31,19 @@ Phase 1 execution: Epic 1, Backend Foundations And Local Tooling Familiarization
 
 ## Upcoming Work
 
-1. Complete and review `RAG-001` against the FastAPI sandbox acceptance criteria.
-2. Merge the `RAG-001` ticket branch into `epic/epic-1-backend-foundations`.
-3. Create or link the remaining Epic 1 Jira work items before starting them.
-4. Merge the validated Epic 1 branch into `main`.
+1. Synchronize the `RAG-001` Jira link and workflow status.
+2. Create and assign the three remaining Epic 1 Jira work items from the approved reference.
+3. Complete the Qdrant and Ollama learning sandboxes.
+4. Consolidate the verified local commands and troubleshooting workflow.
 
 ## Epic 1 Ticket Snapshot
 
 | Ticket | Scope | Assignee | Repository status | Jira reference |
 |---|---|---|---|---|
-| `RAG-001` | FastAPI tutorial and backend sandbox | Shashwat | In Progress | Key confirmed; URL pending |
-| `RAG-002` | Testable FastAPI backend skeleton | Unassigned | Planned | To be created or linked |
-| `RAG-003` | Backend settings and observability foundation | Unassigned | Planned | To be created or linked |
-| `RAG-004` | Docker Compose and Qdrant local sandbox | Unassigned | Planned | To be created or linked |
-| `RAG-005` | Ollama local model serving sandbox | Unassigned | Planned | To be created or linked |
-| `RAG-006` | Local backend tooling and operations workflow | Unassigned | Planned | To be created or linked |
+| `RAG-001` | FastAPI tutorial, skeleton, settings, logging, and tests | Shashwat | In Progress | Key confirmed; URL pending |
+| Pending | Docker Compose and Qdrant local sandbox | Unassigned | Planned | Create from approved template |
+| Pending | Ollama local model serving sandbox | Unassigned | Planned | Create from approved template |
+| Pending | Local backend tooling and operations workflow | Unassigned | Planned | Create from approved template |
 
 ## Live Planning Branch
 

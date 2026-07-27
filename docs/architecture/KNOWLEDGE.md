@@ -2,7 +2,7 @@
 
 ## Current Contents
 
-This folder contains architecture documentation and staged implementation planning. The current Phase 1 Core RAG MVP plan is documented in `phase_1_core_rag_mvp.md`, with detailed lean MVP steps in `phase_1_epic_steps.md`, backend foundation and local service setup merged into the first setup-and-learning epic, and reranking, session memory, and hyperparameter experimentation planned as post-MVP enhancement epics.
+This folder contains architecture documentation and staged implementation planning. The current Phase 1 Core RAG MVP plan is documented in `phase_1_core_rag_mvp.md`, with detailed lean MVP steps in `phase_1_epic_steps.md`. Backend foundation and local service setup are merged into a four-ticket setup-and-learning epic: one combined FastAPI ticket plus separate Qdrant, Ollama, and operations tickets. Reranking, session memory, and hyperparameter experimentation remain post-MVP enhancement epics.
 
 ## Responsibilities
 

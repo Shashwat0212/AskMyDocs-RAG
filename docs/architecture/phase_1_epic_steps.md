@@ -10,6 +10,13 @@ Epics 1 through 6 deliver the lean MVP. Epics 7 through 9 in `phase_1_core_rag_m
 
 Outcome: the local backend environment is ready, testable, observable, and understandable before RAG feature work starts.
 
+Ticket grouping:
+
+- Steps 1 through 3 belong to the single FastAPI Tutorial And Backend Sandbox ticket.
+- Step 4 belongs to the Docker Compose And Qdrant Local Sandbox ticket.
+- Step 5 belongs to the Ollama Local Model Sandbox ticket.
+- Step 6 belongs to the Local Backend Commands And Operations ticket.
+
 ### Step 1: Minimal FastAPI Backend Skeleton
 
 Build a tiny FastAPI backend with a health endpoint.
@@ -59,16 +66,16 @@ Design direction:
 - Store settings on app state or inject them into services.
 - Add tests for defaults and overrides.
 
-### Step 3: Flow-Level Observability Foundation
+### Step 3: Basic Logging And Trace Awareness
 
-Add logging, tracing, and measurement direction early.
+Experiment with configuration-driven logging and understand the future trace direction.
 
 Accepted direction:
 
 - One user-initiated workflow gets one `trace_id`.
 - The same `trace_id` follows the complete backend flow.
-- Internal services accept and propagate a trace context.
-- Logs and spans include the same `trace_id`.
+- Basic sandbox logs can include a request or trace identifier.
+- Production services will later accept and propagate trace context.
 - OpenTelemetry, Prometheus, and Grafana OSS are the preferred local-first observability stack.
 - VizTracer can be used as optional local developer profiling.
 
@@ -90,6 +97,7 @@ same trace_id across all steps
 
 Out of scope:
 
+- Deploying an observability stack during the FastAPI learning ticket.
 - Paid or hosted observability.
 - Grafana Cloud.
 - Managed Prometheus.

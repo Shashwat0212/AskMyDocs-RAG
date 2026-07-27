@@ -1,10 +1,12 @@
 # Epic 1 Jira Reference
 
-Last reviewed: 2026-07-18
+Last reviewed: 2026-07-27
 
 Status: Approved Epic 1 scope and branch reference for manual Jira synchronization.
 
-The Epic 1 integration branch is `epic/epic-1-backend-foundations`. Jira remains the source of truth for ticket workflow state and URLs. `RAG-001` is the confirmed first ticket key; replace the remaining `<JIRA-KEY>` placeholders when Jira assigns or confirms them.
+Epic 1 contains four tickets. `RAG-001` is confirmed; Jira will assign the three remaining keys when the owner creates them. Replace each `<JIRA-KEY>` placeholder after creation.
+
+The Epic 1 integration branch is `epic/epic-1-backend-foundations`. Jira remains the source of truth for ticket assignment, workflow state, and URLs.
 
 ## Epic 1: Backend Foundations And Local Tooling Familiarization
 
@@ -69,6 +71,12 @@ Understand FastAPI fundamentals and leave a simple, runnable backend foundation 
 
 ## Ticket: Docker Compose And Qdrant Local Sandbox
 
+Ticket key: `<JIRA-KEY>`
+
+Assignee: Unassigned
+
+Status: Planned
+
 ### Description
 
 Run Qdrant locally and practice collection creation, vector upsert, search, deletion, and service operations.
@@ -99,6 +107,12 @@ Confirm developers can independently start, inspect, use, stop, and troubleshoot
 
 ## Ticket: Ollama Local Model Sandbox
 
+Ticket key: `<JIRA-KEY>`
+
+Assignee: Unassigned
+
+Status: Planned
+
 ### Description
 
 Verify Ollama locally and test a small generation request through both the CLI and HTTP API.
@@ -128,6 +142,12 @@ Confirm local model serving works before Ollama integration begins during the an
 - Setup and verification are documented.
 
 ## Ticket: Local Backend Commands And Operations
+
+Ticket key: `<JIRA-KEY>`
+
+Assignee: Unassigned
+
+Status: Planned
 
 ### Description
 

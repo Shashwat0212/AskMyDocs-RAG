@@ -37,12 +37,10 @@ Finished state:
 
 Representative tickets:
 
-- `RAG-001`: FastAPI And Backend Basics Learning Spike.
-- `RAG-002`: Create Testable FastAPI Backend Skeleton.
-- `RAG-003`: Add Backend Settings And Observability Foundation.
-- `RAG-004`: Docker Compose And Qdrant Local Sandbox.
-- `RAG-005`: Ollama Local Model Serving Sandbox.
-- `RAG-006`: Local Backend Tooling And Operations Workflow.
+- `RAG-001`: FastAPI Tutorial And Backend Sandbox, including the skeleton, settings, logging, and tests.
+- `<JIRA-KEY>`: Docker Compose And Qdrant Local Sandbox.
+- `<JIRA-KEY>`: Ollama Local Model Serving Sandbox.
+- `<JIRA-KEY>`: Local Backend Commands And Operations.
 
 Learning and setup expectations:
 
