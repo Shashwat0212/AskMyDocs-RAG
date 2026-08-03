@@ -1,18 +1,31 @@
 # Backend
 
-Future FastAPI backend code will live here.
+This folder now contains a minimal FastAPI sandbox for local experimentation.
 
-Planned responsibilities:
+## Current responsibilities
 
-- Document ingestion
-- Text extraction and parsing
-- Chunking and metadata enrichment
-- Embedding generation
-- Retrieval
-- Generation
-- Evaluation
-- Semantic caching
-- Output arbitration
-- Documentation automation
+- Provide a simple FastAPI application entrypoint.
+- Expose a lightweight `/health` endpoint for local smoke testing.
+- Demonstrate environment-based settings and logging without adding monitoring infrastructure.
+- Offer a small regression test for the health route.
 
-Day Zero does not include backend implementation.
+## Run locally
+
+```bash
+cd d:\AskMyDocs-RAG\backend
+.\.venv\Scripts\Activate.ps1
+python app/main.py
+```
+
+## Useful commands
+
+```bash
+pytest backend/tests/test_health.py
+```
+
+## Notes
+
+- The app exposes a lightweight `/health` endpoint and a simple `/info` endpoint.
+- Logging is configured through the Python `logging` module.
+- Settings are read from environment variables via `APP_NAME`, `APP_ENV`, and `DEBUG`.
+- The implementation intentionally avoids external monitoring services.

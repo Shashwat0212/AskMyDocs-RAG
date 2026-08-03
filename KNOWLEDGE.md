@@ -16,7 +16,7 @@ When a change modifies code, configuration, scripts, documentation structure, or
 | Folder | Knowledge doc | Current responsibility |
 |---|---|---|
 | `.github/` | [.github/KNOWLEDGE.md](.github/KNOWLEDGE.md) | GitHub collaboration metadata and PR guidance. |
-| `backend/` | [backend/KNOWLEDGE.md](backend/KNOWLEDGE.md) | Future FastAPI backend boundary. |
+| `backend/` | [backend/KNOWLEDGE.md](backend/KNOWLEDGE.md) | Minimal FastAPI sandbox for local experimentation and health checks. |
 | `configs/` | [configs/KNOWLEDGE.md](configs/KNOWLEDGE.md) | Example configuration files for future local-first runtime settings. |
 | `deployment/` | [deployment/KNOWLEDGE.md](deployment/KNOWLEDGE.md) | Future local deployment and service orchestration documentation. |
 | `docs/` | [docs/KNOWLEDGE.md](docs/KNOWLEDGE.md) | Project documentation, status, workflow, architecture, and decisions. |
