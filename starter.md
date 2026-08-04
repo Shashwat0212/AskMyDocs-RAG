@@ -1,106 +1,93 @@
 # AskMyDocs-RAG Starter Briefing
 
-Last reviewed: 2026-07-27
+Last reviewed: 2026-08-04
 Maintained through: `project-governance`
 
-Read this file first at the start of every human or AI work session. Then read `AGENTS.md` and use the task-routing table below to load the detailed sources needed for the current task.
-
-This file is a maintained orientation snapshot. It does not replace the governing source documents, project status, roadmap, architecture plans, or decision log.
+Read this file first at the start of every human or AI work session. Then read `AGENTS.md` and use the task-routing table below. This is an orientation snapshot, not a replacement for the governing source documents, project status, roadmap, architecture plans, or decision log.
 
 ## Project Purpose
 
-AskMyDocs-RAG is a local-first RAGOps platform for document ingestion, retrieval, cited answer generation, evaluation, semantic caching, model routing, arbitration, and automated documentation updates.
+AskMyDocs-RAG is a free and open-source RAGOps platform. Phase 1 uses local tooling for Epic 1, free-tier Google Colab as the canonical shared development environment for Epics 2 through 6, and a local Docker/Qdrant/Ollama runtime for the final Gradio MVP in Epic 7.
 
 Non-negotiable constraints:
 
-- Use free and open-source, local-first components.
-- Do not introduce paid LLM APIs, hosted inference, hosted vector databases, paid evaluation services, or paid observability platforms.
-- Prefer configuration over hardcoded behavior.
-- Keep business logic separate from infrastructure concerns.
-- Keep implementation work inside an approved ticket and update tests, documentation, and affected `KNOWLEDGE.md` files together.
-- Governance-only updates do not require a placeholder Jira ticket; reference a ticket when the update relates to one.
+- Use only free and open-source components; free-tier Colab is the explicit hosted-compute exception.
+- Do not introduce paid APIs, paid hosted inference, hosted vector databases, paid evaluation, paid observability, or paid experiment tracking.
+- Qdrant and Ollama remain self-managed. Colab instances are ephemeral and reproducible.
+- Store code/configuration/summaries in Git, datasets and full experiment artifacts in shared Drive, and Colab Qdrant storage only on the runtime filesystem.
+- Keep notebooks thin, behavior configurable, business logic infrastructure-independent, and changes scoped to an approved ticket.
 
 ## Current State
 
 - Day Zero foundation is complete and merged.
-- The repository contains standards, plans, placeholders, example configuration, and setup guidance.
-- The approved baseline contains no FastAPI product application, frontend application, retrieval pipeline, model integration, evaluation engine, or Docker Compose service definition.
-- Phase 1 execution is starting with Epic 1: Backend Foundations And Local Tooling Familiarization.
-- The Epic 1 integration branch is `epic/epic-1-backend-foundations`.
-- `RAG-001`, the combined FastAPI tutorial and backend sandbox, is assigned to Shashwat; implementation and local validation are complete on its feature branch, while Jira synchronization remains pending.
-- Epic 1 uses four tickets total. The three remaining Qdrant, Ollama, and operations tickets are approved templates awaiting Jira keys and assignment.
-- No project blocker is currently recorded.
+- Phase 1 is executing Epic 1, **Local Backend Foundations**, unchanged under its local scope.
+- `RAG-001` implementation and local validation are complete; Jira and repository disposition remain to be synchronized.
+- Provisional `RAG-002`, the Docker Compose and Qdrant local sandbox, is assigned to Shashwat and is actively being developed on `feature/shashwat/RAG-002-qdrant-sandbox` with uncommitted work that must be preserved.
+- `RAG-003` and `RAG-004` are planned Epic 1 tickets awaiting Jira confirmation.
+- The approved Phase 1 plan now contains seven epics and 41 sequential references. References not yet created in Jira are provisional.
+- No project blocker is recorded.
 
 ## Next Work
 
-1. Synchronize the `RAG-001` Jira link and status.
-2. Create and assign the Qdrant, Ollama, and operations Jira tickets from the approved reference.
-3. Complete the remaining Epic 1 learning and local-tooling work.
-4. Review the completed epic against its acceptance criteria.
+1. Preserve and finish the active `RAG-002` local Qdrant sandbox.
+2. Synchronize `RAG-001` and provisional `RAG-002` with Jira.
+3. Create and assign provisional `RAG-003` and `RAG-004`.
+4. Complete and validate Epic 1 locally.
+5. Begin `RAG-005`, the reproducible Colab bootstrap, only after Epic 1 closes.
 
 ## Branch Model
 
-- `project-governance` is the permanent working branch for current status, Jira summaries, future prospects, plans, and proposed decisions.
+- `project-governance` is the permanent branch for project state, planning, prospects, and decisions; application code is not implemented there.
 - `main` contains approved governance checkpoints and is the base for epic integration branches.
-- Epic branches use `epic/<epic-id>-short-description`, integrate the epic's ticket work, and merge into `main`.
-- Ticket branches start from the latest epic branch, use `feature/<developer>/<ticket-id>-short-description`, and merge back into that epic branch.
-- The active Epic 1 branch is `epic/epic-1-backend-foundations`; Shashwat's first ticket branch is `feature/shashwat/RAG-001-fastapi-sandbox`.
-- Application code must not be implemented on `project-governance`.
-- Governance pull requests into `main` use merge commits so the permanent branch retains shared ancestry.
+- Epic branches use `epic/<epic-id>-short-description`; ticket branches start from the latest epic branch and use `feature/<developer>/<ticket-id>-short-description`.
+- The active Epic 1 branch is `epic/epic-1-backend-foundations`.
+- Epic 5 uses its integration branch as the isolated experiment snapshot; every run manifest records the exact source commit. Validated interfaces and profiles merge back, and temporary duplicate prototype code is removed.
 
 ## Phase 1 Epic Map
 
-| Epic | Name | Delivery point |
-|---|---|---|
-| 1 | Backend Foundations And Local Tooling Familiarization | Setup and learning |
-| 2 | Document Ingestion Pipeline | Lean MVP |
-| 3 | Embedding And Vector Indexing | Lean MVP |
-| 4 | Hybrid Retrieval Pipeline | Lean MVP |
-| 5 | Answer Generation With Citations | Lean MVP |
-| 6 | MVP Gradio Interface | Lean MVP complete |
-| 7 | Reranking And Retrieval Quality | Post-MVP Phase 1 enhancement |
-| 8 | Session Memory And Conversation Retrieval | Post-MVP Phase 1 enhancement |
-| 9 | Hyperparameter Experimentation And Blueprinting | Post-MVP Phase 1 enhancement |
+| Epic | Name | Tickets | Canonical runtime | Delivery point |
+|---|---|---|---|---|
+| 1 | Local Backend Foundations | `RAG-001`–`RAG-004` | Local | Local foundations complete |
+| 2 | Colab Environment and Document Ingestion | `RAG-005`–`RAG-010` | Free-tier Colab | Reproducible ingestion |
+| 3 | Qdrant Embedding and Indexing | `RAG-011`–`RAG-014` | Free-tier Colab | Rebuildable dense/sparse indexes |
+| 4 | Qdrant Hybrid Retrieval and Reranking | `RAG-015`–`RAG-021` | Free-tier Colab | Retrieval before LLM integration |
+| 5 | Prototype Experimentation and Configuration Navigator | `RAG-022`–`RAG-031` | Free-tier Colab | Evidence-backed profiles and navigator |
+| 6 | Ollama Answer Generation With Citations | `RAG-032`–`RAG-035` | Free-tier Colab | Cited generation with provenance |
+| 7 | Local Gradio MVP | `RAG-036`–`RAG-041` | Local | Phase 1 MVP complete |
 
-Epics 1 through 6 deliver the first lean MVP. Epics 7 through 9 are approved Phase 1 enhancements that begin only after the Gradio MVP is working.
+Session memory is a future post-MVP item without a Phase 1 epic number. Broader Stages 2 through 6 remain retrieval inspection and quality, documentation automation, evaluation, model routing and semantic cache, and output arbitration.
 
-Broader Stages 2 through 6 remain retrieval inspection and quality, documentation automation, evaluation, model routing and semantic cache, and output arbitration. They are outside the current Phase 1 implementation scope.
-
-## Approved Stack
+## Approved Stack And Boundaries
 
 - Backend API: FastAPI
-- MVP interface: Gradio
-- Final interface: React / Next.js
-- Model serving: Ollama first, llama.cpp where needed
-- Vector store: Qdrant
-- Canonical local records and lexical search: SQLite and SQLite FTS5/BM25
+- MVP interface: Gradio; final interface: React / Next.js
+- Model serving: Ollama first; llama.cpp may be evaluated later
+- Retrieval: Qdrant named dense and sparse/BM25 vectors, full chunk/citation payloads, Query API fusion with RRF initially and DBSF configurable
+- Reranking: configurable local MiniLM cross-encoder in Epic 4
 - Main generation model: Qwen3 4B
-- Main embedding model: nomic-embed-text-v1.5
-- Evaluation: DeepEval and Ragas
-- Local orchestration: Docker Compose
-- Observability direction: OpenTelemetry, Prometheus, and Grafana OSS
-- CI and static publishing: GitHub Actions and GitHub Pages at their approved roadmap stages
+- Initial dense embedding model: nomic-embed-text-v1.5, subject to Epic 5 evidence
+- Evaluation: retrieval metrics in Epic 5; DeepEval and Ragas later
+- Local orchestration: Docker Compose for Epic 1 and Epic 7
+
+SQLite is not part of Phase 1 document retrieval. Ephemeral Qdrant collections are rebuilt from source documents, dataset manifests, and versioned profiles.
 
 ## Active Decisions To Preserve
 
-- One user workflow carries one `trace_id` through its complete backend flow.
-- Logs and spans are trace-aware; VizTracer is optional local profiling, not always-on tracing.
-- Chunking and retrieval behavior are configurable strategies and tunable hyperparameters.
-- SQLite is the expected canonical chunk store.
-- Qdrant is the dense vector index with lightweight payloads, not the canonical full-text store.
-- SQLite FTS5/BM25 is the local lexical index over the same stable chunk IDs.
-- `project-governance` and `main` use the documented two-way synchronization workflow.
-- Approved implementation work uses short-lived epic integration branches with developer-namespaced ticket branches.
-- Future ideas belong in `docs/FUTURE_PROSPECTS.md`; only approved choices belong in the roadmap, architecture plans, and decision log.
+- One user workflow carries one `trace_id` through its backend flow.
+- Chunking, indexing, retrieval, fusion, filtering, and reranking use configurable strategy boundaries.
+- Three configuration contracts govern the pipeline: ingestion/index profile, query profile, and run manifest.
+- The pre-ingestion scanner may select one index profile or a resource-capped alternative set when uncertain. The query-time navigator may change only settings compatible with existing collections.
+- Colab experiment workflows are manually launched, automated end to end, checkpointed, resumable, and failure-isolated; they are not unattended schedules.
+- Future ideas stay in `docs/FUTURE_PROSPECTS.md` until approved and promoted.
 
 ## Source Hierarchy
 
-1. Project-owner source documents under `docs/source_documents/` govern project intent.
-2. `AGENTS.md` governs repository-wide agent behavior.
-3. `docs/DECISIONS.md` records accepted and superseded decisions.
-4. `docs/ROADMAP.md` and `docs/architecture/` define approved sequencing and scope.
-5. `docs/PROJECT_STATUS.md` records the current project snapshot.
-6. This starter summarizes those sources for orientation and must be corrected when it drifts.
+1. Governing project-owner DOCX files under `docs/source_documents/`.
+2. `AGENTS.md` for repository-wide agent behavior.
+3. `docs/DECISIONS.md` for accepted and superseded decisions.
+4. `docs/ROADMAP.md` and `docs/architecture/` for approved sequencing and scope.
+5. `docs/PROJECT_STATUS.md` for the current project snapshot.
+6. This starter for orientation.
 
 Read both governing DOCX files before changing architecture, roadmap direction, selected stack, project constraints, or stage ordering:
 
@@ -112,35 +99,23 @@ Read both governing DOCX files before changing architecture, roadmap direction, 
 | Task | Read after this file and `AGENTS.md` |
 |---|---|
 | Current status or next work | `docs/PROJECT_STATUS.md`, `docs/PROJECT_TRACKING.md` |
-| Epic, sprint, Jira, or future planning | `docs/PROJECT_STATUS.md`, `docs/PROJECT_TRACKING.md`, `docs/FUTURE_PROSPECTS.md`, `docs/ROADMAP.md`, relevant `docs/architecture/` plans |
-| Architecture, stack, constraints, or stage changes | Both governing DOCX files, `docs/ROADMAP.md`, `docs/DECISIONS.md`, relevant architecture plans |
-| Implementation | Active Jira ticket, `docs/ENGINEERING_WORKFLOW.md`, `docs/CODING_STANDARDS.md`, relevant folder `KNOWLEDGE.md`, relevant API/architecture/operations docs |
-| Local environment or setup | `docs/DEVELOPMENT_ENVIRONMENT.md`, `docs/operations/day_zero_setup.md` |
-| Branches, pull requests, or completion | `docs/ENGINEERING_WORKFLOW.md`, `docs/PROJECT_TRACKING.md`, `.github/pull_request_template.md` |
-| Configuration | `.env.example`, `configs/README.md`, `configs/KNOWLEDGE.md`, relevant example YAML files |
+| Epic, sprint, Jira, or future planning | Project status/tracking, `docs/FUTURE_PROSPECTS.md`, `docs/ROADMAP.md`, relevant architecture plan |
+| Architecture, stack, constraints, or stage changes | Both governing DOCX files, roadmap, decisions, relevant architecture plans |
+| Implementation | Active Jira ticket, engineering workflow, coding standards, relevant knowledge/API/architecture/operations docs |
+| Local or Colab environment/setup | `docs/DEVELOPMENT_ENVIRONMENT.md`, `docs/operations/day_zero_setup.md` |
+| Branches, pull requests, or completion | `docs/ENGINEERING_WORKFLOW.md`, `docs/PROJECT_TRACKING.md`, pull-request template |
+| Configuration or experiment profiles | `.env.example`, `configs/README.md`, `configs/KNOWLEDGE.md`, relevant YAML, Epic 5 architecture |
 | AI-agent workflow | `docs/AI_AGENT_WORKFLOW.md`, relevant assistant adapter |
 
 ## Start-Of-Run Checklist
 
 1. Read this file and `AGENTS.md`.
 2. Run `git status --short --branch` and preserve unrelated user changes.
-3. Confirm the active branch matches the task: planning on synchronized `project-governance`, epic integration from `main`, and ticket implementation from the latest active epic branch.
-4. Read the task-specific sources from the routing table.
-5. Inspect existing files before proposing or editing.
-6. Confirm the ticket, scope, acceptance criteria, tests, and documentation impact.
-7. Do not add feature code while performing planning or repository-foundation work.
+3. Confirm the branch, ticket, canonical runtime, and artifact boundary.
+4. Load task-specific sources from the routing table and inspect existing implementation.
+5. Confirm acceptance criteria, tests, documentation, and knowledge impact.
+6. Do not add feature code during governance or repository-foundation work.
 
 ## Maintenance Contract
 
-Update this file in the same governance change when any of these changes:
-
-- current phase or active epic
-- next ticket or sprint sequence
-- Jira work-item status at the project-summary level
-- branch or project-tracking policy
-- approved stack or local-first constraints
-- implemented repository shape or available runtime entrypoints
-- major active decision summarized here
-- epic count, names, ordering, or MVP boundary
-
-Keep detailed reasoning in the source documents and decision log. Keep this file concise enough to read at the beginning of every run.
+Update this file whenever the current phase, next work, Jira summary, branch policy, stack, runtime boundary, repository shape, major decision, epic sequence, or MVP boundary changes. Keep detailed reasoning in the governing sources and decision log.

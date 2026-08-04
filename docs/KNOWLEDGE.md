@@ -2,11 +2,11 @@
 
 ## Current Contents
 
-This folder contains the repository's project documentation, including Jira-to-repository tracking rules, current status, future prospects, roadmap, engineering workflow, development environment guidance, coding standards, AI-agent workflow, active and superseded decisions, architecture notes and detailed epic step plans, the approved Epic 1 Jira and branch reference, operations notes, API documentation placeholders, evaluation report placeholders, and owner-provided source documents.
+This folder contains the repository's project documentation, including Jira-to-repository tracking rules, current status, future prospects, roadmap, engineering workflow, development environment guidance, coding standards, AI-agent workflow, active and superseded decisions, architecture notes and detailed epic step plans, the approved Epic 1 Jira and branch reference, operations notes, API documentation placeholders, evaluation report placeholders, exploratory reference materials, and owner-provided source documents.
 
 ## Responsibilities
 
-Documentation in this folder governs how the project is planned and implemented. Root `starter.md` provides the maintained first-read summary and routes each task to these detailed sources. The `project-governance` branch holds the live planning view, while `main` holds the latest approved checkpoint. `docs/source_documents/` contains the owner-provided source-of-truth DOCX files, while `AGENTS.md` is the canonical AI-agent instruction file at the repository root.
+Documentation in this folder governs the seven-epic Phase 1 plan, including local Epic 1, Colab-first Epics 2–6, and the local Epic 7 MVP. Root `starter.md` provides the maintained first-read summary and routes tasks to detailed sources. The `project-governance` branch holds the live planning view, while `main` holds the latest approved checkpoint. `docs/source_documents/` contains the owner-approved DOCX sources; `docs/references/` contains exploratory inputs that are not approved decisions; and `AGENTS.md` is the canonical AI-agent instruction file.
 
 ## Update Notes
 

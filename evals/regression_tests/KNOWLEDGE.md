@@ -6,9 +6,8 @@ This folder is a placeholder for future RAG regression tests. No regression test
 
 ## Planned Responsibility
 
-This folder will contain local regression tests for retrieval quality, answer quality, citation behavior, and evaluation stability once the evaluation engine exists.
+This folder may contain Epic 5 retrieval-profile regression checks after their tickets begin. Answer quality, citation behavior, and broader evaluation stability belong to the later Evaluation Engine.
 
 ## Update Notes
 
 Update this file when regression test structure, commands, fixtures, or expected outputs are introduced.
-

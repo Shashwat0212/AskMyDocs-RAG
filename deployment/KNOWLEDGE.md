@@ -6,9 +6,8 @@ The deployment folder is a Day Zero placeholder. It contains documentation only 
 
 ## Planned Responsibility
 
-This folder will document and eventually contain approved local deployment and service orchestration assets, including Docker Compose, local service operations, Cloudflare Tunnel notes, and GitHub Pages publishing guidance when those stages are approved.
+This folder will document and eventually contain approved local Docker Compose/service orchestration for Epic 1 and Epic 7. Colab Epics 2–6 use ticket-owned runtime bootstrap scripts rather than deployment pipelines. Cloudflare Tunnel and GitHub Pages remain later-stage guidance only.
 
 ## Update Notes
 
 Update this file when deployment assets or operational deployment instructions are added. Do not introduce deployment pipelines before the approved deployment stage.
-

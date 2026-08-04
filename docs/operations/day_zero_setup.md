@@ -16,27 +16,20 @@ Day Zero creates a common baseline:
 
 Day Zero does not build the application. Do not add backend code, frontend code, APIs, retrieval logic, database logic, evaluation logic, caching, deployment pipelines, app dependencies, or model downloads unless a later Jira ticket explicitly approves that work.
 
-## If Your Machine Is Not Suitable
+## Phase-Specific Setup Paths
 
-If local setup feels too slow, unstable, or resource-constrained, use a free Google Colab environment for early exploration and learning tasks.
+Local setup remains required for Epic 1 and for the final Epic 7 Gradio MVP. Free-tier Google Colab is the canonical shared execution environment for Epics 2 through 6, not an experiments-only fallback.
 
-Use Colab only for lightweight experiments, document review, or isolated notebooks. Do not treat Colab as the source of truth for repository state, do not store secrets in notebooks, and do not use it as a replacement for the reviewed local development workflow.
+The reviewed Git branch remains the source of truth in every environment. `RAG-005` will add the pinned Colab bootstrap; until that ticket is implemented, do not invent a competing notebook setup. The approved Colab lifecycle is:
 
-Basic Colab setup:
+1. Start a fresh runtime and check out the assigned branch/commit.
+2. Install pinned project dependencies and capture runtime diagnostics.
+3. Mount the configured shared Drive location for datasets and full artifacts.
+4. Start self-managed Qdrant on the runtime filesystem; start Ollama only when the epic requires it.
+5. Run package code through thin notebooks or commands.
+6. Checkpoint manifests/results to Drive and commit only reviewed code, compact fixtures, selected profiles, and summaries through the normal branch/PR workflow.
 
-```python
-!git clone <repository-url>
-%cd AskMyDocs-RAG
-!python --version
-!pip --version
-```
-
-Colab limitations:
-
-- Docker Desktop is not available.
-- Long-running local services such as Qdrant and Ollama may not behave like a developer machine.
-- Runtime storage is temporary.
-- Any useful code or notes must be moved back into the repository through the normal branch and PR workflow.
+Colab runtime storage is disposable. Qdrant must never use a mounted Drive path for its live storage. Collections are rebuilt from source data, manifests, and profiles. Do not store secrets in notebooks or commit runtime-generated credentials.
 
 ## Setup Options
 
@@ -250,7 +243,7 @@ Do not install project dependencies yet. At Day Zero the repository intentionall
 
 Use `.env.example` as the reference for variable names. Do not commit `.env`.
 
-Current Day Zero variables:
+Current and planned runtime variables:
 
 ```text
 APP_ENV
@@ -262,8 +255,13 @@ CRITIC_MODEL
 MAIN_EMBEDDING_MODEL
 CACHE_EMBEDDING_MODEL
 QDRANT_URL
-QDRANT_COLLECTION
+QDRANT_STORAGE_PATH
+QDRANT_COLLECTION_PREFIX
 QDRANT_CACHE_COLLECTION
+DRIVE_ARTIFACT_ROOT
+INGESTION_PROFILE_PATH
+QUERY_PROFILE_PATH
+RUN_MANIFEST_PATH
 MODELS_CONFIG_PATH
 RETRIEVAL_CONFIG_PATH
 PROMPTS_CONFIG_PATH
@@ -293,7 +291,7 @@ NAME    ID    SIZE    MODIFIED
 {"models":[]}
 ```
 
-Qdrant is not validated yet because this repository intentionally has no Docker Compose file. Qdrant setup belongs in a later approved setup ticket.
+Qdrant validation belongs to provisional `RAG-002`. Until that work is reviewed and merged, the governance baseline intentionally contains no approved Compose service definition.
 
 Required future models are identified but not pulled:
 
@@ -323,6 +321,8 @@ Rules:
 - Keep work inside the assigned Jira ticket.
 - Do not allow unrelated features.
 - Do not introduce paid hosted services.
+- Use the canonical runtime for the active epic and preserve the Git/Drive/runtime artifact boundary.
+- Do not place live Qdrant storage on mounted Drive.
 - Run validation yourself.
 - Update documentation when behavior, setup, or architecture changes.
 - Update affected folder-level `KNOWLEDGE.md` files when code, configuration, scripts, documentation structure, or behavior changes.

@@ -1,5 +1,5 @@
 # Evaluation Reports
 
-This folder will contain static evaluation reports after the evaluation engine exists.
+This folder may contain reviewed static summaries from Epic 5 retrieval experiments and later full evaluation reports. Full Colab run artifacts remain in configured shared Drive storage.
 
 Day Zero does not implement evaluation logic or generate reports.

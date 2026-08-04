@@ -18,7 +18,9 @@ Planning and future-epic tasks should run on the synchronized `project-governanc
 - Keep the change focused to the active ticket.
 - Follow existing repository structure.
 - Prefer configuration over hardcoded values.
-- Preserve local-first constraints.
+- Preserve the approved phase-specific runtime model and free/open-source constraints.
+- Confirm whether the ticket runs locally (Epic 1 or 7) or in Colab (Epics 2–6), and enforce the Git/Drive/runtime artifact boundary.
+- Keep Colab notebooks thin and Qdrant storage off mounted Drive.
 - Avoid unrelated refactors.
 - Ask before changing architecture, tooling, or stage order.
 - Record tentative future directions in `docs/FUTURE_PROSPECTS.md`; do not present them as accepted decisions.
@@ -29,7 +31,7 @@ Planning and future-epic tasks should run on the synchronized `project-governanc
 
 Before reporting completion:
 
-1. Run relevant local checks when implementation exists.
+1. Run relevant checks in the canonical runtime for the epic when implementation exists.
 2. Update documentation impacted by the change.
 3. Update affected folder-level `KNOWLEDGE.md` files.
 4. Update the root `KNOWLEDGE.md` map if folder structure changed.
@@ -39,7 +41,7 @@ Before reporting completion:
 8. Update `starter.md` if its current-state summary changed.
 9. Confirm Jira and repository tracking are synchronized when project state changed.
 10. Synchronize `main` and `project-governance` according to `docs/PROJECT_TRACKING.md` when the task changes approved guidance or implemented state.
-11. Summarize changed files, tests run, and any follow-up work.
+11. Summarize changed files, tests and runtime used, artifact locations, environmental limitations, and follow-up work.
 
 ## Agent-Specific Files
 

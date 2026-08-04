@@ -9,6 +9,8 @@
 - Documentation evolves alongside implementation.
 - Folder-level knowledge docs explain what each part of the repository currently does.
 - Configuration should be preferred over hardcoded values.
+- Every ticket declares its canonical runtime and durable-artifact boundary.
+- Colab notebooks remain thin launchers over portable package code.
 
 ## Standard Lifecycle
 
@@ -18,7 +20,7 @@
 4. Create feature branch
 5. Review existing implementation
 6. Implement solution
-7. Self-review and local testing
+7. Self-review and testing in the canonical epic runtime
 8. Update documentation
 9. Create pull request
 10. Peer review
@@ -41,6 +43,18 @@ Examples:
 
 - `epic/epic-1-backend-foundations`
 - `feature/shashwat/RAG-001-fastapi-sandbox`
+
+Epic 5 uses its integration branch as the isolated experiment snapshot. Run manifests record the exact source commit. Validated plug-in interfaces, profiles, and navigator contracts merge back through normal review, and temporary duplicate prototype code is removed before the epic closes.
+
+## Runtime And Artifact Workflow
+
+- Epic 1 work is validated locally with FastAPI, Docker Qdrant, Ollama, and approved operations commands.
+- Epics 2–6 are validated in free-tier Colab with pinned dependencies and ephemeral self-managed services.
+- Epic 7 rehydrates selected profiles and validates the local FastAPI/Qdrant/Ollama/Gradio workflow.
+- Git receives reviewed code, thin notebooks, compact fixtures, selected profiles, manifests, and summaries.
+- Shared Drive receives datasets, checkpoints, and full experiment artifacts.
+- Live Colab Qdrant data stays on the runtime filesystem, never mounted Drive.
+- Long runs are manually launched, automated, checkpointed, resumable, and failure-isolated.
 
 ## Pull Requests
 
@@ -74,7 +88,7 @@ Review for:
 
 - Correctness
 - Scope control
-- Local-first compliance
+- Approved runtime, free/open-source, and persistence-boundary compliance
 - Configuration-first behavior
 - Error handling
 - Meaningful logging
@@ -96,10 +110,12 @@ A ticket is complete only when:
 - Acceptance criteria are satisfied.
 - Code has been reviewed and approved.
 - Required tests pass.
+- Tests ran in the canonical runtime, or an environmental limitation and safe follow-up are documented.
 - Documentation is updated.
 - Affected folder-level `KNOWLEDGE.md` files are updated.
 - The root `KNOWLEDGE.md` map is updated when folders are added, removed, renamed, or repurposed.
 - Configuration changes are documented.
+- Colab/Drive artifacts are declared and no live Qdrant data or secrets were placed on Drive or in Git.
 - Jira and repository project status are synchronized when the task changes project state.
 - Changes are merged into the active epic branch.
 - The ticket branch has been deleted after merge.

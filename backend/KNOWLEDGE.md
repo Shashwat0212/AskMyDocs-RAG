@@ -6,9 +6,8 @@ The backend folder is a Day Zero placeholder. It contains no FastAPI application
 
 ## Planned Responsibility
 
-This folder will hold the local-first backend implementation, including document ingestion, text extraction, chunking, embeddings, retrieval, answer generation, logging, evaluation hooks, semantic cache integration, arbitration, and documentation automation when those roadmap stages are approved.
+This folder will hold portable backend package code for FastAPI, document ingestion, configurable chunking, dense/sparse embeddings, Qdrant indexing and hybrid retrieval, reranking, the configuration navigator, cited Ollama generation, logging, and later-stage hooks. The same business logic must run in Colab for Epics 2–6 and locally for Epic 7; notebooks and infrastructure adapters must not duplicate it.
 
 ## Update Notes
 
 When backend implementation begins, update this file with the actual module layout, runtime entrypoints, service boundaries, configuration files used, and tests that cover backend behavior.
-

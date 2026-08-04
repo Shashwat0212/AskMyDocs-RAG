@@ -1,14 +1,23 @@
-# Example model configuration. Copy to models.yaml when model routing is implemented.
+# Example self-managed model configuration. Final profiles are validated in Epic 5.
 
 generation:
-  fast_model: qwen3:4b
-  quality_model: qwen2.5:7b-instruct
-  critic_model: deepseek-r1-distill-qwen:7b
+  provider: ollama
+  model: qwen3:4b
+  base_url: http://localhost:11434
 
 embeddings:
-  document_model: nomic-embed-text-v1.5
-  cache_model: bge-small-en-v1.5
+  dense:
+    model: nomic-embed-text-v1.5
+    dimensions: model_native
+  sparse:
+    provider: qdrant
+    model: qdrant/bm25
 
-serving:
-  provider: ollama
-  base_url: http://localhost:11434
+reranking:
+  provider: cross_encoder
+  model: cross-encoder/ms-marco-MiniLM-L-6-v2
+
+future_models:
+  quality_generation: qwen2.5:7b-instruct
+  critic: deepseek-r1-distill-qwen:7b
+  cache_embedding: bge-small-en-v1.5

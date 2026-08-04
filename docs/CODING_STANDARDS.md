@@ -12,13 +12,15 @@
 - Avoid duplicate logic.
 - Avoid dead code and commented-out code.
 
-## Local-First Rule
+## Runtime And Free-Software Rule
 
-Do not introduce paid hosted services or paid APIs. All model serving, vector storage, evaluation, and observability choices must preserve the local-first architecture unless the project owner explicitly approves a change.
+Epic 1 and Epic 7 run locally; Epics 2–6 run canonically in free-tier Colab. Free Colab is the only approved hosted-compute exception. Do not introduce paid APIs, paid hosted inference, hosted vector databases, paid evaluation, paid observability, or paid experiment tracking. Qdrant and Ollama remain self-managed.
+
+Keep business logic in importable packages, not notebooks or infrastructure adapters. During Colab runs, Qdrant storage must stay on the runtime filesystem. Persist datasets and full artifacts to configured Drive storage and reviewed compact artifacts to Git.
 
 ## Configuration
 
-Runtime behavior should be driven by configuration files and environment variables where appropriate. Do not bury model names, collection names, thresholds, prompt versions, or service URLs directly in feature code.
+Runtime behavior should be driven by configuration files and environment variables where appropriate. Do not bury model names, collection names, vector names, dimensions, thresholds, fusion, reranking bounds, prompt versions, service URLs, or artifact locations directly in feature code. Preserve the ingestion/index profile, query profile, and run-manifest contracts.
 
 ## Documentation
 
@@ -41,7 +43,7 @@ Tests should scale with risk:
 - Integration tests for service boundaries
 - Regression tests for retrieval and evaluation behavior once those stages exist
 
-Do not mark a task complete until required local checks pass or the reason they could not be run is documented.
+Do not mark a task complete until required checks pass in the canonical epic runtime or the environmental limitation and safe follow-up are documented.
 
 ## Scope Control
 

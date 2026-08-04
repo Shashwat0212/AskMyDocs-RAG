@@ -9,9 +9,8 @@ This folder contains Day Zero setup scripts:
 
 ## Responsibilities
 
-Scripts in this folder support local developer setup and repository maintenance. They must preserve the local-first project constraints and should not install application dependencies or pull models unless an approved later setup stage requires it.
+Scripts in this folder support local setup, future pinned Colab bootstrap/service lifecycle, experiment orchestration, and repository maintenance. They must preserve the runtime and artifact boundaries, remain reproducible, and not install application dependencies or pull models until an approved ticket owns that behavior.
 
 ## Update Notes
 
 Update this file when scripts are added, removed, renamed, or given new behavior. Document any platform assumptions and validation commands in `docs/operations/`.
-

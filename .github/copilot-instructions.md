@@ -4,8 +4,9 @@ Read `starter.md` first and use `AGENTS.md` as the canonical repository instruct
 
 Copilot-generated suggestions must follow these project rules:
 
-- Local-first only.
+- Follow the phase-specific runtime model: Epic 1 and 7 local, Epics 2–6 free-tier Colab.
 - Free and open-source components only.
+- Keep Qdrant/Ollama self-managed, Colab Qdrant storage off Drive, and notebooks thin.
 - Configuration over hardcoded values.
 - No feature implementation outside the active ticket.
 - Documentation updates are required when behavior, architecture, configuration, or workflow changes.

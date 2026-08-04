@@ -28,6 +28,7 @@ Rationale: Codex, Claude, GitHub Copilot, and future tools need a shared source 
 Consequences: Assistant-specific files should stay thin and point back to `AGENTS.md`.
 
 Date: 2026-07-03
+Status: Superseded by the 2026-08-04 Qdrant-native Phase 1 retrieval decision.
 Decision: Scope Phase 1 to staged Core RAG MVP epics with lightweight hybrid retrieval.
 Rationale: The project owner wants the MVP retrieval plan to include hybrid retrieval without pulling in Stage 2 reranking, inspection, or quality-mode complexity.
 Consequences: Phase 1 will target dense vector retrieval plus a simple local lexical path with configurable fusion. Retrieval inspection UI, quality model mode, evaluation automation, caching, routing, arbitration, and the final React/Next.js interface remain outside Phase 1. The later 2026-07-05 decision merges the first two setup epics while preserving this scope boundary. The later 2026-07-07 decision adds reranking and session memory as post-MVP Phase 1 enhancement epics, after the lean MVP UI is working.
@@ -49,6 +50,7 @@ Rationale: The project owner wants the first Phase 1 work to combine developer f
 Consequences: The first Phase 1 epic now covers tickets `RAG-001` through `RAG-006`. It remains setup-focused and documentation-driven where appropriate. Document upload, ingestion, embeddings, retrieval, answer generation, Gradio UI, deployment pipelines, and feature integrations remain outside this merged setup epic.
 
 Date: 2026-07-07
+Status: Superseded by the 2026-08-04 seven-epic Phase 1 sequence decision.
 Decision: Add reranking and session memory as separate post-MVP Phase 1 enhancement epics.
 Rationale: The first MVP should stay lean and prove document-grounded upload, indexing, retrieval, answer generation, and Gradio UI before adding another retrieval-quality model or conversation-memory layer.
 Consequences: Epics 1 through 6 deliver the first MVP. Epic 7 adds optional local reranking, disabled by default and starting with a local cross-encoder approach rather than LLM reranking. Epic 8 adds session memory and conversation retrieval with local SQLite-backed chat storage and separate memory indexes. Hosted or paid reranking, memory, and observability services remain prohibited.
@@ -64,11 +66,13 @@ Rationale: Chunking, retrieval mode, lexical strategy, fusion strategy, and rela
 Consequences: Chunking should use a pluggable strategy interface selected by configuration. Retrieval should expose configurable dense, lexical, and fusion behavior. Future strategy additions should be isolated modules behind stable interfaces.
 
 Date: 2026-07-07
+Status: Superseded by the 2026-08-04 Qdrant-native Phase 1 retrieval decision.
 Decision: Use a canonical local chunk store with Qdrant and lexical search as separate indexes.
 Rationale: Full chunk text should not be duplicated by default across Qdrant payloads and lexical indexes. A local canonical chunk store keeps source text and metadata in one place while Qdrant and BM25/FTS indexes reference chunks by ID.
 Consequences: Phase 1 indexing should prefer SQLite or equivalent local storage for canonical chunk records, Qdrant for dense vector indexing with lightweight payloads, and SQLite FTS5/BM25 or equivalent local lexical indexing over the same chunk IDs. Retrieval hydrates final results from the canonical chunk store.
 
 Date: 2026-07-08
+Status: Superseded by the 2026-08-04 seven-epic Phase 1 sequence and experiment-prototype decisions.
 Decision: Add a post-MVP hyperparameter experimentation and blueprinting epic.
 Rationale: The project owner wants a local module that can use configuration as a control plane, run permutations of implemented RAG hyperparameters over evaluation datasets, compare results, and build practical guidance for different document qualities, industries, and use cases.
 Consequences: Phase 1 now includes Epic 9 after reranking and session memory. The experimentation module should stay local-first, configuration-driven, and offline by default. It can vary only implemented pipeline options and should record run manifests, metrics, latency, errors, and artifacts. Paid hosted experiment tracking and automatic production tuning remain prohibited.
@@ -104,3 +108,36 @@ Decision: Use a final four-ticket structure for Epic 1.
 Rationale: The project owner explicitly merged the FastAPI learning, backend skeleton, settings, logging, and test work into one tutorial ticket while retaining separate Qdrant, Ollama, and operations tickets.
 Consequences: Epic 1 contains `RAG-001` plus three Jira-key-pending tickets: Docker Compose and Qdrant sandbox, Ollama sandbox, and local commands and operations. The six detailed learning steps remain useful, but they do not represent six separate Jira tickets. Product ingestion, retrieval, generation, and UI features remain outside Epic 1.
 Supersedes: The six-ticket enumeration in the 2026-07-05 merged Epic 1 decision.
+
+Date: 2026-08-04
+Status: Active
+Decision: Use a phase-specific execution model: Epic 1 local, Epics 2 through 6 on free-tier Google Colab, and Epic 7 on the local MVP runtime.
+Rationale: Free-tier Colab gives contributors a common development environment and equal access to compute, while the product must still prove that the selected configuration runs locally for the MVP.
+Consequences: Free Colab is the explicit hosted-compute exception. Qdrant and Ollama remain pinned, self-managed processes inside the runtime. Colab Qdrant data stays on the runtime filesystem and is disposable. Git stores reviewed code, compact configuration, manifests, selected profiles, fixtures, and summaries; the configured shared Drive stores datasets and full run artifacts. Experiment automation is manually launched, end-to-end automated, checkpointed, resumable, and failure-isolated rather than unattended scheduling. Paid APIs, paid inference, hosted vector databases, paid evaluation, paid observability, and paid experiment tracking remain prohibited.
+Supersedes: Active claims that Phase 1 development is local-only or that Colab is reserved for incidental experiments.
+
+Date: 2026-08-04
+Status: Active
+Decision: Use self-managed Qdrant as the only Phase 1 document indexing and retrieval engine.
+Rationale: Qdrant supports named dense and sparse vectors, BM25/sparse retrieval, filters, complete payloads, and native hybrid Query API fusion in one rebuildable boundary.
+Consequences: Phase 1 stores full retrievable chunk text and citation metadata in Qdrant payloads, uses named dense and sparse/BM25 vectors, starts with RRF fusion, and keeps DBSF configurable. Source documents and dataset manifests are the durable canonical records from which ephemeral collections are rebuilt. SQLite is removed from the Phase 1 document chunk, lexical-search, hydration, and retrieval path; this decision does not prohibit a separately approved future local database for unrelated concerns such as session memory.
+Supersedes: The 2026-07-03 lightweight split-retrieval decision and the 2026-07-07 canonical local chunk store decision.
+
+Date: 2026-08-04
+Status: Active
+Decision: End Phase 1 at seven epics, with reranking in Epic 4, experimentation and the configuration navigator in Epic 5, generation in Epic 6, and the local Gradio MVP in Epic 7.
+Rationale: Retrieval and reranking must be measured and configured before LLM integration, and the former Epic 9 experiment work is now a required selection gate rather than a post-MVP enhancement.
+Consequences: Epic 1 remains the unchanged four-ticket local foundation. Epics 2 through 6 run canonically in Colab. The lean MVP boundary moves to Epic 7. Session memory moves outside Phase 1 and receives no Phase 1 epic number. Ticket references are renumbered sequentially from `RAG-001` through `RAG-041`; any reference not yet created in Jira is provisional.
+Supersedes: The 2026-07-07 reranking/session-memory epic decision and the 2026-07-08 Epic 9 experimentation decision.
+
+Date: 2026-08-04
+Status: Active
+Decision: Use three versioned configuration contracts and a two-level configuration navigator.
+Rationale: Index-time decisions cannot safely be changed at query time, and every selected setting must be reproducible across disposable Colab sessions and the local MVP runtime.
+Consequences: An ingestion/index profile owns parser, chunking, embedding, dimensions, collection/index settings, and payload schema. A query profile owns compatible candidate limits, filters, fusion, thresholds, reranking, and final count. A run manifest records source commit, dataset/checksum, runtime details, profile/config hash, Qdrant/model versions, metrics, errors, state, and artifact locations. The pre-ingestion scanner selects one index profile or a configured resource-capped alternative set when uncertain; the query-time navigator changes only settings compatible with existing collections and reports selection provenance.
+
+Date: 2026-08-04
+Status: Active
+Decision: Implement Epic 5 experimentation from an isolated branch snapshot, then merge validated architecture back and remove the temporary copy.
+Rationale: Experiments need freedom to compare plug-in strategies without creating a permanent divergent product implementation.
+Consequences: The completed Epic 4 integration commit is recorded in every run manifest. Epic 5 compares granular multi-dataset configurations and reports per-dataset/profile winners and Pareto trade-offs, not a universal winner. Validated interfaces, profiles, and navigator contracts merge into the product pipeline before the epic closes, and the temporary copied prototype is removed. Full LLM, prompt, and generation evaluation remains outside Epic 5; TurboQuant remains exploratory until compatibility is proven.

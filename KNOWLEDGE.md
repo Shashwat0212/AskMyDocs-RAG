@@ -24,13 +24,14 @@ When a change modifies code, configuration, scripts, documentation structure, or
 |---|---|---|
 | `.github/` | [.github/KNOWLEDGE.md](.github/KNOWLEDGE.md) | GitHub collaboration metadata and PR guidance. |
 | `backend/` | [backend/KNOWLEDGE.md](backend/KNOWLEDGE.md) | Future FastAPI backend boundary. |
-| `configs/` | [configs/KNOWLEDGE.md](configs/KNOWLEDGE.md) | Example configuration files for future local-first runtime settings. |
+| `configs/` | [configs/KNOWLEDGE.md](configs/KNOWLEDGE.md) | Model, ingestion/index profile, query profile, navigator, and run-manifest examples. |
 | `deployment/` | [deployment/KNOWLEDGE.md](deployment/KNOWLEDGE.md) | Future local deployment and service orchestration documentation. |
 | `docs/` | [docs/KNOWLEDGE.md](docs/KNOWLEDGE.md) | Project documentation, status, workflow, architecture, and decisions. |
 | `docs/api/` | [docs/api/KNOWLEDGE.md](docs/api/KNOWLEDGE.md) | Future FastAPI route and API contract documentation. |
 | `docs/architecture/` | [docs/architecture/KNOWLEDGE.md](docs/architecture/KNOWLEDGE.md) | Architecture plans, module boundaries, and staged implementation notes. |
 | `docs/evaluation_reports/` | [docs/evaluation_reports/KNOWLEDGE.md](docs/evaluation_reports/KNOWLEDGE.md) | Future static evaluation report outputs. |
-| `docs/operations/` | [docs/operations/KNOWLEDGE.md](docs/operations/KNOWLEDGE.md) | Local setup, operations, and troubleshooting documentation. |
+| `docs/operations/` | [docs/operations/KNOWLEDGE.md](docs/operations/KNOWLEDGE.md) | Local and Colab setup, artifact-boundary, operations, and troubleshooting documentation. |
+| `docs/references/` | [docs/references/KNOWLEDGE.md](docs/references/KNOWLEDGE.md) | Owner-provided exploratory diagrams, tables, and research references. |
 | `docs/source_documents/` | [docs/source_documents/KNOWLEDGE.md](docs/source_documents/KNOWLEDGE.md) | Owner-provided source-of-truth planning documents. |
 | `evals/` | [evals/KNOWLEDGE.md](evals/KNOWLEDGE.md) | Future evaluation assets and regression test organization. |
 | `evals/datasets/` | [evals/datasets/KNOWLEDGE.md](evals/datasets/KNOWLEDGE.md) | Future evaluation datasets. |

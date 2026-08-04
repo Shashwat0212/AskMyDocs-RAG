@@ -8,10 +8,9 @@ The frontend folder contains placeholders for the MVP Gradio interface and the f
 
 Frontend work is split by stage:
 
-- `frontend/gradio_app/` for the Stage 1 MVP interface.
+- `frontend/gradio_app/` for the local Epic 7 Phase 1 MVP interface using Colab-validated profiles.
 - `frontend/web_app/` for the later React / Next.js interface.
 
 ## Update Notes
 
 Update this file when frontend structure, shared frontend conventions, build commands, or cross-frontend behavior are introduced.
-

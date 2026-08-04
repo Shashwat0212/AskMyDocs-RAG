@@ -1,5 +1,5 @@
 # Operations Documentation
 
-This folder will contain local operations, deployment, observability, and troubleshooting notes.
+This folder contains local and Colab operations, deployment, observability, and troubleshooting notes.
 
-Day Zero documents the intended location only. Deployment pipelines and service scripts should be added in approved future tickets.
+`day_zero_setup.md` prepares the local Epic 1/Epic 7 machine and documents the approved Colab lifecycle and artifact boundary. The concrete pinned Colab bootstrap and service operations will be added only by their approved tickets. Deployment pipelines remain outside the current stage.

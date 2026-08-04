@@ -1,14 +1,14 @@
 # Epic 1 Jira Reference
 
-Last reviewed: 2026-07-27
+Last reviewed: 2026-08-04
 
 Status: Approved Epic 1 scope and branch reference for manual Jira synchronization.
 
-Epic 1 contains four tickets. `RAG-001` is confirmed; Jira will assign the three remaining keys when the owner creates them. Replace each `<JIRA-KEY>` placeholder after creation.
+Epic 1 contains four tickets and remains unchanged under the local runtime scope. `RAG-001` is confirmed. `RAG-002`, `RAG-003`, and `RAG-004` are provisional planning references until Jira confirms them.
 
 The Epic 1 integration branch is `epic/epic-1-backend-foundations`. Jira remains the source of truth for ticket assignment, workflow state, and URLs.
 
-## Epic 1: Backend Foundations And Local Tooling Familiarization
+## Epic 1: Local Backend Foundations
 
 ### Description
 
@@ -40,7 +40,7 @@ Ticket key: `RAG-001`
 
 Assignee: Shashwat
 
-Status: In Progress
+Status: Implementation and local validation complete; Jira/repository synchronization pending
 
 ### Description
 
@@ -71,11 +71,11 @@ Understand FastAPI fundamentals and leave a simple, runnable backend foundation 
 
 ## Ticket: Docker Compose And Qdrant Local Sandbox
 
-Ticket key: `<JIRA-KEY>`
+Ticket key: `RAG-002` (provisional until Jira confirms)
 
-Assignee: Unassigned
+Assignee: Shashwat
 
-Status: Planned
+Status: In Progress on `feature/shashwat/RAG-002-qdrant-sandbox`
 
 ### Description
 
@@ -87,7 +87,7 @@ Confirm developers can independently start, inspect, use, stop, and troubleshoot
 
 ### Task Details
 
-- Create `feature/<developer>/<JIRA-KEY>-qdrant-sandbox` from `epic/epic-1-backend-foundations`.
+- Use `feature/shashwat/RAG-002-qdrant-sandbox` from `epic/epic-1-backend-foundations`.
 - Add a minimal Compose service using a pinned image.
 - Configure local persistence and readiness checking.
 - Test collection creation, upsert, search, and deletion.
@@ -107,7 +107,7 @@ Confirm developers can independently start, inspect, use, stop, and troubleshoot
 
 ## Ticket: Ollama Local Model Sandbox
 
-Ticket key: `<JIRA-KEY>`
+Ticket key: `RAG-003` (provisional until Jira confirms)
 
 Assignee: Unassigned
 
@@ -123,7 +123,7 @@ Confirm local model serving works before Ollama integration begins during the an
 
 ### Task Details
 
-- Create `feature/<developer>/<JIRA-KEY>-ollama-sandbox` from `epic/epic-1-backend-foundations`.
+- Create `feature/<developer>/RAG-003-ollama-sandbox` from `epic/epic-1-backend-foundations` after Jira confirmation.
 - Verify the Ollama installation and service.
 - Pull or use an approved local model.
 - Test CLI and local HTTP generation.
@@ -143,7 +143,7 @@ Confirm local model serving works before Ollama integration begins during the an
 
 ## Ticket: Local Backend Commands And Operations
 
-Ticket key: `<JIRA-KEY>`
+Ticket key: `RAG-004` (provisional until Jira confirms)
 
 Assignee: Unassigned
 
@@ -159,7 +159,7 @@ Let contributors operate the Epic 1 environment without searching across multipl
 
 ### Task Details
 
-- Create `feature/<developer>/<JIRA-KEY>-local-operations` from `epic/epic-1-backend-foundations`.
+- Create `feature/<developer>/RAG-004-local-operations` from `epic/epic-1-backend-foundations` after Jira confirmation.
 - Document backend setup, start, and test commands.
 - Document Qdrant start, stop, health, logs, and reset commands.
 - Document Ollama availability and model-list commands.

@@ -2,11 +2,11 @@
 
 ## Current Contents
 
-This folder contains architecture documentation and staged implementation planning. The current Phase 1 Core RAG MVP plan is documented in `phase_1_core_rag_mvp.md`, with detailed lean MVP steps in `phase_1_epic_steps.md`. Backend foundation and local service setup are merged into a four-ticket setup-and-learning epic: one combined FastAPI ticket plus separate Qdrant, Ollama, and operations tickets. Reranking, session memory, and hyperparameter experimentation remain post-MVP enhancement epics.
+This folder contains architecture documentation and staged implementation planning. `phase_1_core_rag_mvp.md` defines seven Phase 1 epics and 41 sequential ticket references; `phase_1_epic_steps.md` expands their delivery flow. Epic 1 is local, Epics 2–6 are Colab-first, and Epic 7 returns local for the Gradio MVP. Qdrant owns Phase 1 dense/sparse retrieval, payloads, fusion, and citations; reranking is in Epic 4, experimentation/navigation is in Epic 5, and session memory is outside Phase 1.
 
 ## Responsibilities
 
-Architecture docs define module boundaries, staged scope, important design constraints, and planned implementation direction. They must remain aligned with the owner-provided source documents in `docs/source_documents/`.
+Architecture docs define module boundaries, staged scope, runtime and persistence boundaries, configuration contracts, and planned implementation direction. They must remain aligned with the owner-provided source documents in `docs/source_documents/`.
 
 ## Update Notes
 

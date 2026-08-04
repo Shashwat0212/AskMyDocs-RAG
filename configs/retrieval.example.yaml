@@ -1,11 +1,65 @@
-# Example retrieval configuration. Copy to retrieval.yaml when retrieval is implemented.
+# Illustrative Phase 1 configuration contracts. Runtime files are added by their tickets.
 
-vector_store:
-  provider: qdrant
-  url: http://localhost:6333
-  collection: askmydocs_documents
+ingestion_index_profile:
+  id: baseline-v1
+  parser: auto
+  chunking:
+    strategy: recursive_text
+    chunk_size: 800
+    chunk_overlap: 100
+  dense_embedding:
+    model: nomic-embed-text-v1.5
+    dimensions: model_native
+  sparse_embedding:
+    model: qdrant/bm25
+  qdrant:
+    collection_prefix: askmydocs_documents
+    dense_vector_name: dense
+    sparse_vector_name: sparse
+    distance: cosine
+    payload_schema_version: 1
+    hnsw:
+      m: null
+      ef_construct: null
+    quantization: null
+    payload_indexes: []
 
-retrieval:
-  top_k: 5
-  score_threshold: 0.0
-  reranker: cross-encoder/ms-marco-MiniLM-L-6-v2
+query_profile:
+  id: baseline-v1
+  mode: hybrid
+  dense_prefetch_limit: 20
+  sparse_prefetch_limit: 20
+  filters: {}
+  fusion: rrf
+  score_threshold: null
+  reranking:
+    enabled: true
+    provider: cross_encoder
+    model: cross-encoder/ms-marco-MiniLM-L-6-v2
+    input_limit: 20
+    output_limit: 5
+    timeout_seconds: 30
+    fallback: fused_order
+  output_count: 5
+
+navigator:
+  enabled: false
+  safe_ingestion_index_profile: baseline-v1
+  safe_query_profile: baseline-v1
+  max_alternative_collections: 1
+  # Epic 5 selects algorithms, confidence thresholds, caps, and final values.
+
+run_manifest:
+  schema_version: 1
+  required_fields:
+    - run_id
+    - source_commit
+    - dataset_id
+    - dataset_checksum
+    - runtime
+    - profile_hash
+    - qdrant_version
+    - model_versions
+    - metrics
+    - errors
+    - artifact_locations

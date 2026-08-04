@@ -2,343 +2,198 @@
 
 ## Purpose
 
-Phase 1 turns the Day Zero repository foundation into the first working local-first document question-answering application.
+Phase 1 delivers a cited document-question-answering MVP through seven ordered epics. Epic 1 remains local. Epics 2 through 6 use free-tier Google Colab as the canonical shared execution environment. Epic 7 rehydrates the selected configuration on the local Docker/Qdrant/Ollama runtime and completes the Gradio MVP.
 
-This plan covers Epics 1 through 9. Epics 1 through 6 deliver the first lean MVP. Epics 7 through 9 are post-MVP retrieval, conversation-memory, and hyperparameter experimentation enhancements that should begin only after the MVP Gradio interface is working.
+Ticket references are sequential from `RAG-001` through `RAG-041`. References not yet created in Jira are provisional until confirmed.
 
-## Lean MVP Outcome
+## Runtime And Persistence Model
 
-At the end of Epic 6, a local developer should be able to:
+| Segment | Canonical runtime | Durable records |
+|---|---|---|
+| Epic 1 | Local FastAPI, Docker Compose, Qdrant, and Ollama | Git and local Docker volumes |
+| Epics 2–6 | Free-tier Colab with pinned dependencies and ephemeral self-managed Qdrant/Ollama | Git for reviewed code/config/summaries; shared Drive for datasets and full artifacts |
+| Epic 7 | Local FastAPI, Docker Qdrant, Ollama, and Gradio | Git profiles plus local runtime data |
 
-1. Start local services.
-2. Start the FastAPI backend.
-3. Upload a supported document.
-4. Extract and chunk document text.
-5. Index chunks into Qdrant.
-6. Ask a question from the Gradio interface.
-7. Retrieve relevant chunks using simple hybrid retrieval.
-8. Generate an answer with citations using a local Ollama-served model.
+Qdrant storage in Colab must stay under the runtime filesystem, never directly on mounted Drive. Collections may be discarded after a run and must be rebuildable from source documents, dataset manifests, profiles, and run manifests.
 
-Phase 1 must not introduce paid hosted services, deployment pipelines, semantic caching, model routing, arbitration, evaluation automation, or the final React/Next.js interface.
+## Phase 1 Outcome
 
-## Epic 1: Backend Foundations And Local Tooling Familiarization
+At the end of Epic 7, a developer can locally upload a supported document, extract and chunk it, build Qdrant dense and sparse/BM25 indexes, retrieve with native fusion, rerank candidates, generate an Ollama answer, and display citations in Gradio using profiles validated across datasets in Colab.
 
-Finished state:
+Phase 1 excludes paid services, hosted vector databases, deployment pipelines, semantic caching, model routing, arbitration, full generation evaluation automation, the final React/Next.js interface, and session memory.
 
-- Developers understand the backend tools well enough to operate and extend them safely.
-- FastAPI backend exists, runs locally, and has a testable health endpoint.
-- Backend package structure supports API routes, configuration, logging, schemas, and future service modules.
-- Configuration loads from environment variables and config file paths.
-- Logging, flow-level tracing, and local-first observability foundations can be reused by later modules.
-- Qdrant can run locally through Docker Compose and can be verified independently.
-- Ollama setup expectations are documented as a local prerequisite and can be verified independently.
-- Common local commands exist through Make or an equivalent task runner.
-- Operations documentation explains how to start, stop, and verify local backend tooling.
+## Configuration Contracts
 
-Representative tickets:
+### Ingestion/Index Profile
 
-- `RAG-001`: FastAPI Tutorial And Backend Sandbox, including the skeleton, settings, logging, and tests.
-- `<JIRA-KEY>`: Docker Compose And Qdrant Local Sandbox.
-- `<JIRA-KEY>`: Ollama Local Model Serving Sandbox.
-- `<JIRA-KEY>`: Local Backend Commands And Operations.
+Defines parser; chunk strategy, size, and overlap; dense and sparse models; vector dimensions; distance metric; collection naming; HNSW, quantization, optimizer, and payload-index settings; and the complete payload schema.
 
-Learning and setup expectations:
+### Query Profile
 
-- Tutorial videos are learning aids for developer familiarity.
-- Official project docs and official tool documentation remain the implementation source of truth.
-- Sandbox experiments must be clearly separated from product feature code.
+Defines dense and sparse prefetch limits, filters, fusion, thresholds, reranker configuration and bounds, fallback behavior, and final output count. Query-time changes must be compatible with the existing collection.
 
-Out of scope:
+### Run Manifest
 
-- Document upload.
-- Text extraction.
-- Chunking.
-- Embeddings.
-- Backend Qdrant indexing or retrieval calls.
-- Backend Ollama generation calls.
-- Gradio interface.
-- Production deployment or GitHub Actions deployment workflows.
+Records run ID, source commit, dataset and checksum, runtime details, profile/config hashes, Qdrant and model versions, timestamps, metrics, errors, run state, and artifact locations.
 
-Detailed step planning for Epics 1 through 6 is captured in `phase_1_epic_steps.md`.
+## Epic 1 — Local Backend Foundations
 
-## Epic 2: Document Ingestion Pipeline
+Complete the existing local setup-and-learning epic unchanged before adopting Colab.
+
+Tickets:
+
+- `RAG-001`: FastAPI tutorial and backend sandbox.
+- `RAG-002`: Docker Compose and Qdrant local sandbox.
+- `RAG-003`: Ollama local model-serving sandbox.
+- `RAG-004`: Local backend commands and operations.
 
 Finished state:
 
-- Backend exposes a document upload API.
-- Supported file types are validated.
-- Text is extracted from uploaded documents.
-- Extracted text is split into chunks.
-- Chunk metadata is created for source, document, page or section when available, and chunk ordering.
-- Chunking is configuration-driven and supports pluggable strategies so chunking can be tuned as a RAG hyperparameter.
-- Ingestion logic has focused unit tests.
+- FastAPI skeleton, health endpoint, typed settings, logging, and tests are understood and repeatable.
+- Qdrant and Ollama can be started and verified independently on the developer machine.
+- Local commands and troubleshooting are documented.
 
-Representative tickets:
+Out of scope: ingestion, embeddings, retrieval, generation, Gradio, and deployment automation.
 
-- `RAG-011`: Add document upload API contract.
-- `RAG-012`: Add file validation and storage boundary.
-- `RAG-013`: Add text extraction pipeline.
-- `RAG-014`: Add configurable chunking.
-- `RAG-015`: Add ingestion metadata and tests.
+## Epic 2 — Colab Environment and Document Ingestion
 
-Out of scope:
+Tickets:
 
-- Advanced parsing quality work.
-- Retrieval trace UI.
-- Evaluation datasets.
-
-## Epic 3: Embedding And Vector Indexing
+- `RAG-005`: Reproducible Colab bootstrap, branch checkout, dependency installation, shared Drive mounting, and runtime diagnostics.
+- `RAG-006`: Document-upload API contract.
+- `RAG-007`: File validation and Colab/Drive storage boundary.
+- `RAG-008`: PDF, TXT, and Markdown extraction.
+- `RAG-009`: Pluggable, configuration-driven chunking.
+- `RAG-010`: Stable document/chunk metadata and ingestion tests.
 
 Finished state:
 
-- Backend can generate document chunk embeddings using the configured local embedding model.
-- Qdrant collection setup is configuration-driven.
-- Document chunks are stored in a canonical local chunk store.
-- Document chunk vectors and lightweight metadata are indexed into Qdrant.
-- SQLite FTS or equivalent local lexical indexing can use the same canonical chunk text for later BM25 retrieval.
-- Indexing can be tested without relying on paid services.
+- Any contributor can launch a fresh Colab runtime, check out the assigned branch, install pinned dependencies, mount the configured Drive location, and capture diagnostics.
+- Supported documents become stable, citation-aware chunks through importable package code.
+- Raw inputs and full artifacts follow the Drive policy while working files remain under the Colab runtime.
+- Notebooks are thin launchers, not the only implementation.
 
-Representative tickets:
+## Epic 3 — Qdrant Embedding and Indexing
 
-- `RAG-016`: Add local embedding client interface.
-- `RAG-017`: Add Qdrant client and collection setup.
-- `RAG-018`: Index chunk embeddings and metadata.
-- `RAG-019`: Add indexing tests with local or mocked boundaries.
+Tickets:
 
-Out of scope:
-
-- Semantic cache collection.
-- Model routing.
-- Reranker integration.
-
-## Epic 4: Hybrid Retrieval Pipeline
+- `RAG-011`: Dense and sparse embedding interfaces.
+- `RAG-012`: Qdrant collection schema with named dense/sparse vectors, complete retrievable chunk payloads, and citation metadata.
+- `RAG-013`: Qdrant indexing flow and deterministic collection naming.
+- `RAG-014`: Rebuild, compatibility, payload, dimension, and indexing tests.
 
 Finished state:
 
-- Backend accepts a user question for retrieval.
-- Dense retrieval embeds the query and searches Qdrant.
-- Lightweight lexical retrieval scores chunks using a local, free approach such as SQLite FTS5/BM25 over the canonical chunk store.
-- Dense and lexical results are fused with configurable weights.
-- Retrieval hydrates fused `chunk_id` results from the canonical chunk store and returns ranked chunks with source metadata and retrieval scores needed for citations.
-- The retrieval mode is configuration-driven and defaults to hybrid for Phase 1.
+- Embedding interfaces expose model identity, version, dimensions, and normalization behavior.
+- Each Qdrant point contains stable IDs, named dense and sparse/BM25 vectors, full chunk text, source identifiers, chunk order, and page/section citation metadata.
+- Collection names identify corpus, profile, and version/run without collisions.
+- Source files and dataset manifests remain canonical; ephemeral collections can be rebuilt and compatibility errors fail clearly.
 
-Recommended Phase 1 retrieval shape:
+SQLite is not part of the Phase 1 document indexing or retrieval path.
 
-- Dense retrieval: Qdrant vector search with `nomic-embed-text-v1.5`.
-- Lexical retrieval: SQLite FTS5/BM25 or another local lexical strategy over canonical chunk text.
-- Fusion: reciprocal rank fusion or weighted score fusion, selected in config.
-- Controls: `top_k`, dense weight, lexical weight, score threshold, and retrieval mode.
+## Epic 4 — Qdrant Hybrid Retrieval and Reranking
 
-Representative tickets:
+Tickets:
 
-- `RAG-020`: Add retrieval API contract.
-- `RAG-021`: Add dense query embedding and Qdrant search.
-- `RAG-022`: Add lightweight lexical retrieval.
-- `RAG-023`: Add configurable result fusion.
-- `RAG-024`: Add retrieval tests for dense, lexical, and hybrid paths.
-
-Out of scope:
-
-- Cross-encoder reranking.
-- LLM-based reranking.
-- Retrieval trace viewer.
-- Prompt/context preview UI.
-- Quality model mode.
-- Session memory or conversation retrieval.
-
-## Epic 5: Answer Generation With Citations
+- `RAG-015`: Retrieval service/API contract.
+- `RAG-016`: Dense Qdrant retrieval.
+- `RAG-017`: Qdrant sparse/BM25 retrieval.
+- `RAG-018`: Qdrant Query API fusion, with RRF as the initial default and DBSF configurable.
+- `RAG-019`: Reranking configuration and interface.
+- `RAG-020`: Initial local MiniLM cross-encoder reranker.
+- `RAG-021`: Dense, sparse, fusion, payload-hydration, reranking, fallback, and trace tests.
 
 Finished state:
 
-- Backend assembles retrieved chunks into prompt context.
-- Prompt template is loaded from configuration.
-- Generation uses the configured local Ollama model.
-- Answer response includes citations mapped back to retrieved chunk metadata.
-- Basic request, retrieval, and generation metadata are returned or logged.
-- Answer generation is stateless or minimal-session for the first MVP and does not retrieve long-term conversation memory.
+- Qdrant performs named dense and sparse prefetches and native fusion.
+- Complete chunks and citation metadata return directly from Qdrant payloads.
+- Reranking operates on bounded Qdrant candidates and is configurable, bypassable, and failure-tolerant.
+- The initial reranker is `cross-encoder/ms-marco-MiniLM-L-6-v2`.
+- Traces preserve dense, sparse, fusion, and reranking provenance.
 
-Representative tickets:
+This epic completes tested retrieval and reranking before any LLM integration.
 
-- `RAG-025`: Add prompt assembly from retrieved chunks.
-- `RAG-026`: Add Ollama generation client.
-- `RAG-027`: Add answer API with citation response.
-- `RAG-028`: Add generation tests with mocked model boundary.
+Reference: [Qdrant hybrid Query API](https://qdrant.tech/documentation/search/hybrid-queries/).
 
-Out of scope:
+## Epic 5 — Prototype Experimentation and Configuration Navigator
 
-- Multi-model routing.
-- Critic or judge models.
-- Arbitration workflow.
-- Session memory retrieval.
+Tickets:
 
-## Epic 6: MVP Gradio Interface
+- `RAG-022`: Dataset registry, checksums, query sets, and relevance judgments.
+- `RAG-023`: Hyperparameter profile schema and reproducible run manifest.
+- `RAG-024`: Create an isolated branch snapshot of the completed Epic 2–4 pipeline and expose plug-in strategy boundaries.
+- `RAG-025`: Colab experiment runner supporting configuration matrices, checkpointing, resumption, and failure isolation.
+- `RAG-026`: Execute multi-dataset, granular retrieval experiments.
+- `RAG-027`: Capture quality, latency, indexing cost, memory, errors, and comparison artifacts.
+- `RAG-028`: Produce validated ingestion, index, retrieval, and reranking profiles plus a safe default.
+- `RAG-029`: Implement the pre-ingestion scanner, selecting one profile when confident or a resource-capped alternative collection set when uncertain.
+- `RAG-030`: Implement the query-time navigator for compatible top-k, thresholds, fusion, filtering, and reranking choices.
+- `RAG-031`: Merge validated plug-in architecture, profiles, and navigator contracts into the product pipeline and remove the temporary copied prototype.
 
-Finished state:
+Experiment rules:
 
-- Gradio app allows document upload.
-- Gradio app allows asking a question.
-- UI displays answer text and citations.
-- UI surfaces basic loading and error states.
-- UI calls FastAPI endpoints and does not duplicate backend business logic.
+- The isolated prototype is the Epic 5 integration branch at a recorded commit SHA, not a permanent duplicate codebase.
+- Runs are manually launched but automated end to end, checkpointed, resumable, and failure-isolated. They are not unattended Colab schedules.
+- Candidate families include parsing/chunking, embedding models and supported dimensions, sparse models, distance metrics, HNSW, optimizer settings, quantization, payload indexes, fusion, thresholds, candidate counts, filters, and reranking.
+- Report per-dataset/profile winners and Pareto trade-offs. Do not claim a universal best configuration without evidence.
+- Capture retrieval quality such as Recall@k, nDCG@k, MRR@k, or Precision@k where judgments permit, plus indexing duration, query P50/P95, memory, storage, errors, and runtime characteristics.
+- Navigator algorithms, confidence thresholds, maximum alternative collections, resource caps, and final parameter values are measured outputs of the epic.
 
-Representative tickets:
+Navigator boundaries:
 
-- `RAG-029`: Add Gradio app skeleton.
-- `RAG-030`: Add document upload flow.
-- `RAG-031`: Add question-answer flow.
-- `RAG-032`: Display citations and basic errors.
-- `RAG-033`: Document MVP UI run workflow.
+- The pre-ingestion scanner may choose parsing, chunking, embedding, dimensions, distance, and index settings before collection creation.
+- When uncertain, it may create only a configured, resource-capped set of alternative collections with explicit profile mappings.
+- The query-time navigator may change only collection-compatible settings: prefetch limits, filters, fusion, thresholds, reranking, and final count.
+- Every selection returns profile IDs, reason/confidence, fallback state, and provenance.
 
-Out of scope:
+Full LLM, prompt, and generation evaluation remains outside this epic. TurboQuant remains exploratory until compatibility is proven.
 
-- React/Next.js final interface.
-- Retrieval inspection panels.
-- Cache inspection views.
-- Evaluation report views.
-- Reranking controls.
-- Session memory controls.
+## Epic 6 — Ollama Answer Generation With Citations
 
-## Epic 7: Reranking And Retrieval Quality
+Tickets:
 
-Finished state:
-
-- Hybrid retrieval can optionally rerank fused candidate chunks using a local reranking strategy.
-- Reranking is disabled by default until validated.
-- The default planned reranker is a local cross-encoder, not an LLM reranker.
-- Retrieval output preserves pre-rerank dense, lexical, and fusion scores for debugging.
-- Reranking behavior is configuration-driven and can be bypassed.
-- Reranking tests cover ordering, disabled behavior, error handling, and latency-sensitive paths.
-
-Recommended post-MVP reranking shape:
-
-- Input: top fused retrieval candidates from Epic 4.
-- Default approach: local cross-encoder reranker.
-- Future option: LLM reranking only if explicitly approved after latency and quality review.
-- Controls: enabled flag, provider, model, rerank input size, final output size, timeout, and fallback behavior.
-
-Representative tickets:
-
-- `RAG-034`: Add reranking configuration and interface.
-- `RAG-035`: Add local cross-encoder reranker implementation.
-- `RAG-036`: Integrate optional reranking after hybrid fusion.
-- `RAG-037`: Add reranking tests and retrieval quality documentation.
-
-Out of scope:
-
-- Hosted reranking APIs.
-- LLM reranking as the first/default path.
-- Retrieval inspection UI.
-- Evaluation automation.
-- Model routing.
-
-## Epic 8: Session Memory And Conversation Retrieval
+- `RAG-032`: Prompt assembly using navigator-selected retrieved chunks.
+- `RAG-033`: Pinned Ollama-on-Colab runtime and generation client.
+- `RAG-034`: Answer API with citations, retrieval profile, trace ID, and configuration provenance.
+- `RAG-035`: Generation, insufficient-context, citation, navigator-integration, and mocked-boundary tests.
 
 Finished state:
 
-- Chat/session history can be stored locally without mixing it into the document corpus.
-- Full chat text is stored cheaply in SQLite or equivalent local storage.
-- Session memory indexes are separate from document indexes.
-- Relevant session memory can be retrieved for a session-aware answer.
-- Prompt assembly can include bounded session context using context caps, recent turns, summaries, and retrieved memory chunks.
-- Parent-child memory retrieval is supported conceptually: retrieve smaller memory chunks, then hydrate parent messages or summaries when needed.
+- Colab starts a pinned, self-managed Ollama runtime and calls it through an infrastructure adapter.
+- Prompt assembly uses navigator-selected chunks and bounded context.
+- Responses include answer text, citations, retrieval profile, trace ID, and configuration provenance.
+- Insufficient context and runtime/model failures produce stable fallback behavior.
 
-Recommended post-MVP session memory shape:
+## Epic 7 — Local Gradio MVP
 
-- Document indexes and session memory indexes remain separate.
-- Canonical chat storage uses local SQLite tables for sessions, messages, memory chunks, and summaries.
-- Session memory retrieval may use separate Qdrant collection or namespace plus SQLite FTS/BM25.
-- Context budgeting prioritizes current question, system instructions, retrieved document chunks, highly relevant session memory, recent turns, and older summaries.
-- Session memory retrieval should be configurable and can be disabled until quality is validated.
+Tickets:
 
-Representative tickets:
-
-- `RAG-038`: Add local session and chat message storage.
-- `RAG-039`: Add session memory chunking and summary storage.
-- `RAG-040`: Add separate session memory retrieval indexes.
-- `RAG-041`: Integrate bounded session context into answer prompt assembly.
-- `RAG-042`: Add session memory tests and documentation.
-
-Out of scope:
-
-- Mixing chat memory into the document corpus.
-- Passing full conversation history into every prompt.
-- Hosted memory stores.
-- Semantic cache implementation.
-- Multi-model routing.
-
-## Epic 9: Hyperparameter Experimentation And Blueprinting
+- `RAG-036`: Rehydrate and validate the Epic 5 selected configurations on the local Docker/Qdrant/Ollama runtime.
+- `RAG-037`: Thin Gradio application skeleton.
+- `RAG-038`: Document-upload flow.
+- `RAG-039`: Question-and-answer flow.
+- `RAG-040`: Citation, loading, empty, and error states.
+- `RAG-041`: End-to-end local smoke tests and operating guide.
 
 Finished state:
 
-- A local experimentation module can run configured RAG pipeline permutations over one or more evaluation datasets.
-- Experiment inputs are driven by configuration rather than hardcoded combinations.
-- The module can vary approved hyperparameters across chunking, embedding/indexing settings, retrieval, fusion, reranking, prompt settings, generation settings, and session-memory settings where available.
-- Each experiment run records the exact configuration, dataset, metrics, latency, errors, and output artifacts needed to compare results.
-- Results identify which configurations performed better for a given dataset.
-- Multi-dataset comparisons can be used to build a practical blueprint of which hyperparameter patterns work better for different document quality levels, industries, and use cases.
+- Selected profiles rebuild and pass compatibility checks locally.
+- Gradio calls FastAPI without duplicating backend business logic.
+- The local workflow uploads, indexes, retrieves, reranks, generates, and displays cited answers.
+- Operating guidance covers start, stop, rebuild, smoke testing, and troubleshooting.
 
-Recommended post-MVP experimentation shape:
-
-- Treat the implemented config files as the control plane for experiments.
-- Define named experiment profiles that expand into specific permutations.
-- Keep dataset definitions local under the evaluation area.
-- Use existing evaluation frameworks from the roadmap, such as DeepEval and Ragas, when the evaluation stage is implemented.
-- Store experiment outputs locally as structured files and later render static reports.
-- Keep the first implementation focused on repeatable offline experiments, not automatic production tuning.
-
-Candidate hyperparameter families:
-
-- Chunking strategy, chunk size, chunk overlap, and metadata strategy.
-- Embedding model, vector dimensions, and indexing options.
-- Retrieval mode, dense top-k, lexical top-k, score thresholds, and fusion strategy.
-- Reranking enabled flag, reranker model, rerank input size, and final output size.
-- Prompt template, context budget, and citation formatting rules.
-- Generation model, temperature, max tokens, timeout, and stop rules.
-- Session memory context cap, recent-turn count, summary strategy, and memory retrieval limits.
-
-Representative tickets:
-
-- `RAG-043`: Define experiment configuration schema and run manifest.
-- `RAG-044`: Add local experiment runner for configured pipeline permutations.
-- `RAG-045`: Add dataset registry and dataset quality/industry metadata.
-- `RAG-046`: Capture experiment metrics, latency, errors, and artifacts.
-- `RAG-047`: Add comparison report generation for experiment runs.
-- `RAG-048`: Document hyperparameter blueprinting workflow.
-
-Out of scope:
-
-- Paid or hosted experiment tracking platforms.
-- Automatic online tuning in production.
-- Changing production defaults without explicit review.
-- Replacing the approved local-first evaluation direction.
-- Running experiments before the underlying pipeline modules exist.
+The Phase 1 lean MVP is complete at the end of Epic 7.
 
 ## Phase 1 Acceptance Criteria
 
-Phase 1 is complete when:
+- Epics 2 through 6 are reproducible from a fresh free-tier Colab runtime and pinned project bootstrap.
+- Supported documents produce stable dense/sparse Qdrant points with complete citation payloads.
+- Qdrant hybrid retrieval and MiniLM reranking are tested before generation.
+- Epic 5 produces reproducible evidence, validated profiles, a safe fallback, and the two-level navigator.
+- Epic 6 generates cited answers with trace and configuration provenance.
+- Epic 7 runs the same package logic and selected profiles locally through FastAPI, Qdrant, Ollama, and Gradio.
+- No paid dependency, hosted vector database, committed secret, Drive-backed Qdrant storage, or notebook-only implementation is introduced.
 
-- Local services can be started.
-- Backend health check passes.
-- A supported document can be uploaded.
-- Text is extracted, chunked, embedded, and indexed.
-- A question retrieves chunks through hybrid retrieval.
-- A local model generates an answer.
-- Citations are shown in the API response and Gradio UI.
-- Configuration controls model names, service URLs, retrieval settings, prompt paths, and experimentable pipeline parameters.
-- Relevant tests pass or any local environment limitation is documented.
-- Documentation for setup, configuration, APIs, and operations is updated.
+## After Phase 1
 
-The first MVP is complete after Epic 6. Epics 7 through 9 should be treated as post-MVP Phase 1 enhancement work.
-
-## Future Epics Remain In Roadmap
-
-The remaining broader roadmap areas stay outside Phase 1:
-
-- Retrieval inspection UI and broader quality-mode layer.
-- Documentation automation.
-- Evaluation engine.
-- Multi-model routing and semantic cache.
-- Output arbitration.
-- Final React/Next.js interface.
-
-Those areas should not be implemented during Phase 1 unless the project owner explicitly changes the approved scope.
+Session memory is deferred to a future post-MVP plan without a Phase 1 epic number. The broader roadmap retains retrieval inspection and quality, documentation automation, the full evaluation engine, model routing and semantic cache, output arbitration, and the final React/Next.js interface.

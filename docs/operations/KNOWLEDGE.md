@@ -2,11 +2,11 @@
 
 ## Current Contents
 
-This folder contains local setup, operations, and troubleshooting documentation. The current concrete guide is `day_zero_setup.md`.
+This folder contains local and Colab setup, operations, and troubleshooting documentation. The current concrete guide is `day_zero_setup.md`.
 
 ## Responsibilities
 
-Operations docs explain how developers prepare and run the project locally. During Day Zero, this means machine setup, validation, the starter-first reading workflow, and the approved branch model; application service operations come later.
+Operations docs explain how developers prepare and run the project in the canonical environment for each epic. Local setup supports Epic 1 and the Epic 7 MVP. Epics 2–6 use a pinned Colab bootstrap, ephemeral Qdrant/Ollama services, runtime-filesystem Qdrant storage, shared Drive datasets/full artifacts, and resumable manually launched workflows. Concrete commands arrive with their approved tickets.
 
 ## Update Notes
 
