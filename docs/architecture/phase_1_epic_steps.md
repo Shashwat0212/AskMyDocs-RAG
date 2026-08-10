@@ -112,6 +112,8 @@ Work:
 - Add or document local Qdrant startup through Docker Compose.
 - Verify health/readiness.
 - Understand collections, vector size, distance metric, payloads, upsert, and search.
+- Use a local embedding fixture only inside the isolated tutorial when needed
+  to make similarity results meaningful.
 
 Important rule:
 
@@ -122,6 +124,7 @@ Out of scope:
 - Backend indexing.
 - Backend retrieval.
 - Production deployment.
+- Reusable embedding clients or product embedding architecture.
 
 ### Step 5: Ollama Local Sandbox
 

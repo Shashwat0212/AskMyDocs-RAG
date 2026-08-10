@@ -1,6 +1,6 @@
 # AskMyDocs-RAG Starter Briefing
 
-Last reviewed: 2026-07-27
+Last reviewed: 2026-07-29
 Maintained through: `project-governance`
 
 Read this file first at the start of every human or AI work session. Then read `AGENTS.md` and use the task-routing table below to load the detailed sources needed for the current task.
@@ -28,7 +28,13 @@ Non-negotiable constraints:
 - Phase 1 execution is starting with Epic 1: Backend Foundations And Local Tooling Familiarization.
 - The Epic 1 integration branch is `epic/epic-1-backend-foundations`.
 - `RAG-001`, the combined FastAPI tutorial and backend sandbox, is assigned to Shashwat; implementation and local validation are complete on its feature branch, while Jira synchronization remains pending.
-- Provisional `RAG-002`, the Docker Compose and Qdrant local sandbox, is assigned to Shashwat and ready on `feature/shashwat/RAG-002-qdrant-sandbox`; confirm the key in Jira before implementation.
+- Provisional `RAG-002`, the Docker Compose and Qdrant local sandbox, is assigned
+  to Shashwat and in progress on
+  `feature/shashwat/RAG-002-qdrant-sandbox`; Jira key confirmation remains
+  pending.
+- RAG-002 includes a pinned local Qdrant service, a pure-Python internals
+  tutorial, synchronized Jupyter companion, and frozen Billboard learning
+  fixture. Validation is in progress.
 - The remaining Ollama and operations tickets are approved templates awaiting Jira keys and assignment.
 - No project blocker is currently recorded.
 
@@ -47,7 +53,10 @@ Task:
 - Practice collection creation, vector upsert, similarity search, and deletion.
 - Verify that normal shutdown preserves stored data.
 - Document start, stop, logs, health, persistence, and destructive reset commands.
-- Keep backend Qdrant integration, embeddings, ingestion, retrieval, and production deployment out of scope.
+- Keep backend Qdrant integration, reusable embedding architecture, ingestion,
+  product retrieval, and production deployment out of scope.
+- Permit local FastEmbed inference only inside the isolated tutorial so
+  similarity results are meaningful.
 
 Acceptance criteria:
 

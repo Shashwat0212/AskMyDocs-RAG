@@ -32,6 +32,7 @@ When a change modifies code, configuration, scripts, documentation structure, or
 | `docs/evaluation_reports/` | [docs/evaluation_reports/KNOWLEDGE.md](docs/evaluation_reports/KNOWLEDGE.md) | Future static evaluation report outputs. |
 | `docs/operations/` | [docs/operations/KNOWLEDGE.md](docs/operations/KNOWLEDGE.md) | Local setup, operations, and troubleshooting documentation. |
 | `docs/source_documents/` | [docs/source_documents/KNOWLEDGE.md](docs/source_documents/KNOWLEDGE.md) | Owner-provided source-of-truth planning documents. |
+| `docs/tutorials/` | [docs/tutorials/KNOWLEDGE.md](docs/tutorials/KNOWLEDGE.md) | Executable, phase-aligned learning guides. |
 | `evals/` | [evals/KNOWLEDGE.md](evals/KNOWLEDGE.md) | Future evaluation assets and regression test organization. |
 | `evals/datasets/` | [evals/datasets/KNOWLEDGE.md](evals/datasets/KNOWLEDGE.md) | Future evaluation datasets. |
 | `evals/regression_tests/` | [evals/regression_tests/KNOWLEDGE.md](evals/regression_tests/KNOWLEDGE.md) | Future RAG regression test definitions. |
@@ -39,4 +40,8 @@ When a change modifies code, configuration, scripts, documentation structure, or
 | `frontend/` | [frontend/KNOWLEDGE.md](frontend/KNOWLEDGE.md) | Frontend application boundaries. |
 | `frontend/gradio_app/` | [frontend/gradio_app/KNOWLEDGE.md](frontend/gradio_app/KNOWLEDGE.md) | Future Stage 1 Gradio MVP interface. |
 | `frontend/web_app/` | [frontend/web_app/KNOWLEDGE.md](frontend/web_app/KNOWLEDGE.md) | Future React / Next.js interface. |
+| `output/` | [output/KNOWLEDGE.md](output/KNOWLEDGE.md) | Reviewable educational artifacts that are not runtime code. |
+| `output/jupyter-notebook/` | [output/jupyter-notebook/KNOWLEDGE.md](output/jupyter-notebook/KNOWLEDGE.md) | Clean Jupyter companions for approved tutorials. |
+| `sandbox/` | [sandbox/KNOWLEDGE.md](sandbox/KNOWLEDGE.md) | Ticket-scoped learning environments separated from product code. |
+| `sandbox/qdrant_music/` | [sandbox/qdrant_music/KNOWLEDGE.md](sandbox/qdrant_music/KNOWLEDGE.md) | RAG-002 Qdrant internals and Billboard recommendation lab. |
 | `scripts/` | [scripts/KNOWLEDGE.md](scripts/KNOWLEDGE.md) | Local setup and repository utility scripts. |

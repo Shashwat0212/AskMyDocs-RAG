@@ -104,3 +104,9 @@ Decision: Use a final four-ticket structure for Epic 1.
 Rationale: The project owner explicitly merged the FastAPI learning, backend skeleton, settings, logging, and test work into one tutorial ticket while retaining separate Qdrant, Ollama, and operations tickets.
 Consequences: Epic 1 contains `RAG-001` plus three Jira-key-pending tickets: Docker Compose and Qdrant sandbox, Ollama sandbox, and local commands and operations. The six detailed learning steps remain useful, but they do not represent six separate Jira tickets. Product ingestion, retrieval, generation, and UI features remain outside Epic 1.
 Supersedes: The six-ticket enumeration in the 2026-07-05 merged Epic 1 decision.
+
+Date: 2026-07-29
+Status: Active
+Decision: Permit a narrow local embedding fixture inside the isolated RAG-002 Qdrant learning sandbox.
+Rationale: Random vectors demonstrate API syntax but cannot teach meaningful similarity search. A frozen song-description dataset and the approved Nomic model let developers observe exact search, HNSW, filtering, and query parameters without adding backend integration.
+Consequences: FastEmbed and `nomic-ai/nomic-embed-text-v1.5` may be used only under `sandbox/qdrant_music` and its synchronized notebook. No reusable embedding client, FastAPI integration, ingestion pipeline, or product retrieval code is introduced. Epic 3 remains responsible for application embedding and indexing.

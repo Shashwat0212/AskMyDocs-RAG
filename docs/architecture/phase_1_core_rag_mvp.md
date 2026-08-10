@@ -59,6 +59,11 @@ Out of scope:
 - Gradio interface.
 - Production deployment or GitHub Actions deployment workflows.
 
+Learning-only exception: RAG-002 may use FastEmbed locally inside its isolated
+music sandbox to produce meaningful tutorial vectors and queries. This does
+not implement the Epic 3 embedding interface, backend indexing, or product
+retrieval behavior.
+
 Detailed step planning for Epics 1 through 6 is captured in `phase_1_epic_steps.md`.
 
 ## Epic 2: Document Ingestion Pipeline

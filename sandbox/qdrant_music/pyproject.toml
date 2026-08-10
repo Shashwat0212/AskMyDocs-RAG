@@ -1,0 +1,34 @@
+[project]
+name = "askmydocs-qdrant-music-sandbox"
+version = "0.1.0"
+description = "RAG-002 local Qdrant internals learning sandbox"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+  "fastembed==0.8.0",
+  "qdrant-client==1.18.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==8.4.2",
+]
+notebook = [
+  "ipykernel==6.30.1",
+  "jupyterlab==4.4.7",
+  "nbclient==0.10.2",
+  "pandas==2.3.2",
+]
+
+[project.scripts]
+qdrant-music = "qdrant_music.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/qdrant_music"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]

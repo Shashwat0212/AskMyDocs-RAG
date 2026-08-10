@@ -1,6 +1,6 @@
 # Project Status
 
-Last updated: 2026-07-27
+Last updated: 2026-07-29
 
 ## Current Phase
 
@@ -23,7 +23,11 @@ Phase 1 execution: Epic 1, Backend Foundations And Local Tooling Familiarization
 ## In Progress
 
 - `RAG-001` implementation and local validation are complete on `feature/shashwat/RAG-001-fastapi-sandbox`; Jira status and repository disposition remain to be synchronized.
-- Provisional `RAG-002`, the Docker Compose and Qdrant local sandbox, is assigned to Shashwat and ready on `feature/shashwat/RAG-002-qdrant-sandbox`; Jira confirmation is pending.
+- Provisional `RAG-002`, the Docker Compose and Qdrant local sandbox, is
+  assigned to Shashwat and in progress on
+  `feature/shashwat/RAG-002-qdrant-sandbox`; Jira confirmation is pending. The
+  branch includes the local service, pure-Python internals lab, frozen Billboard
+  fixture, synchronized notebook, tests, and operations guidance.
 
 ## Blocked
 
@@ -41,7 +45,7 @@ Phase 1 execution: Epic 1, Backend Foundations And Local Tooling Familiarization
 | Ticket | Scope | Assignee | Repository status | Jira reference |
 |---|---|---|---|---|
 | `RAG-001` | FastAPI tutorial, skeleton, settings, logging, and tests | Shashwat | In Progress | Key confirmed; URL pending |
-| Provisional `RAG-002` | Docker Compose and Qdrant local sandbox | Shashwat | Ready | Create or link in Jira; confirm key |
+| Provisional `RAG-002` | Docker Compose and Qdrant local sandbox | Shashwat | In Progress | Create or link in Jira; confirm key |
 | Pending | Ollama local model serving sandbox | Unassigned | Planned | Create from approved template |
 | Pending | Local backend tooling and operations workflow | Unassigned | Planned | Create from approved template |
 

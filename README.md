@@ -40,4 +40,14 @@ Then use the task-routing table in `starter.md` to read the detailed sources req
 
 ## Current State
 
-Day Zero foundation has been reviewed and merged. Phase 1 execution is active in Epic 1, Backend Foundations And Local Tooling Familiarization. The combined `RAG-001` FastAPI learning sandbox is locally complete, and the provisional `RAG-002` Docker Compose and Qdrant branch is ready pending Jira-key confirmation. The Ollama and operations ticket templates still await Jira creation and assignment. The permanent `project-governance` branch contains the latest working project view; `main` contains the latest approved governance checkpoint and is the base for short-lived epic integration branches.
+Day Zero foundation has been reviewed and merged. Phase 1 execution is active
+in Epic 1, Backend Foundations And Local Tooling Familiarization. The combined
+`RAG-001` FastAPI learning sandbox is locally complete, and provisional
+`RAG-002` is implementing the Docker Compose and Qdrant learning sandbox
+pending Jira-key confirmation. The Ollama and operations ticket templates still
+await Jira creation and assignment.
+
+Current learning guides:
+
+- [Qdrant internals through Billboard song search](docs/tutorials/qdrant_billboard_walkthrough.md)
+- [Qdrant local operations](docs/operations/qdrant_local_sandbox.md)
